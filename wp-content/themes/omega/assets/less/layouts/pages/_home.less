@@ -1,0 +1,100 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+.homeBannerItemContainer{
+	position:relative;
+}
+
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	.homeBannerItemContainer{
+		.homeThreeColumnContainer{
+			position:absolute;
+			bottom:0;
+			display:table;
+			width:100%;
+			.homeThreeColumnItem{
+				display:table-cell;
+				height:100%;
+				float:none;
+				padding:0;
+				vertical-align: bottom;
+				
+				&:last-child{
+					.homeThreeColumnItemInnerDiv{
+						margin-right:0;
+					}
+				}
+				
+				.homeThreeColumnItemInnerDiv{
+					background: rgba(255, 255, 255, 0.8);
+					padding: 25px 0 25px 30px;
+					margin-right: 4px;
+					
+					.threeColumnHeader{
+						color: #953834;
+						font-family: "Oswald";
+						font-size: 21px;
+						font-weight: 400;
+						margin-bottom: 17px;
+						text-transform: uppercase;
+					}
+	
+					.threeColumnContent {
+						color: #000;
+						font-family: "aileronlight";
+						font-size: 10px;
+						padding-left: 48px;
+						padding-right: 25px;
+						&.supplyChainMonitoring {
+							background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
+						}
+						&.ethicalBehavior {
+							background: url("../img/home/logo_ethic.png") no-repeat scroll left top;
+						}
+						&.differntApproach {
+							background: url("../img/home/logo_approach.png") no-repeat scroll left top;
+						}
+						
+						.learnMoreContainer {
+							border-top: 1px solid #a6a6a6;
+							padding-top: 14px;
+							margin-top:30px;
+							width: 72px;
+							a{
+								color: #717073;
+								font-family: "Oswald";
+								font-weight: 400;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {	
+
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+
+}
