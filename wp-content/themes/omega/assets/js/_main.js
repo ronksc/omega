@@ -34,9 +34,40 @@ var Roots = {
   // About us page, note the change from about-us to about_us.
   locations: {
     init: function() {		
+		function initMap(){
+			$('#Map area').each(function(){
+				$(this).mouseover(function(){
+					if($(window).width() < 768){	
+						return;
+					}
+						
+					var areaCoords = $(this).attr('coords').split(',');
+					var overlayLeft = parseInt(areaCoords[2]);
+					var overlayTop = parseInt(areaCoords[1])-$('.overlayContainer .overlayItem').eq($('#Map area').index($(this))).outerHeight();
+					
+					$('.overlayContainer .overlayItem').eq($('#Map area').index($(this))).css({'left':overlayLeft, 'top':overlayTop});
+					$('.overlayContainer .overlayItem').eq($('#Map area').index($(this))).fadeIn();
+				});							 
+				
+				$(this).mouseout(function(){
+					if($(window).width() < 768){
+						return;
+					}
+					$('.overlayContainer .overlayItem').eq($('#Map area').index($(this))).fadeOut();
+				});
+			});
+		}
+	
 		$(document).ready(function(e) {
 			$('img[usemap]').rwdImageMaps();
+			initMap();		
         });
+		
+		$(window).resize(function(){
+			if($(window).width() < 768){
+				$('.overlayContainer .overlayItem').show();	
+			}
+		});
     }
   }
 };

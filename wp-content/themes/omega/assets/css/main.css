@@ -7353,21 +7353,13 @@ footer .copyright a {
 }
 @media (min-width: 768px) {
   .mapContainer {
-    background: rgba(0, 0, 0, 0) url("../img/location/bg_map.png") no-repeat scroll left center;
-    height: 552px;
     margin-top: 20px;
     position: relative;
-    width: 914px;
   }
   .mapContainer .overlayItem {
-    background: url(../images/location/bg_overlay_btm.png) no-repeat left bottom;
+    background: url(../img/location/bg_overlay_btm.png) no-repeat left bottom;
     position: absolute;
-    -moz-opacity: 0;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: opacity 0.3s ease-in;
-    -moz-transition: opacity 0.3s ease-in;
-    -o-transition: opacity 0.3s ease-in;
+    display: none;
     z-index: 1;
   }
   .mapContainer .overlayItem div {
@@ -7388,273 +7380,47 @@ footer .copyright a {
     z-index: 30000;
     position: absolute;
   }
-  .mapContainer .ptHongKong {
-    height: 11px;
-    position: absolute;
-    right: 105px;
-    top: 284px;
-    width: 63px;
-  }
   .mapContainer .ptHongKongLocationItem {
-    left: 777px;
-    top: 176px;
     width: 144px;
-    width: 165px\9\0;
-    top: 176px\9\0;
-  }
-  .mapContainer .ptHongKongLocationItem div {
-    width: 140px;
-    width: 141px\9\0;
-  }
-  .mapContainer .ptBangladesh {
-    height: 11px;
-    position: absolute;
-    right: 200px;
-    top: 270px;
-    width: 30px;
   }
   .mapContainer .ptBangladeshLocationItem {
-    left: 716px;
-    top: 176px;
     width: 154px;
-    top: 172px\9\0;
-  }
-  .mapContainer .ptBangladeshLocationItem div {
-    width: 130px;
-  }
-  .mapContainer .ptShanghai {
-    height: 11px;
-    position: absolute;
-    right: 95px;
-    top: 235px;
-    width: 48px;
   }
   .mapContainer .ptShanghaiLocationItem {
-    left: 795px;
-    top: 136px;
     width: 226px;
-    width: 207px\9\0;
-    top: 142px\9\0;
-  }
-  .mapContainer .ptShanghaiLocationItem div {
-    width: 202px;
-    width: 183px\9\0;
-  }
-  .mapContainer .ptQingdao {
-    height: 11px;
-    position: absolute;
-    right: 105px;
-    top: 214px;
-    width: 40px;
   }
   .mapContainer .ptQingdaoLocationItem {
-    left: 789px;
-    top: 116px;
-    top: 116px\9\0;
     width: 187px;
-    width: 198px\9\0;
-  }
-  .mapContainer .ptQingdaoLocationItem div {
-    width: 163px;
-    width: 174px\9\0;
-  }
-  .mapContainer .ptShenzhen {
-    height: 11px;
-    position: absolute;
-    right: 144px;
-    top: 268px;
-    width: 43px;
   }
   .mapContainer .ptShenzhenLocationItem {
-    left: 776px;
-    top: 168px;
     width: 148px;
-    width: 129px\9\0;
-  }
-  .mapContainer .ptShenzhenLocationItem div {
-    width: 124px;
-    width: 105px\9\0;
-  }
-  .mapContainer .ptDongguan {
-    height: 11px;
-    position: absolute;
-    right: 132px;
-    top: 251px;
-    width: 51px;
   }
   .mapContainer .ptDongguanLocationItem {
-    left: 773px;
-    top: 161px;
     width: 206px;
-    top: 164px\9\0;
-    left: 772px\9\0;
-  }
-  .mapContainer .ptDongguanLocationItem div {
-    width: 182px;
-  }
-  .mapContainer .ptFuzhou {
-    height: 11px;
-    position: absolute;
-    right: 78px;
-    top: 253px;
-    width: 36px;
   }
   .mapContainer .ptFuzhouLocationItem {
-    left: 792px;
-    top: 159px;
     width: 112px;
-    top: 157px\9\0;
-  }
-  .mapContainer .ptFuzhouLocationItem div {
-    width: 88px;
-  }
-  .mapContainer .ptIndia {
-    height: 11px;
-    position: absolute;
-    right: 233px;
-    top: 255px;
-    width: 26px;
-  }
-  .mapContainer .ptIndiaLocationItem {
-    left: 685px;
-    top: 156px;
-  }
-  .mapContainer .ptIndiaLocationItem div {
-    width: 176px;
-    width: 176px\9\0;
-  }
-  .mapContainer .ptIndonesia {
-    height: 11px;
-    position: absolute;
-    right: 176px;
-    top: 331px;
-    width: 37px;
   }
   .mapContainer .ptIndonesiaLocationItem {
-    left: 743px;
-    top: 233px;
     width: 178px;
-    top: 227px\9\0;
-  }
-  .mapContainer .ptIndonesiaLocationItem div {
-    width: 154px;
-  }
-  .mapContainer .ptPhilippines {
-    height: 11px;
-    position: absolute;
-    right: 69px;
-    top: 297px;
-    width: 35px;
   }
   .mapContainer .ptPhilippinesLocationItem {
-    left: 804px;
-    top: 199px;
     width: 190px;
-    width: 192px\9\0;
-    top: 197px\9\0;
-  }
-  .mapContainer .ptPhilippinesLocationItem div {
-    width: 186px;
-    width: 168px\9\0;
-  }
-  .mapContainer .ptSriLanka {
-    height: 11px;
-    position: absolute;
-    right: 224px;
-    top: 317px;
-    width: 43px;
   }
   .mapContainer .ptSriLankaLocationItem {
-    left: 695px;
-    top: 230px;
     width: 113px;
   }
-  .mapContainer .ptSriLankaLocationItem div {
-    width: 139px;
-  }
-  .mapContainer .ptTaiwan {
-    height: 11px;
-    position: absolute;
-    right: 81px;
-    top: 266px;
-    width: 27px;
-  }
   .mapContainer .ptTaiwanLocationItem {
-    left: 800px;
-    top: 167px;
     width: 167px;
-    top: 165px\9\0;
-  }
-  .mapContainer .ptTaiwanLocationItem div {
-    width: 143px;
-  }
-  .mapContainer .ptThailand {
-    height: 11px;
-    position: absolute;
-    right: 169px;
-    top: 298px;
-    width: 43px;
   }
   .mapContainer .ptThailandLocationItem {
-    left: 749px;
-    top: 200px;
     width: 149px;
-    width: 130px\9\0;
-  }
-  .mapContainer .ptThailandLocationItem div {
-    width: 125px;
-    width: 126px\9\0;
-  }
-  .mapContainer .ptTurkey {
-    height: 16px;
-    position: absolute;
-    right: 316px;
-    top: 223px;
-    width: 53px;
   }
   .mapContainer .ptTurkeyLocationItem {
-    left: 548px;
-    top: 127px;
     width: 130px;
-    width: 111px\9\0;
-  }
-  .mapContainer .ptTurkeyLocationItem div {
-    width: 105px;
-    width: 86px\9\0;
-  }
-  .mapContainer .ptVietnam {
-    height: 11px;
-    position: absolute;
-    right: 108px;
-    top: 318px;
-    width: 59px;
   }
   .mapContainer .ptVietnamLocationItem {
-    left: 764px;
-    top: 209px;
     width: 142px;
-  }
-  .mapContainer .ptVietnamLocationItem div {
-    width: 117px;
-  }
-}
-@media (min-width: 768px) and all and (-ms-high-contrast: none) {
-  .mapContainer {
-    /* IE11 */
-  }
-  .mapContainer *::-ms-backdrop,
-  .mapContainer .ptPhilippinesLocationItem {
-    top: 197px;
-    width: 192px;
-  }
-}
-@media (min-width: 768px) and all and (-ms-high-contrast: none) {
-  .mapContainer {
-    /* IE11 */
-  }
-  .mapContainer *::-ms-backdrop,
-  .mapContainer .ptPhilippinesLocationItem div {
-    width: 192px;
   }
 }
 .navbar-default {
