@@ -36,7 +36,7 @@
 
 #menu-primary-navigation{
 	li{
-		padding: 7px 22px;
+		padding: 7px 12px;
 	}
 	&>li a{
 		  font-family: "Oswald";
@@ -121,6 +121,7 @@
 	}
 	
 	.navbar-header{
+		width:120px;
 		.navbar-brand{
 			padding:0;
 			width:auto;
@@ -185,11 +186,13 @@
 //===============================================================================
 //===============================================================================
 @media (min-width: @screen-md-min) {
-	.searchBox-container{
-	    top: 140px;
-		right: 15px;
-		.search-field{
-			  width: 160px!important;
+	.navbar-header{
+		width:auto;
+	}
+	
+	#menu-primary-navigation{
+		li{
+			padding: 7px 22px;
 		}
 	}
 }
@@ -200,10 +203,5 @@
 //===============================================================================
 //===============================================================================
 @media (min-width: @screen-lg-min) {
-	.searchBox-container{
-		right: 10px;
-		.search-field{
-			width: 230px!important;
-		}
-	}
+
 }

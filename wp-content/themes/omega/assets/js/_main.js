@@ -23,6 +23,177 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+	  function isIE() {
+		var myNav = navigator.userAgent.toLowerCase();
+		return (myNav.indexOf('msie') !== -1) ? parseInt(myNav.split('msie')[1]) : false;
+	  }
+	  
+	  function forgot_password() {
+			var ls_param =  $.toJSON({"as_user_login" : $("#loginName2").val(), "as_email" : $("#email").val() });
+			$.ajax({ 
+			  type: "POST",
+			  url: "https://connex.omegacompliance.com/userwebsvc.asmx/ForgetPwd",
+			  crossDomain: true,
+			  data: ls_param,
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  cache: false,
+			  success: function(as_result) {
+				  if (as_result === "OK") {
+					$("#forget_err_message").html("A new password will be sent to your email address in a few minutes");
+				  } else {
+					$("#forget_err_message").html(as_result);
+				  }
+				},
+			  error: function(XMLHttpRequest, textStatus, errorThrown) {
+				  $("#forget_err_message").html(XMLHttpRequest.responseText);
+				}
+			});
+		}
+		  
+		function f_login() {
+			//$.support.cors = true;
+			var ls_param =  $.toJSON({"as_user_id" : $("#loginName").val(), "as_password" : $("#password").val() });
+			$.ajax({ 
+				type: "POST",
+				url: "https://connex.omegacompliance.com/ncnUserWebSvc.asmx/RemoteLogin",
+				data: ls_param,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				cache: false,
+				success: function(as_result) {
+						if (as_result === "OK") {
+							//success
+							window.location.assign("https://connex.omegacompliance.com/ncnmenu.aspx");
+						} else if (as_result === "OKEXP") {
+							window.location.assign("https://connex.omegacompliance.com/ncnmenu.aspx?pop=changepwd");
+						} else {
+							$("#login_err_message").html(as_result);
+						}
+					}, 
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+						$("#login_err_message").html(XMLHttpRequest.responseText);
+					}
+			});
+		}
+		
+		function change(event)
+		{
+			var evt = (window.event) ? window.event : event;
+			var elem = (evt.srcElement) ? evt.srcElement : evt.target;
+			var inputID = $(elem).attr('id');
+			var inputValue = $(elem).attr('value');
+			if(inputValue === 'PASSWORD')
+			{
+				var passwordInput = document.createElement('input');
+				passwordInput.id = inputID;
+				passwordInput.type = 'password';
+				passwordInput.value = '';
+				passwordInput.onblur = changeBack;
+				document.getElementById(inputID).parentNode.replaceChild(passwordInput, document.getElementById(inputID));
+				window.setTimeout(function(){passwordInput.focus();}, 0);
+			}
+		}
+		
+		function changeBack(event)
+		{
+			var evt = (window.event) ? window.event : event;
+			var elem = (evt.srcElement) ? evt.srcElement : evt.target;
+			var inputID = $(elem).attr('id');
+			var inputValue = $(elem).attr('value');
+			if(inputValue === '')
+			{
+				var textInput = document.createElement('input');
+				textInput.type = 'text';
+				textInput.id = inputID;
+				textInput.value = 'PASSWORD';
+				textInput.onfocus = change;
+				document.getElementById(inputID).parentNode.replaceChild(textInput, document.getElementById(inputID));
+			}
+		}
+
+	  
+	  $(document).ready(function(){
+		$('.menu-login a').fancybox({'scrolling':'no'});						 
+		
+		$("#loginName").focus(function(){
+			if($(this).val()==="USERNAME"){
+				$(this).val("");
+			}
+		});
+		$("#loginName").blur(function(){
+			if($(this).val()===""){
+				$(this).val("USERNAME");
+			}
+		});	
+		
+		$("#loginName2").focus(function(){
+			if($(this).val()==="USER ID"){
+				$(this).val("");	
+			}
+		});
+		$("#loginName2").blur(function(){
+			if($(this).val()===""){
+				$(this).val("USER ID");	
+			}
+		});
+		
+		$("#email").focus(function(){
+			if($(this).val()==="EMAIL"){
+				$(this).val("");	
+			}
+		});
+		$("#email").blur(function(){
+			if($(this).val()===""){
+				$(this).val("EMAIL");	
+			}
+		});
+		
+		if(isIE() === 8){
+			$("#password").focus(function(){
+				if($(this).val()==="PASSWORD"){
+					change(event);
+				}
+			});
+		}else{
+			$("#password").focus(function(){
+				if($(this).val()==="PASSWORD"){
+					$(this).val("").prop('type', 'password');
+				}
+			});	
+			
+			$("#password").blur(function(){
+				if($(this).val()===""){
+					$(this).val("PASSWORD").prop('type', 'text');	
+				}
+			});
+		}	
+		
+		$('.forgetPassword').click(function(){
+			$('#login #Form1').hide();
+			$('#login #Form2').show();
+			$('#login_err_message').html("");
+			$('#forget_err_message').html("");
+		});
+	
+		$('#btn-cancel').click(function(){
+			$('#login #Form1').show();
+			$('#login #Form2').hide();
+			$('#login_err_message').html("");
+			$('#forget_err_message').html("");
+		});
+	
+		$(".fancybox").fancybox({
+			afterClose: function() {
+				$('#login #Form1').show();
+				$('#login #Form2').hide();  
+				$('#login_err_message').html("");
+				$('#forget_err_message').html("");
+			}
+		});
+		
+	  });
+	  
     }
   },
   // Home page
