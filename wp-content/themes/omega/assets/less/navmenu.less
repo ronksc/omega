@@ -133,17 +133,40 @@
 	
 	.nav-container{
 		.main-menu{
-			position:relative;
+			
 			float:right;
-			//margin-top:2.5%;
 			.navbar-nav{
 				& > li{
 					text-transform:uppercase;
+					position:relative;
 					&:hover{
 						& > a{
 							//font-weight:bold;
 							border-bottom:3px solid #fff;
 							padding-bottom:10px!important;
+						}
+						.sub-menu{
+							display:block;
+						}
+					}
+					.sub-menu{
+						background-color: #e8e8e8;
+						display: none;
+						margin-left: -22px;
+						padding-left:0;
+						position: absolute;
+						width: 102px;
+						z-index:999;
+						li {
+							border-top: 1px solid #fff;
+							float: none;
+							font-size: 13px;
+							padding: 7px 5px!important;
+							text-align: center;
+							list-style:none;
+							a {
+								color: #706f73;
+							}
 						}
 					}
 				}
