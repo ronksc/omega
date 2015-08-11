@@ -28,3 +28,8 @@ function roots_body_class($classes) {
   return $classes;
 }
 add_filter('body_class', 'roots_body_class');
+
+add_filter( "the_excerpt", "add_class_to_excerpt" );
+function add_class_to_excerpt( $excerpt ) {
+    return str_replace('<p', '<p class="post-excerpt"', $excerpt);
+}
