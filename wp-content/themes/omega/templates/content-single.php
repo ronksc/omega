@@ -1,15 +1,70 @@
-<?php while (have_posts()) : the_post(); ?>
-  <article <?php post_class(); ?>>
-    <header>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta'); ?>
-    </header>
-    <div class="entry-content">
-      <?php the_content(); ?>
-    </div>
-    <footer>
-      <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-    </footer>
-    <?php comments_template('/templates/comments.php'); ?>
-  </article>
-<?php endwhile; ?>
+<div class="container single-post-container">
+	<div class="row">
+		<?php while (have_posts()) : the_post(); ?>
+			<div class="page-control clearfix">
+				<div class="col-xs-12 col-sm-4">
+					<a href="/blog/" class="allNews-link"><i class="fa fa-angle-left"></i> ALL NEWS</a>
+				</div>
+				<div class="col-xs-12 col-sm-8">
+					<div class="col-xs-6 prev-post">
+						<? $prev_post = get_adjacent_post(false, '', true);
+						  if(!empty($prev_post)) {?>
+							<a href="<?=get_permalink($prev_post->ID); ?>" class="article-link">
+							<span><i class="fa fa-angle-left"></i> PREVIOUS ARTICLE</span>
+							<?=$prev_post->post_title?>
+						</a>
+						<? } ?>
+					</div>
+					<div class="col-xs-6 next-post">
+						<? $next_post = get_adjacent_post(false, '', false); 
+						  if(!empty($next_post)) { ?>
+							<a href="<?=get_permalink($next_post->ID)?>" class="article-link">
+							<span>NEXT ARTICLE <i class="fa fa-angle-right"></i></span>
+							<?=$next_post->post_title?>
+						</a>
+						<? } ?>
+					</div>
+				</div>
+			</div>
+			<div class="post-content">
+				<div class="post-info-container clearfix">
+					<? if(has_post_thumbnail( $post->ID)){ ?>
+					<div class="post-img-container">
+						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />							
+						<div class="feature-img-caption"><?=get_field("feature_image_caption", $post->ID); ?></div>
+					</div>
+					<? } ?>
+					<div class="post-info-content">
+						<p class="post-date"><?=get_the_date(); ?></p>
+						<h2><?php the_title(); ?></h2>
+						<?php the_excerpt(); ?>
+					</div>
+				</div>
+				<div class="post-main-content clearfix">
+					<div class="col-sm-2 related_topics_conatiner">
+						<p>RELATED TOPICS</p>
+						<?
+							$post_categories = wp_get_post_categories( $post->ID );
+							$size_post_categories = count($post_categories);
+							$cats = array();
+							
+							if($size_post_categories > 0){
+								echo '<ul class="related_topics">';
+								foreach($post_categories as $c){
+									$cat = get_category( $c );
+									//$cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+									echo "<li><a href='/blog/?category=".$c."'>". $cat->name ."</a></li>";
+								}
+								echo '</ul>';
+							}
+							//print_r($cats);
+						?>
+					</div>
+					<div class="col-sm-10">
+						<?php the_content(); ?>
+					</div>
+				</div>
+			</div>
+		<?php endwhile; ?>
+	</div>
+</div>

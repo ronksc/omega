@@ -7604,14 +7604,135 @@ footer .copyright a {
 .post-listing .listing-control .post-search-container {
   text-align: right;
 }
+.post-listing .table {
+  margin-bottom: 0;
+}
 .post-listing .table td {
   padding: 10px 30px;
+  font-size: 12px;
+  border-top: none;
+  border-bottom: 1px solid #ddd;
+}
+.post-listing .table td a {
+  color: #000;
 }
 .post-listing .table .headline th {
   color: #953834;
   font-family: "Oswald";
   font-weight: 100!important;
   padding: 10px 30px;
+  border-bottom: 1px solid #dddddd;
+}
+.post-listing .post-pagination {
+  padding: 20px 30px;
+  font-size: 12px;
+  position: relative;
+}
+.post-listing .post-pagination a {
+  color: #000;
+}
+.post-listing .post-pagination a.disabled {
+  color: #999A9E;
+}
+.post-listing .post-pagination .previous {
+  float: left;
+}
+.post-listing .post-pagination .next {
+  float: right;
+}
+.post-listing .post-pagination .post-per-page {
+  width: 130px;
+  position: absolute;
+  left: 50%;
+  margin-left: -75px;
+}
+.single-post-container {
+  background: rgba(255, 255, 255, 0.8);
+}
+.single-post-container .page-control {
+  font-size: 12px;
+  padding: 20px 15px;
+  font-family: "Oswald";
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.6);
+  box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.6);
+}
+.single-post-container .page-control .allNews-link {
+  text-transform: uppercase;
+  color: #953834;
+}
+.single-post-container .page-control .article-link {
+  max-width: 70%;
+  display: inline-block;
+  color: #818181;
+}
+.single-post-container .page-control .article-link span {
+  text-transform: uppercase;
+  display: block;
+}
+.single-post-container .page-control .article-link span i {
+  color: #953834;
+}
+.single-post-container .page-control .next-post {
+  text-align: right;
+}
+.single-post-container .page-control .next-post a {
+  float: right;
+}
+.single-post-container .post-content .post-info-container {
+  font-family: "Oswald";
+  font-weight: 300;
+}
+.single-post-container .post-content .post-info-container .post-img-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.single-post-container .post-content .post-info-container .post-img-container .feature-img-caption {
+  background: #E6E8E7;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #818181;
+}
+.single-post-container .post-content .post-info-container .post-info-content {
+  padding: 0 15px;
+}
+.single-post-container .post-content .post-info-container .post-info-content .post-date {
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+.single-post-container .post-content .post-info-container .post-info-content h2 {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+.single-post-container .post-content .post-info-container .post-info-content .post-excerpt {
+  font-size: 20px;
+  color: #53555A;
+}
+.single-post-container .post-content .post-main-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.single-post-container .post-content .post-main-content .related_topics_conatiner {
+  padding: 0 30px;
+  font-size: 12px;
+}
+.single-post-container .post-content .post-main-content .related_topics_conatiner p {
+  text-transform: uppercase;
+  color: #953834;
+  font-family: "Oswald";
+  font-weight: 300;
+}
+.single-post-container .post-content .post-main-content .related_topics_conatiner .related_topics {
+  padding-left: 0;
+}
+.single-post-container .post-content .post-main-content .related_topics_conatiner .related_topics li {
+  list-style: none;
+  padding-bottom: 5px;
+}
+.single-post-container .post-content .post-main-content .related_topics_conatiner .related_topics li a {
+  color: #818181;
 }
 @media (min-width: 768px) {
   .mainPost {
@@ -7637,6 +7758,28 @@ footer .copyright a {
   .subPost-container {
     padding-top: 50px;
     background: #fff;
+  }
+  .single-post-container .post-content .post-info-container .post-img-container {
+    width: 50%;
+    max-width: 600px;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+  .single-post-container .post-content .post-info-container .post-info-content {
+    padding: 0 30px;
+  }
+}
+@media (min-width: 992px) {
+  .single-post-container .post-content .post-info-container .post-img-container {
+    width: 70%;
+    max-width: 600px;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+  .single-post-container .post-content .post-info-container .post-info-content {
+    padding: 0 30px;
   }
 }
 .navbar-default {

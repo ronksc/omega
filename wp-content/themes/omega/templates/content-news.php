@@ -1,3 +1,22 @@
+<?
+	if( isset($_GET['y']) ){
+		$blog_year = $_GET['y'];
+	}else{
+		$blog_year = '';
+	}
+	
+	if( isset($_GET['category']) ){
+		$blog_cat = $_GET['category'];
+	}else{
+		$blog_cat = '';
+	}
+	
+	if( isset($_GET['p'])){
+		$posts_per_page = $_GET['p'];
+	}else{
+		$posts_per_page = 10;
+	}
+?>
 <div class="container">
 	<div class="row">
 		<div class="innerContentContainer">
@@ -34,7 +53,7 @@
 						</div>
 						<div class="col-sm-4 feature-content-container">
 							<div class="feature-content-inner">
-								<p class="post-date"><?  echo get_the_date(); ?></p>
+								<p class="post-date"><?=get_the_date(); ?></p>
 								<h2><?php the_title(); ?></h2>
 								<?php the_excerpt(); ?>
 								<a href="<?php the_permalink(); ?>" class="readmore_link">READ MORE ></a>
@@ -49,7 +68,7 @@
 					<div class="col-sm-4 subPostItem">
 						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
 						<p class="img-caption"><?=get_field("feature_image_caption", $sticky_result->ID); ?></p>
-						<p class="post-date"><?  echo get_the_date(); ?></p>
+						<p class="post-date"><?=get_the_date(); ?></p>
 						<h2><?php the_title(); ?></h2>
 						<?php the_excerpt(); ?>
 						<a href="<?php the_permalink(); ?>" class="readmore_link">READ MORE ></a>
@@ -91,6 +110,20 @@
 					</div>
 					<div class="col-xs-6 col-sm-6 noPadding post-search-container"><?php get_search_form(); ?></div>
 				</div>
+				
+				<?php 
+					//$sticky = get_option( 'sticky_posts' );
+					$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+					query_posts( 'post_type=post&post_status=publish&posts_per_page='.$posts_per_page.'&paged='. get_query_var('paged').'&ignore_sticky_posts=1&cat='.$blog_cat.'&year='.$blog_year );
+				?>
+				
+				<?php if (!have_posts()) : ?>
+				  <div class="alert alert-warning">
+					<?php _e('Sorry, no results were found.', 'roots'); ?>
+				  </div>
+				  <?php get_search_form(); ?>
+				<?php endif; ?>
+				
 				<table class="table">
 					<col width="60%">
 					<col width="20%">
@@ -100,12 +133,60 @@
 						<th>Date</th>
 						<th>Subject</th>
 					</tr>
-					<tr>
-						<td>Myanmar Factroy Workers Demand Higher Pay</td>
-						<td>June 12, 2015</td>
-						<td>Training</td>
-					</tr>
+					
+					<?php while (have_posts()) : the_post(); ?>
+						<tr>
+							<td><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
+							<td><?=get_the_date(); ?></td>
+							<td>
+								<?
+									$post_categories = wp_get_post_categories( $post->ID );
+									//print_r($post_categories);
+									echo get_category( $post_categories[0] )->name;
+								?>
+							</td>
+						</tr>
+					<?php endwhile; ?>
 				</table>
+				
+				<?php if ($wp_query->max_num_pages > 1){?>
+				  <div class="post-pagination clearfix">
+					<div class="previous">
+						<? 	
+							if ($next_url = next_posts($wp_query->max_num_pages, false)){
+								?><a href="<?= $next_url ?>"><i class="fa fa-angle-left"></i> <?=_e('Previous');?></a><?php
+							} else {
+								?><a href="#" class="disabled"><i class="fa fa-angle-left"></i> <?=_e('Previous');?></a><?php
+							}
+						?>
+					</div>
+					<div class="post-per-page">
+						Items per page
+						<select>
+							<option>10</option>
+							<option>20</option>
+							<option>30</option>
+							<option>40</option>
+							<option>50</option>
+						</select>
+					</div>
+					<div class="next">
+						<? 	
+							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
+							
+							if($paged == 1){
+								?><a href="#" class="disabled"><?=_e('Next');?> <i class="fa fa-angle-right"></i></a><?php
+							}else{
+								$prev_url = previous_posts(false);
+								?><a href="<?= $prev_url ?>"><?=_e('Next');?> <i class="fa fa-angle-right"></i></a><?php
+							}  
+						?>
+					</div>
+				  </div>
+				  
+				<? }else{?>
+					<div class="post-pagination clearfix"></div>
+				<? } ?>
 			</div>
 		</div>
 	</div>
