@@ -34,7 +34,7 @@
 						</div>
 						<div class="col-sm-4 feature-content-container">
 							<div class="feature-content-inner">
-								<p class="post-date"><? the_date(); ?></p>
+								<p class="post-date"><?  echo get_the_date(); ?></p>
 								<h2><?php the_title(); ?></h2>
 								<?php the_excerpt(); ?>
 								<a href="<?php the_permalink(); ?>" class="readmore_link">READ MORE ></a>
@@ -49,7 +49,7 @@
 					<div class="col-sm-4 subPostItem">
 						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
 						<p class="img-caption"><?=get_field("feature_image_caption", $sticky_result->ID); ?></p>
-						<p class="post-date"><? the_date(); ?></p>
+						<p class="post-date"><?  echo get_the_date(); ?></p>
 						<h2><?php the_title(); ?></h2>
 						<?php the_excerpt(); ?>
 						<a href="<?php the_permalink(); ?>" class="readmore_link">READ MORE ></a>
@@ -62,7 +62,10 @@
 				
 			<? } ?>
 			<? $postCount++;
-				endwhile; ?>
+				endwhile; 
+				
+				wp_reset_query();
+			?>
 		
 			<div class="container post-listing">
 				<div class="listing-control clearfix">
