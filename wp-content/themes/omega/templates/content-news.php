@@ -16,6 +16,14 @@
 	}else{
 		$posts_per_page = 10;
 	}
+	
+	$full_uri = get_permalink();
+	
+	$args = array(
+		'orderby' => 'name',
+		'parent' => 0
+	);
+	$categories = get_categories( $args );
 ?>
 <div class="container">
 	<div class="row">
@@ -90,21 +98,23 @@
 				<div class="listing-control clearfix">
 					<div class="col-xs-12 col-sm-6 noPadding">
 						<div class="col-xs-4 col-sm-4 noPadding">
-							<select>
-								<option>Date</option>
-								<option>All Year</option>
-								<option>2015</option>
-								<option>2014</option>
-								<option>2013</option>
+							<select class="post_sort_select">
+								<option value="">Date</option>
+								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='?>">All Year</option>
+								<option <? if($blog_year == 2015) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2015'?>">2015</option>
+								<option <? if($blog_year == 2014) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2014'?>">2014</option>
+								<option <? if($blog_year == 2013) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2013'?>">2013</option>
 							</select>
 						</div>
 						<div class="col-xs-8 col-sm-8 noPadding">
-							<select>
-								<option>Subject</option>
-								<option>All Subject</option>
-								<option>Training</option>
-								<option>Event</option>
-								<option>Certification</option>
+							<select class="post_sort_select">
+								<option value="">Subject</option>
+								<option <? if($blog_cat == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category=&y='.$blog_year?>">All Subject</option>
+								<?
+									foreach ( $categories as $category ) {?>
+										<option <? if($category->cat_ID == $blog_cat) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$category->cat_ID.'&y='.$blog_year?>"><?=$category->name?></option>
+									<? }
+								?>
 							</select>
 						</div>
 					</div>
@@ -185,7 +195,20 @@
 				  </div>
 				  
 				<? }else{?>
-					<div class="post-pagination clearfix"></div>
+					<div class="post-pagination clearfix">
+						<div class="previous">&nbsp;</div>
+						<div class="post-per-page">
+							Items per page
+							<select>
+								<option>10</option>
+								<option>20</option>
+								<option>30</option>
+								<option>40</option>
+								<option>50</option>
+							</select>
+						</div>
+						<div class="next">&nbsp;</div>
+					</div>
 				<? } ?>
 			</div>
 		</div>

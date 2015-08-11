@@ -240,6 +240,26 @@ var Roots = {
 			}
 		});
     }
+  },
+  blog:{
+	init: function(){
+		function initSelect(){
+			$('.post_sort_select').each(function(){
+				$(this).change(function(){
+					var url = $(this).val(); // get selected value
+					console.log(url);
+					if (url) { // require a URL
+					  window.location = url; // redirect
+					}
+					//return false;						
+				});									 
+			});		
+		}	
+		
+		$(document).ready(function(){
+			initSelect();						   
+		});
+	}
   }
 };
 
