@@ -51,10 +51,18 @@ switch ($_SERVER['SERVER_NAME']) {
 		define('DB_USER', 'fpproducti_root');
 		define('DB_PASSWORD', 'P@ssw0rd');
 		define('DB_HOST', 'localhost');
+
+	case "omega-v2.nowwhat.hk":
+	    define( 'DB_NAME',     'nowwhat_omega' );
+	    define( 'WP_SITEURL',  'http://omega-v2.nowwhat.hk' );
+	    define( 'WP_HOME', 'http://omega-v2.nowwhat.hk' );
+	    define( 'DB_USER',     'nowwhat' );
+	    define( 'DB_PASSWORD', '20273214' );
+	    define( 'DB_HOST',     'localhost' );
 }
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8mb4');
+define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
