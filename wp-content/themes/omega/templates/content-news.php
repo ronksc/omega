@@ -11,8 +11,8 @@
 		$blog_cat = '';
 	}
 	
-	if( isset($_GET['p'])){
-		$posts_per_page = $_GET['p'];
+	if( isset($_GET['posts_amount'])){
+		$posts_per_page = $_GET['posts_amount'];
 	}else{
 		$posts_per_page = 10;
 	}
@@ -100,10 +100,10 @@
 						<div class="col-xs-4 col-sm-4 noPadding">
 							<select class="post_sort_select">
 								<option value="">Date</option>
-								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='?>">All Year</option>
-								<option <? if($blog_year == 2015) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2015'?>">2015</option>
-								<option <? if($blog_year == 2014) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2014'?>">2014</option>
-								<option <? if($blog_year == 2013) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2013'?>">2013</option>
+								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&posts_amount='.$posts_per_page?>">All Year</option>
+								<option <? if($blog_year == 2015) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2015&posts_amount='.$posts_per_page?>">2015</option>
+								<option <? if($blog_year == 2014) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2014&posts_amount='.$posts_per_page?>">2014</option>
+								<option <? if($blog_year == 2013) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2013&posts_amount='.$posts_per_page?>">2013</option>
 							</select>
 						</div>
 						<div class="col-xs-8 col-sm-8 noPadding">
@@ -112,7 +112,7 @@
 								<option <? if($blog_cat == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category=&y='.$blog_year?>">All Subject</option>
 								<?
 									foreach ( $categories as $category ) {?>
-										<option <? if($category->cat_ID == $blog_cat) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$category->cat_ID.'&y='.$blog_year?>"><?=$category->name?></option>
+										<option <? if($category->cat_ID == $blog_cat) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$category->cat_ID.'&y='.$blog_year.'&posts_amount='.$posts_per_page?>"><?=$category->name?></option>
 									<? }
 								?>
 							</select>
@@ -172,12 +172,12 @@
 					</div>
 					<div class="post-per-page">
 						Items per page
-						<select>
-							<option>10</option>
-							<option>20</option>
-							<option>30</option>
-							<option>40</option>
-							<option>50</option>
+						<select class="post_sort_select">
+							<option <? if($posts_per_page == '' || $posts_per_page == 10) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount='.$posts_per_page?>">10</option>
+							<option <? if($posts_per_page == 20) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=20'?>">20</option>
+							<option <? if($posts_per_page == 30) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=30'?>">30</option>
+							<option <? if($posts_per_page == 40) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=40'?>">40</option>
+							<option <? if($posts_per_page == 50) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'posts_amount=50'?>">50</option>
 						</select>
 					</div>
 					<div class="next">
@@ -199,12 +199,12 @@
 						<div class="previous">&nbsp;</div>
 						<div class="post-per-page">
 							Items per page
-							<select>
-								<option>10</option>
-								<option>20</option>
-								<option>30</option>
-								<option>40</option>
-								<option>50</option>
+							<select class="post_sort_select">
+								<option <? if($posts_per_page == '' || $posts_per_page == 10) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount='.$posts_per_page?>">10</option>
+								<option <? if($posts_per_page == 20) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=20'?>">20</option>
+								<option <? if($posts_per_page == 30) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=30'?>">30</option>
+								<option <? if($posts_per_page == 40) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=40'?>">40</option>
+								<option <? if($posts_per_page == 50) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'posts_amount=50'?>">50</option>
 							</select>
 						</div>
 						<div class="next">&nbsp;</div>
