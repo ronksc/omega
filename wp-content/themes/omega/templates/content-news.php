@@ -173,7 +173,7 @@
 					<div class="post-per-page">
 						Items per page
 						<select class="post_sort_select">
-							<option <? if($posts_per_page == '' || $posts_per_page == 10) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount='.$posts_per_page?>">10</option>
+							<option <? if($posts_per_page == '' || $posts_per_page == 10) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=10'?>">10</option>
 							<option <? if($posts_per_page == 20) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=20'?>">20</option>
 							<option <? if($posts_per_page == 30) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=30'?>">30</option>
 							<option <? if($posts_per_page == 40) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'&posts_amount=40'?>">40</option>
