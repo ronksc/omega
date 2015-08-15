@@ -19,7 +19,7 @@ function roots_scripts() {
    * The build task in Grunt renames production assets with a hash
    * Read the asset names from assets-manifest.json
    */
-  wp_enqueue_style('google_fonts', 'https://fonts.googleapis.com/css?family=Oswald:400,300,700', false, null);
+  wp_enqueue_style('google_fonts', 'https://fonts.googleapis.com/css?family=Oswald:400,700', false, null);
   wp_enqueue_style('font_awesome', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', false, '90912b55a3d6b2070ca68c801a5ef6bb');
   if (WP_ENV === 'development') {
     $assets = array(

@@ -6884,80 +6884,10 @@ button.close {
   }
 }
 @font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_0_0.eot');
-  src: url('../fonts/2E3E6E_0_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_0_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_0_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_0_0.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_1_0.eot');
-  src: url('../fonts/2E3E6E_1_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_1_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_1_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_1_0.ttf') format('truetype');
+  font-family: 'Oswald';
+  src: url('../fonts/Oswald-Light.eot');
+  src: url('../fonts/Oswald-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/Oswald-Light.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/Oswald-Light.ttf') format('truetype');
   font-weight: 300;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_2_0.eot');
-  src: url('../fonts/2E3E6E_2_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_2_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_2_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_2_0.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_2_0.eot');
-  src: url('../fonts/2E3E6E_2_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_2_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_2_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_2_0.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_3_0.eot');
-  src: url('../fonts/2E3E6E_3_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_3_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_3_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_3_0.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_4_0.eot');
-  src: url('../fonts/2E3E6E_4_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_4_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_4_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_4_0.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Novecento';
-  src: url('../fonts/2E3E6E_5_0.eot');
-  src: url('../fonts/2E3E6E_5_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/2E3E6E_5_0.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/2E3E6E_5_0.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/2E3E6E_5_0.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'PlayfairDisplay';
-  src: url('../fonts/PlayfairDisplay-Regular.eot');
-  src: url('../fonts/PlayfairDisplay-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/PlayfairDisplay-Regular.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/PlayfairDisplay-Regular.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/PlayfairDisplay-Regular.ttf') format('truetype');
-  font-weight: 400;
   font-style: normal;
   
   /* IE9 Compat Modes */
@@ -6975,19 +6905,9 @@ button.close {
 }
 @font-face {
   font-family: 'Aileron';
-  src: url('../fonts/aileron-lightitalic-webfont.eot');
-  src: url('../fonts/aileron-lightitalic-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/aileron-lightitalic-webfont.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/aileron-lightitalic-webfont.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/aileron-lightitalic-webfont.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-  
-  /* IE9 Compat Modes */
-  /* Safari, Android, iOS */
-}
-@font-face {
-  font-family: 'Aileron';
-  src: url('../fonts/aileron-semibold-webfont.eot');
-  src: url('../fonts/aileron-semibold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/aileron-semibold-webfont.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/aileron-semibold-webfont.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/aileron-semibold-webfont.ttf') format('truetype');
-  font-weight: 600;
+  src: url('../fonts/aileron-regular-webfont.eot');
+  src: url('../fonts/aileron-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/aileron-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/aileron-regular-webfont.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   
   /* IE9 Compat Modes */
@@ -7575,13 +7495,14 @@ footer .copyright a {
   text-transform: uppercase;
   margin: 0;
   display: inline-block;
-  font-size: 20px;
+  font-size: 17px;
 }
 .subPost-container .subPostItem h2 {
-  font-size: 26px;
+  font-size: 23px;
+  line-height: 140%;
 }
 .subPost-container .subPostItem .post-excerpt {
-  font-size: 20px;
+  font-size: 17px;
   color: #53555A;
 }
 .subPost-container .subPostItem .readmore_link {
@@ -7601,6 +7522,14 @@ footer .copyright a {
   background: #CBCCCC;
   color: #000;
 }
+.post-listing .listing-control .post_sort_select {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  margin-top: 3px;
+  font-size: 17px;
+}
 .post-listing .listing-control .post-search-container {
   text-align: right;
 }
@@ -7609,9 +7538,11 @@ footer .copyright a {
 }
 .post-listing .table td {
   padding: 10px 30px;
-  font-size: 12px;
+  font-size: 14px;
   border-top: none;
   border-bottom: 1px solid #ddd;
+  font-family: Aileron;
+  font-weight: 400;
 }
 .post-listing .table td a {
   color: #000;
@@ -7622,6 +7553,7 @@ footer .copyright a {
   font-weight: 100!important;
   padding: 10px 30px;
   border-bottom: 1px solid #dddddd;
+  text-transform: uppercase;
 }
 .post-listing .post-pagination {
   padding: 20px 30px;
@@ -7664,10 +7596,15 @@ footer .copyright a {
   max-width: 70%;
   display: inline-block;
   color: #818181;
+  font-family: "Aileron";
+  font-weight: 400;
 }
 .single-post-container .page-control .article-link span {
   text-transform: uppercase;
   display: block;
+  font-family: "Oswald";
+  color: #953834;
+  font-size: 12px;
 }
 .single-post-container .page-control .article-link span i {
   color: #953834;
@@ -7700,14 +7637,16 @@ footer .copyright a {
   margin-top: 20px;
   margin-bottom: 0;
   display: inline-block;
+  font-size: 17px;
 }
 .single-post-container .post-content .post-info-container .post-info-content h2 {
   margin-top: 5px;
   margin-bottom: 30px;
-  font-size: 26px;
+  font-size: 27px;
 }
 .single-post-container .post-content .post-info-container .post-info-content .post-excerpt {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 170%;
   color: #53555A;
 }
 .single-post-container .post-content .post-main-content {
@@ -7733,6 +7672,9 @@ footer .copyright a {
 }
 .single-post-container .post-content .post-main-content .related_topics_conatiner .related_topics li a {
   color: #818181;
+}
+.fa-angle-left:before {
+  color: #953834;
 }
 @media (min-width: 768px) {
   .mainPost {
@@ -7834,9 +7776,9 @@ footer .copyright a {
   font-size: 10.5px;
 }
 .search-form .search-field {
-  font-family: "Novecento";
+  font-family: "Oswald";
+  font-size: 17px;
   font-weight: 300;
-  font-size: 12px;
 }
 .footer {
   color: #fff;
