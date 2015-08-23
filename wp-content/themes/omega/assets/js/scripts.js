@@ -7621,6 +7621,7 @@ var Roots = {
         });
 		
 		$(window).resize(function(){
+			$('.overlayContainer .overlayItem').hide();
 			if($(window).width() < 768){
 				$('.overlayContainer .overlayItem').show();	
 			}
