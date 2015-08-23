@@ -5,7 +5,7 @@
 				<div class="col-xs-12 col-sm-4">
 					<a href="/blog/" class="allNews-link"><i class="fa fa-angle-left"></i> ALL NEWS</a>
 				</div>
-				<div class="col-xs-12 col-sm-8">
+				<div class="hidden-xs col-sm-8">
 					<div class="col-xs-6 prev-post">
 						<? $prev_post = get_adjacent_post(false, '', true);
 						  if(!empty($prev_post)) {?>
@@ -63,6 +63,26 @@
 							//print_r($cats);
 						?>
 					</div>
+				</div>
+			</div>
+			<div class="page-control clearfix visible-xs hidden-sm hidden-md hidden-lg">
+				<div class="col-xs-6 prev-post">
+					<? $prev_post = get_adjacent_post(false, '', true);
+					  if(!empty($prev_post)) {?>
+						<a href="<?=get_permalink($prev_post->ID); ?>" class="article-link">
+						<span><i class="fa fa-angle-left"></i> PREVIOUS ARTICLE</span>
+						<?=$prev_post->post_title?>
+					</a>
+					<? } ?>
+				</div>
+				<div class="col-xs-6 next-post">
+					<? $next_post = get_adjacent_post(false, '', false); 
+					  if(!empty($next_post)) { ?>
+						<a href="<?=get_permalink($next_post->ID)?>" class="article-link">
+						<span>NEXT ARTICLE <i class="fa fa-angle-right"></i></span>
+						<?=$next_post->post_title?>
+					</a>
+					<? } ?>
 				</div>
 			</div>
 		<?php endwhile; ?>
