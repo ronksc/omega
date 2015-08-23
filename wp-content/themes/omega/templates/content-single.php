@@ -41,7 +41,10 @@
 					</div>
 				</div>
 				<div class="post-main-content clearfix">
-					<div class="col-sm-2 related_topics_conatiner">
+					<div class="col-sm-10 col-sm-push-2">
+						<?php the_content(); ?>
+					</div>
+					<div class="col-sm-2 related_topics_conatiner col-sm-pull-10">
 						<p>RELATED TOPICS</p>
 						<?
 							$post_categories = wp_get_post_categories( $post->ID );
@@ -59,9 +62,6 @@
 							}
 							//print_r($cats);
 						?>
-					</div>
-					<div class="col-sm-10">
-						<?php the_content(); ?>
 					</div>
 				</div>
 			</div>

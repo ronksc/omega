@@ -9,6 +9,13 @@
     /* RGBa with 0.6 opacity */
     
 	border:none;
+	.container{
+		padding:0;
+	}
+	
+	.navbar-header{
+		padding:0 15px;
+	}
 }
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse{
@@ -28,6 +35,18 @@
 
 .navbar-toggle{
 	margin-top:25px;
+}
+
+.nav-container{
+	position:relative;
+	.main-menu{
+		position:absolute;
+		width:100%;
+		top:0;
+		z-index:999;
+		background:rgba(255,255,255,1);
+		max-height:350px;
+	}
 }
 
 .mainnav-container{
@@ -83,10 +102,11 @@
     margin: 15px auto;
 	font-size:13px;
 	.copyright{
-		float:left;
+		//float:left;
+		margin-bottom:10px;
 	}
 	.disclaimer{
-		float:right;
+		//float:left;
 		a{
 			color: #fff;
 		}
@@ -104,6 +124,10 @@
 	    padding-top: 45px;
 		//height: 181px;
 		//background-color: rgba(0, 0, 0, 0.8);
+		.container{
+			padding-left:15px;
+			padding-right:15px;
+		}
 		
 	}
 	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
@@ -121,7 +145,8 @@
 	}
 	
 	.navbar-header{
-		width:120px;
+		width:140px;
+		padding:0;
 		.navbar-brand{
 			padding:0;
 			width:auto;
@@ -134,8 +159,12 @@
 	
 	.nav-container{
 		.main-menu{
-			
+			position:relative;
 			float:right;
+			width:auto;
+			top:auto;
+			background:none;
+			max-height:auto;
 			.navbar-nav{
 				& > li{
 					text-transform:uppercase;
@@ -178,6 +207,16 @@
 			}
 		}
 	}
+	
+	.footer{
+		.copyright{
+			float:left;
+			margin-bottom:0;
+		}
+		.disclaimer{
+			float:right;
+		}
+	}
 }
 
 //===============================================================================
@@ -187,7 +226,7 @@
 //===============================================================================
 @media (min-width: @screen-md-min) {
 	.navbar-header{
-		width:auto;
+		width:200px;
 	}
 	
 	#menu-primary-navigation{
@@ -203,5 +242,7 @@
 //===============================================================================
 //===============================================================================
 @media (min-width: @screen-lg-min) {
-
+	.navbar-header{
+		width:auto;
+	}
 }

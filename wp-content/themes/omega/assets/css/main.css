@@ -7240,6 +7240,47 @@ footer .copyright a {
 .homeBannerItemContainer {
   position: relative;
 }
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem {
+  background: rgba(255, 255, 255, 0.8);
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv {
+  padding: 25px 0 25px 30px;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnHeader {
+  color: #953834;
+  font-family: "Oswald";
+  font-size: 21px;
+  font-weight: 400;
+  margin-bottom: 17px;
+  text-transform: uppercase;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent {
+  color: #000;
+  font-family: "aileronlight";
+  font-size: 10px;
+  padding-left: 48px;
+  padding-right: 25px;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.supplyChainMonitoring {
+  background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.ethicalBehavior {
+  background: url("../img/home/logo_ethic.png") no-repeat scroll left top;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.differntApproach {
+  background: url("../img/home/logo_approach.png") no-repeat scroll left top;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer {
+  border-top: 1px solid #a6a6a6;
+  padding-top: 14px;
+  margin-top: 30px;
+  width: 72px;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer a {
+  color: #717073;
+  font-family: "Oswald";
+  font-weight: 400;
+}
 @media (min-width: 768px) {
   .homeBannerContainer {
     -webkit-box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.75);
@@ -7256,50 +7297,14 @@ footer .copyright a {
     height: 100%;
     float: none;
     padding: 0;
-    vertical-align: bottom;
+    vertical-align: top;
+    background: url(../img/home/bg_threeColumn.png) repeat-y 0 0;
   }
   .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem:last-child .homeThreeColumnItemInnerDiv {
     margin-right: 0;
   }
   .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 25px 0 25px 30px;
     margin-right: 4px;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnHeader {
-    color: #953834;
-    font-family: "Oswald";
-    font-size: 21px;
-    font-weight: 400;
-    margin-bottom: 17px;
-    text-transform: uppercase;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent {
-    color: #000;
-    font-family: "aileronlight";
-    font-size: 10px;
-    padding-left: 48px;
-    padding-right: 25px;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.supplyChainMonitoring {
-    background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.ethicalBehavior {
-    background: url("../img/home/logo_ethic.png") no-repeat scroll left top;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.differntApproach {
-    background: url("../img/home/logo_approach.png") no-repeat scroll left top;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer {
-    border-top: 1px solid #a6a6a6;
-    padding-top: 14px;
-    margin-top: 30px;
-    width: 72px;
-  }
-  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer a {
-    color: #717073;
-    font-family: "Oswald";
-    font-weight: 400;
   }
 }
 .innerContentContainer {
@@ -7531,6 +7536,7 @@ footer .copyright a {
   font-size: 17px;
 }
 .post-listing .listing-control .post-search-container {
+  margin-top: 10px;
   text-align: right;
 }
 .post-listing .table {
@@ -7629,6 +7635,10 @@ footer .copyright a {
   font-size: 12px;
   color: #818181;
 }
+.single-post-container .post-content .post-info-container .post-img-container .img-responsive {
+  max-width: auto;
+  width: 100%;
+}
 .single-post-container .post-content .post-info-container .post-info-content {
   padding: 0 15px;
 }
@@ -7654,7 +7664,6 @@ footer .copyright a {
   padding-bottom: 20px;
 }
 .single-post-container .post-content .post-main-content .related_topics_conatiner {
-  padding: 0 30px;
   font-size: 12px;
 }
 .single-post-container .post-content .post-main-content .related_topics_conatiner p {
@@ -7686,6 +7695,7 @@ footer .copyright a {
   .mainPost .feature-img-container {
     display: table-cell;
     float: none;
+    vertical-align: top;
   }
   .mainPost .feature-content-container {
     display: table-cell;
@@ -7701,6 +7711,9 @@ footer .copyright a {
     padding-top: 50px;
     background: #fff;
   }
+  .post-listing .listing-control .post-search-container {
+    margin-top: 0;
+  }
   .single-post-container .post-content .post-info-container .post-img-container {
     width: 50%;
     max-width: 600px;
@@ -7709,6 +7722,9 @@ footer .copyright a {
     margin-bottom: 0;
   }
   .single-post-container .post-content .post-info-container .post-info-content {
+    padding: 0 30px;
+  }
+  .single-post-container .post-content .post-main-content .related_topics_conatiner {
     padding: 0 30px;
   }
 }
@@ -7729,6 +7745,12 @@ footer .copyright a {
   /* RGBa with 0.6 opacity */
   border: none;
 }
+.navbar-default .container {
+  padding: 0;
+}
+.navbar-default .navbar-header {
+  padding: 0 15px;
+}
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
   overflow-y: scroll;
@@ -7744,6 +7766,17 @@ footer .copyright a {
 }
 .navbar-toggle {
   margin-top: 25px;
+}
+.nav-container {
+  position: relative;
+}
+.nav-container .main-menu {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background: #ffffff;
+  max-height: 350px;
 }
 .mainnav-container {
   position: relative;
@@ -7786,10 +7819,7 @@ footer .copyright a {
   font-size: 13px;
 }
 .footer .copyright {
-  float: left;
-}
-.footer .disclaimer {
-  float: right;
+  margin-bottom: 10px;
 }
 .footer .disclaimer a {
   color: #fff;
@@ -7798,6 +7828,10 @@ footer .copyright a {
   .navbar-default {
     margin-bottom: 25px;
     padding-top: 45px;
+  }
+  .navbar-default .container {
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .navbar-default .navbar-nav > .active > a,
   .navbar-default .navbar-nav > .active > a:hover,
@@ -7813,7 +7847,8 @@ footer .copyright a {
     display: inline-block !important;
   }
   .navbar-header {
-    width: 120px;
+    width: 140px;
+    padding: 0;
   }
   .navbar-header .navbar-brand {
     padding: 0;
@@ -7824,7 +7859,12 @@ footer .copyright a {
     width: 100%;
   }
   .nav-container .main-menu {
+    position: relative;
     float: right;
+    width: auto;
+    top: auto;
+    background: none;
+    max-height: auto;
   }
   .nav-container .main-menu .navbar-nav > li {
     text-transform: uppercase;
@@ -7860,13 +7900,25 @@ footer .copyright a {
   .nav-container .main-menu .navbar-nav .menu-login {
     cursor: pointer;
   }
+  .footer .copyright {
+    float: left;
+    margin-bottom: 0;
+  }
+  .footer .disclaimer {
+    float: right;
+  }
 }
 @media (min-width: 992px) {
   .navbar-header {
-    width: auto;
+    width: 200px;
   }
   #menu-primary-navigation li {
     padding: 7px 22px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-header {
+    width: auto;
   }
 }
 /* 
