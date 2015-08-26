@@ -162,12 +162,18 @@
 	background:rgba(255,255,255,0.8);
 	.page-control{
 		font-size:12px;
-		
 		padding:20px 15px;
 		font-family: "Oswald";
 		-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.60);
 		-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.60);
 		box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.60);
+
+		.prev-post{
+			padding-left: 0;
+		}
+		.next-post{
+			padding-right: 0;
+		}
 		.allNews-link{
 			text-transform:uppercase;
 			color:#953834;
@@ -240,6 +246,9 @@
 		.post-main-content{
 			padding-top:20px;
 			padding-bottom:20px;
+			.post-main-content-body{
+				margin-bottom: 40px;
+			}
 			.related_topics_conatiner{
 				//padding:0 30px;	
 				font-size:12px;
@@ -334,6 +343,9 @@
 				}
 			}
 			.post-main-content{
+				.post-main-content-body{
+					margin-bottom: 0;
+				}
 				.related_topics_conatiner{
 					padding:0 30px;	
 				}

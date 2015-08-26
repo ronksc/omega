@@ -12,7 +12,7 @@
                                 <div class="threeColumnHeader">SUPPLY CHAIN MONITORING</div>
                                 <div class="threeColumnContent supplyChainMonitoring">
                                     Every day many of the world’s most trusted consumer brands put their faith in Omega to ensure the integrity of their global supply chains.
-                                    <div class="learnMoreContainer"><a href="services/auditing.html">LEARN MORE &gt;</a></div>
+                                    <div class="learnMoreContainer"><a href="<?=site_url()?>/services/auditing/">LEARN MORE &gt;</a></div>
                                 </div>
                            	</div>
                         </div>
@@ -21,7 +21,7 @@
                                 <div class="threeColumnHeader">ethical behavior</div>
                                 <div class="threeColumnContent ethicalBehavior">
                                     A dedicated, internal ethical team requires our staff to uphold exceptional levels of integrity, honesty and transparency at all times.
-                                    <div class="learnMoreContainer"><a href="ethics/">LEARN MORE &gt;</a></div>
+                                    <div class="learnMoreContainer"><a href="<?=site_url()?>/ethics/">LEARN MORE &gt;</a></div>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 <div class="threeColumnHeader">a different approach</div>
                                 <div class="threeColumnContent differntApproach">
                                     Omega goes beyond monitoring. Our focus is on thorough investigations, complete inspections, clear communication and effective remediation.
-                                    <div class="learnMoreContainer"><a href="about-us/">LEARN MORE &gt;</a></div>
+                                    <div class="learnMoreContainer"><a href="<?=site_url()?>/about-us/">LEARN MORE &gt;</a></div>
                                 </div>
                            	</div>
                         </div>

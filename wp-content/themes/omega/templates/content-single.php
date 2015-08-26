@@ -30,8 +30,14 @@
 				<div class="post-info-container clearfix">
 					<? if(has_post_thumbnail( $post->ID)){ ?>
 					<div class="post-img-container">
-						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />							
-						<div class="feature-img-caption"><?=get_field("feature_image_caption", $post->ID); ?></div>
+						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
+						<?
+						if(get_field("feature_image_caption")){
+						?>						
+						<div class="feature-img-caption"><?=get_field("feature_image_caption"); ?></div>
+						<?
+						}
+						?>
 					</div>
 					<? } ?>
 					<div class="post-info-content">
@@ -41,7 +47,7 @@
 					</div>
 				</div>
 				<div class="post-main-content clearfix">
-					<div class="col-sm-10 col-sm-push-2">
+					<div class="col-sm-10 col-sm-push-2 post-main-content-body">
 						<?php the_content(); ?>
 					</div>
 					<div class="col-sm-2 related_topics_conatiner col-sm-pull-10">

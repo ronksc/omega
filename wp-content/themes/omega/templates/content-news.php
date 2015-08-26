@@ -57,7 +57,13 @@
 					<div class="mainPost">
 		                <div class="col-sm-8 feature-img-container">
 							<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
-							<div class="feature-img-caption"><?=get_field("feature_image_caption", $sticky_result->ID); ?></div>
+							<?
+							if(get_field("feature_image_caption")!=""){
+							?>						
+							<div class="feature-img-caption"><?=get_field("feature_image_caption"); ?></div>
+							<?
+							}
+							?>
 						</div>
 						<div class="col-sm-4 feature-content-container">
 							<div class="feature-content-inner">

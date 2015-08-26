@@ -67,6 +67,6 @@
 </div>
 <div class="footer clearfix container">
 		<div class="copyright">Copyright &copy; 2014. www.omegacompliance.com. All rights reserved.</div>
-		<div class="disclaimer"><a href="disclaimer.html">Disclaimer</a></div>
+		<div class="disclaimer"><a href="<?=site_url()?>/disclaimer/">Disclaimer</a></div>
 	</div>
 <?php wp_footer(); ?> 
