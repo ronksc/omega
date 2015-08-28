@@ -7331,6 +7331,30 @@ footer .copyright a {
 .innerContentContainer .contentContainer p a {
   color: #000;
 }
+.innerContentContainer .contentContainer .banner_text {
+  background-color: #9A4844;
+  margin-bottom: 20px;
+  padding: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "aileronlight";
+  font-size: 20px;
+}
+.innerContentContainer .contentContainer .banner_text.grey_bg {
+  background-color: #62656B!important;
+}
+.innerContentContainer .contentContainer .banner_text h2 {
+  color: #fff!important;
+  font-size: 23px;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+.innerContentContainer .contentContainer .banner_text p {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 0;
+  line-height: 1.42857;
+}
 .innerContentContainer .contentContainer .btnFileReport {
   background: rgba(0, 0, 0, 0) url("../img/btn_fileReport.png") no-repeat scroll right center;
   font-size: 18px;
@@ -7535,11 +7559,15 @@ footer .copyright a {
 }
 .post-listing .listing-control .post_sort_select {
   border: none;
-  background-color: transparent;
   outline: none;
-  cursor: pointer;
   margin-top: 3px;
   font-size: 17px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 15px;
+  background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
 }
 .post-listing .listing-control .post-search-container {
   margin-top: 10px;
@@ -7566,6 +7594,15 @@ footer .copyright a {
   padding: 10px 30px;
   border-bottom: 1px solid #dddddd;
   text-transform: uppercase;
+}
+.post-listing .news_item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.post-listing .news_item h2,
+.post-listing .news_item a,
+.post-listing .news_item span {
+  color: #953834;
 }
 .post-listing .post-pagination {
   padding: 20px 30px;
@@ -7767,7 +7804,7 @@ footer .copyright a {
   padding: 0;
 }
 .navbar-default .navbar-header {
-  padding: 0 15px;
+  margin: 0;
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {

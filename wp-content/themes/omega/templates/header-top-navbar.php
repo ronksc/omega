@@ -19,6 +19,7 @@
                 endif;
     
             ?>
+			<div id="slide"></div>
         </nav>
 	</div>
   </div>

@@ -69,7 +69,7 @@
 							<div class="feature-content-inner">
 								<p class="post-date"><?=get_the_date(); ?></p>
 								<a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a
-								<?php the_excerpt(); ?>
+								><?php the_excerpt(); ?>
 								<a href="<?php the_permalink(); ?>" class="readmore_link">READ MORE ></a>
 							</div>
 						</div>
@@ -140,7 +140,7 @@
 				  <?php get_search_form(); ?>
 				<?php endif; ?>
 				
-				<table class="table">
+				<table class="table hidden-xs visible-sm visible-md visible-lg">
 					<col width="60%">
 					<col width="20%">
 					<col width="20%">
@@ -164,6 +164,20 @@
 						</tr>
 					<?php endwhile; ?>
 				</table>
+				
+				<div class="visible-xs hidden-sm hidden-md hidden-lg">
+				<?php while (have_posts()) : the_post(); ?>
+					<div class="news_item">
+						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<p><span>Date:</span> <?=get_the_date(); ?></p>
+						<p><span>Subject:</span> <?
+								$post_categories = wp_get_post_categories( $post->ID );
+								//print_r($post_categories);
+								echo get_category( $post_categories[0] )->name;
+							?></p>
+					</div>
+				<?php endwhile; ?>
+				</div>
 				
 				<?php if ($wp_query->max_num_pages > 1){?>
 				  <div class="post-pagination clearfix">

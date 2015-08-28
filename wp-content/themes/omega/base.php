@@ -11,11 +11,13 @@
     do_action('get_header');
     get_template_part('templates/header-top-navbar');
   ?>
-
+   <div class="container">
+	<div class="row">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>
       </main>
-
+	</div>
+   </div>
   <?php get_template_part('templates/footer'); ?>
 
 </body>
