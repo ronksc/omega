@@ -147,7 +147,7 @@
 		}
 	}
 	.post-pagination{
-		padding:20px 30px;
+		padding:20px 10px;
 		font-size:12px;
 		position:relative;
 		a{
@@ -164,9 +164,24 @@
 		}
 		.post-per-page{
 			width:130px;
-			position:absolute;
+			/*position:absolute;
 			left:50%;
-			margin-left:-75px;
+			margin-left:-75px;*/
+			margin:0 auto;
+		}
+		.pagination_bar_container{
+			text-align:center;
+			margin-bottom:20px;
+			a{
+				margin-right:5px;
+				display:inline-block;
+				color:#953834;
+			}
+			span{
+				margin-right:5px;
+				display:inline-block;
+				font-weight:bold;
+			}
 		}
 	}
 }
@@ -338,7 +353,31 @@
 				margin-top:0;
 			}
 		}
+		
+		.post-pagination{
+			padding:20px 30px;
+			.post-per-page{
+				position:absolute;
+				left:50%;
+				margin-left:-75px;
+			}
+			.pagination_bar_container{
+				float:right;
+				margin-bottom:0;
+				a{
+					margin-right:5px;
+					display:inline-block;
+					color:#953834;
+				}
+				span{
+					margin-right:5px;
+					display:inline-block;
+					font-weight:bold;
+				}
+			}
+		}
 	}
+	
 	
 	.single-post-container{
 		.post-content{

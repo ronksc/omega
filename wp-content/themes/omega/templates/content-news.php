@@ -181,7 +181,10 @@
 				
 				<?php if ($wp_query->max_num_pages > 1){?>
 				  <div class="post-pagination clearfix">
-					<div class="previous">
+				  	<div class="pagination_bar_container">
+					  	<?php pagination_bar(); ?>
+					</div>
+					<!--<div class="previous">
 						<? 	
 							if ($next_url = next_posts($wp_query->max_num_pages, false)){
 								?><a href="<?= $next_url ?>"><i class="fa fa-angle-left"></i> <?=_e('Previous');?></a><?php
@@ -189,7 +192,7 @@
 								?><a href="#" class="disabled"><i class="fa fa-angle-left"></i> <?=_e('Previous');?></a><?php
 							}
 						?>
-					</div>
+					</div>-->
 					<div class="post-per-page">
 						Items per page
 						<select class="post_sort_select">
@@ -200,7 +203,7 @@
 							<option <? if($posts_per_page == 50) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y='.$blog_year.'posts_amount=50'?>">50</option>
 						</select>
 					</div>
-					<div class="next">
+					<!--<div class="next">
 						<? 	
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 							
@@ -211,7 +214,7 @@
 								?><a href="<?= $prev_url ?>"><?=_e('Next');?> <i class="fa fa-angle-right"></i></a><?php
 							}  
 						?>
-					</div>
+					</div>-->
 				  </div>
 				  
 				<? }else{?>

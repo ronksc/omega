@@ -7605,7 +7605,7 @@ footer .copyright a {
   color: #953834;
 }
 .post-listing .post-pagination {
-  padding: 20px 30px;
+  padding: 20px 10px;
   font-size: 12px;
   position: relative;
 }
@@ -7623,9 +7623,24 @@ footer .copyright a {
 }
 .post-listing .post-pagination .post-per-page {
   width: 130px;
-  position: absolute;
-  left: 50%;
-  margin-left: -75px;
+  /*position:absolute;
+			left:50%;
+			margin-left:-75px;*/
+  margin: 0 auto;
+}
+.post-listing .post-pagination .pagination_bar_container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.post-listing .post-pagination .pagination_bar_container a {
+  margin-right: 5px;
+  display: inline-block;
+  color: #953834;
+}
+.post-listing .post-pagination .pagination_bar_container span {
+  margin-right: 5px;
+  display: inline-block;
+  font-weight: bold;
 }
 .single-post-container {
   background: rgba(255, 255, 255, 0.8);
@@ -7765,6 +7780,28 @@ footer .copyright a {
   }
   .post-listing .listing-control .post-search-container {
     margin-top: 0;
+  }
+  .post-listing .post-pagination {
+    padding: 20px 30px;
+  }
+  .post-listing .post-pagination .post-per-page {
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+  }
+  .post-listing .post-pagination .pagination_bar_container {
+    float: right;
+    margin-bottom: 0;
+  }
+  .post-listing .post-pagination .pagination_bar_container a {
+    margin-right: 5px;
+    display: inline-block;
+    color: #953834;
+  }
+  .post-listing .post-pagination .pagination_bar_container span {
+    margin-right: 5px;
+    display: inline-block;
+    font-weight: bold;
   }
   .single-post-container .post-content .post-info-container .post-img-container {
     width: 50%;
