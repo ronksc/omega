@@ -143,9 +143,13 @@ var Roots = {
 			var current_page_nav_width = 0;
 			var temp_page_nav_left = -1;
 			var timer;
-			
-			current_page_nav_left = parseInt($('#menu-primary-navigation>li.active').offset().left)-parseInt(nav_left);
-			current_page_nav_width = $('#menu-primary-navigation>li.active').outerWidth();
+			if($('#menu-primary-navigation>li.active').length > 0){
+				current_page_nav_left = parseInt($('#menu-primary-navigation>li.active').offset().left)-parseInt(nav_left);
+				current_page_nav_width = $('#menu-primary-navigation>li.active').outerWidth();
+			}else{
+				current_page_nav_left = parseInt($('#menu-primary-navigation>li').eq(0).offset().left)-parseInt(nav_left);
+				current_page_nav_width = $('#menu-primary-navigation>li').eq(0).outerWidth();	
+			}
 			
 			$('#menu-primary-navigation>li').each(function(){
 				

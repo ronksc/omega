@@ -7985,6 +7985,7 @@ footer .copyright a {
     padding-left: 0;
     position: absolute;
     width: 102px;
+    top: 34px;
     z-index: 999;
   }
   .nav-container .main-menu .navbar-nav > li .sub-menu li {
