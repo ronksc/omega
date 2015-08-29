@@ -133,8 +133,8 @@
 	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
 		background:none;
 		//font-weight:bold;
-		padding-bottom:10px!important;
-		border-bottom:3px solid #fff;
+		//padding-bottom:10px!important;
+		//border-bottom:3px solid #fff;
 	}	
 
 	.navbar-collapse{
@@ -165,14 +165,24 @@
 			top:auto;
 			background:none;
 			max-height:auto;
+			#slide{
+				background:#e8e8e8 none repeat scroll 0 0;
+				height: 34px;
+				position: absolute;
+				top: 0;
+				width: 79px;
+				z-index:10;
+			}
 			.navbar-nav{
+				position:relative;
+				z-index:100;
 				& > li{
 					text-transform:uppercase;
 					position:relative;
 					&:hover{
 						& > a{
 							//font-weight:bold;
-							border-bottom:3px solid #fff;
+							//border-bottom:3px solid #fff;
 							padding-bottom:10px!important;
 						}
 						.sub-menu{

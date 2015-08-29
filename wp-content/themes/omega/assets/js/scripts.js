@@ -4305,7 +4305,15 @@
 		$("<style type='text/css'>.fancybox-margin{margin-right:" + (w2 - w1) + "px;}</style>").appendTo("head");
 	});
 
-}(window, document, jQuery));;/*
+}(window, document, jQuery));;/*!
+ * hoverIntent v1.8.0 // 2014.06.29 // jQuery v1.9.1+
+ * http://cherne.net/brian/resources/jquery.hoverIntent.html
+ *
+ * You may use hoverIntent under the terms of the MIT license. Basically that
+ * means you are free to use hoverIntent as long as this header is left intact.
+ * Copyright 2007, 2014 Brian Cherne
+ */
+(function($){$.fn.hoverIntent=function(handlerIn,handlerOut,selector){var cfg={interval:100,sensitivity:6,timeout:0};if(typeof handlerIn==="object"){cfg=$.extend(cfg,handlerIn)}else{if($.isFunction(handlerOut)){cfg=$.extend(cfg,{over:handlerIn,out:handlerOut,selector:selector})}else{cfg=$.extend(cfg,{over:handlerIn,out:handlerIn,selector:handlerOut})}}var cX,cY,pX,pY;var track=function(ev){cX=ev.pageX;cY=ev.pageY};var compare=function(ev,ob){ob.hoverIntent_t=clearTimeout(ob.hoverIntent_t);if(Math.sqrt((pX-cX)*(pX-cX)+(pY-cY)*(pY-cY))<cfg.sensitivity){$(ob).off("mousemove.hoverIntent",track);ob.hoverIntent_s=true;return cfg.over.apply(ob,[ev])}else{pX=cX;pY=cY;ob.hoverIntent_t=setTimeout(function(){compare(ev,ob)},cfg.interval)}};var delay=function(ev,ob){ob.hoverIntent_t=clearTimeout(ob.hoverIntent_t);ob.hoverIntent_s=false;return cfg.out.apply(ob,[ev])};var handleHover=function(e){var ev=$.extend({},e);var ob=this;if(ob.hoverIntent_t){ob.hoverIntent_t=clearTimeout(ob.hoverIntent_t)}if(e.type==="mouseenter"){pX=ev.pageX;pY=ev.pageY;$(ob).on("mousemove.hoverIntent",track);if(!ob.hoverIntent_s){ob.hoverIntent_t=setTimeout(function(){compare(ev,ob)},cfg.interval)}}else{$(ob).off("mousemove.hoverIntent",track);if(ob.hoverIntent_s){ob.hoverIntent_t=setTimeout(function(){delay(ev,ob)},cfg.timeout)}}};return this.on({"mouseenter.hoverIntent":handleHover,"mouseleave.hoverIntent":handleHover},cfg.selector)}})(jQuery);;/*
 * rwdImageMaps jQuery plugin v1.5
 *
 * Allows image maps to be used in a responsive design by recalculating the area coordinates to match the actual image size on load and window.resize
@@ -7522,9 +7530,62 @@ var Roots = {
 						if(w!==ew){var wd,wr,wi; wd=(w>ew)?-1:1; wr=Math.abs(ew-w); wi=(wr<q)?wd*wr:wd*q; g.style.width=(w+wi)+'px';}
 					}else{clearInterval(m.tm);}
 		}};}();*/
+		
+		function initMenuSlider(){
+			var nav_left = $('#menu-primary-navigation').offset().left;
+			var current_page_nav_left = 0;
+			var current_page_nav_width = 0;
+			/*var hover_page_nav_left = 0;
+			var hover_page_nav_width = 0;*/
+			var temp_page_nav_left = -1;
+			var timer;
+			
+			$('#menu-primary-navigation>li').each(function(){
+				if($(this).hasClass('active'))	{
+					current_page_nav_left = parseInt($(this).offset().left)-parseInt(nav_left);
+					current_page_nav_width = $(this).outerWidth();
+				}
+				
+				$(this).bind('mouseenter', function(){
+					clearTimeout(timer);
+					el = parseInt($(this).offset().left)-parseInt(nav_left);
+					ew = $(this).outerWidth();
+					timer = setTimeout(function(){hoverAction(el, ew);},50);
+				}).bind('mouseleave', function(){
+					clearTimeout(timer);
+					timer = setTimeout(function(){hoverAction(current_page_nav_left, current_page_nav_width);},50);
+				});
+				
+			});
+			
+			function hoverAction(el, ew){
+				var hover_page_nav_left = el;
+				var hover_page_nav_width = ew;
+				if(current_page_nav_left !== hover_page_nav_left){
+					
+					if(temp_page_nav_left !== hover_page_nav_left){
+						$('#slide').animate({
+								left:hover_page_nav_left,
+								width: hover_page_nav_width
+							},200);
+						temp_page_nav_left = hover_page_nav_left;
+					}
+				}else{
+					clearTimeout(timer);
+					$('#slide').animate({
+						left:current_page_nav_left,
+						width: current_page_nav_width
+					},200);
+					temp_page_nav_left = -1;
+				}
+			}
+			$('#slide').css({'left':current_page_nav_left, 'width':current_page_nav_width});
+		}
 
 	  
 	  $(document).ready(function(){
+		
+		
 		$('.menu-login a').fancybox({'scrolling':'no'});						 
 		
 		$("#loginName").focus(function(){
@@ -7604,6 +7665,10 @@ var Roots = {
 		});
 		
 	  });
+	  
+	  $(window).load(function(){
+		initMenuSlider();					  
+      });
 	  
     }
   },

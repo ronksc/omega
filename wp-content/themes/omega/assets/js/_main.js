@@ -136,9 +136,62 @@ var Roots = {
 						if(w!==ew){var wd,wr,wi; wd=(w>ew)?-1:1; wr=Math.abs(ew-w); wi=(wr<q)?wd*wr:wd*q; g.style.width=(w+wi)+'px';}
 					}else{clearInterval(m.tm);}
 		}};}();*/
+		
+		function initMenuSlider(){
+			var nav_left = $('#menu-primary-navigation').offset().left;
+			var current_page_nav_left = 0;
+			var current_page_nav_width = 0;
+			/*var hover_page_nav_left = 0;
+			var hover_page_nav_width = 0;*/
+			var temp_page_nav_left = -1;
+			var timer;
+			
+			$('#menu-primary-navigation>li').each(function(){
+				if($(this).hasClass('active'))	{
+					current_page_nav_left = parseInt($(this).offset().left)-parseInt(nav_left);
+					current_page_nav_width = $(this).outerWidth();
+				}
+				
+				$(this).bind('mouseenter', function(){
+					clearTimeout(timer);
+					el = parseInt($(this).offset().left)-parseInt(nav_left);
+					ew = $(this).outerWidth();
+					timer = setTimeout(function(){hoverAction(el, ew);},50);
+				}).bind('mouseleave', function(){
+					clearTimeout(timer);
+					timer = setTimeout(function(){hoverAction(current_page_nav_left, current_page_nav_width);},50);
+				});
+				
+			});
+			
+			function hoverAction(el, ew){
+				var hover_page_nav_left = el;
+				var hover_page_nav_width = ew;
+				if(current_page_nav_left !== hover_page_nav_left){
+					
+					if(temp_page_nav_left !== hover_page_nav_left){
+						$('#slide').animate({
+								left:hover_page_nav_left,
+								width: hover_page_nav_width
+							},200);
+						temp_page_nav_left = hover_page_nav_left;
+					}
+				}else{
+					clearTimeout(timer);
+					$('#slide').animate({
+						left:current_page_nav_left,
+						width: current_page_nav_width
+					},200);
+					temp_page_nav_left = -1;
+				}
+			}
+			$('#slide').css({'left':current_page_nav_left, 'width':current_page_nav_width});
+		}
 
 	  
 	  $(document).ready(function(){
+		
+		
 		$('.menu-login a').fancybox({'scrolling':'no'});						 
 		
 		$("#loginName").focus(function(){
@@ -218,6 +271,10 @@ var Roots = {
 		});
 		
 	  });
+	  
+	  $(window).load(function(){
+		initMenuSlider();					  
+      });
 	  
     }
   },

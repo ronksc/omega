@@ -7929,8 +7929,6 @@ footer .copyright a {
   .navbar-default .navbar-nav > .active > a:hover,
   .navbar-default .navbar-nav > .active > a:focus {
     background: none;
-    padding-bottom: 10px!important;
-    border-bottom: 3px solid #fff;
   }
   .navbar-collapse {
     padding: 0;
@@ -7958,12 +7956,23 @@ footer .copyright a {
     background: none;
     max-height: auto;
   }
+  .nav-container .main-menu #slide {
+    background: #e8e8e8 none repeat scroll 0 0;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    width: 79px;
+    z-index: 10;
+  }
+  .nav-container .main-menu .navbar-nav {
+    position: relative;
+    z-index: 100;
+  }
   .nav-container .main-menu .navbar-nav > li {
     text-transform: uppercase;
     position: relative;
   }
   .nav-container .main-menu .navbar-nav > li:hover > a {
-    border-bottom: 3px solid #fff;
     padding-bottom: 10px!important;
   }
   .nav-container .main-menu .navbar-nav > li:hover .sub-menu {
