@@ -113,19 +113,31 @@
 		.post-search-container{
 			margin-top:10px;
 			text-align:right;
+			.search-form{
+				.input-group-btn{
+					.search-submit{
+						text-indent:-9999px;
+						background:url(../img/search_arrow.png) no-repeat center #fff;
+						padding: 6px 15px;
+					}
+				}
+			}
 		}
 	}
 	.table{
 		margin-bottom:0;
 		td{
-			padding:10px 30px;
+			padding:5px 30px 15px 30px;
 			font-size:14px;
 			border-top: none;
-			border-bottom:1px solid #ddd;
+			//border-bottom:1px solid #ddd;
 			font-family: Aileron;
 			font-weight: 400;
+			background:url(../img/border_table.png) repeat-x bottom;
 			a{
 				color:#000;
+				margin-bottom:5px;
+				display:inline-block;
 			}
 		}
 		.headline{
@@ -133,16 +145,20 @@
 				color:#953834;
 				font-family: "Oswald";
 				font-weight:100!important;
-				padding:10px 30px;
-				border-bottom: 1px solid #dddddd;
+				padding:10px 30px 20px 30px;
+				//border-bottom: 1px solid #dddddd;
+				background:url(../img/border_table.png) repeat-x bottom;
 				text-transform: uppercase;
 			}
 		}
 	}
 	.news_item{
 		border-bottom:1px solid #ddd;
-		margin-bottom:10px;
-		h2, a, span{
+		margin-top:10px;
+		font-family: Aileron;
+		font-size: 14px;
+		font-weight: 400;
+		h3, a, span{
 			color:#953834;
 		}
 	}

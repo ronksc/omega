@@ -4,6 +4,7 @@
 			<div class="contentBannerContainer">
 				<? $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 				<img src="<?=$feat_image?>" alt="" class="img-responsive" />
+                <?=get_field("banner_text", $post->ID) ?>
 			</div>
 			<div class="contentContainer">
 				<?=apply_filters('the_content', get_post_field('post_content', $id)); ?>

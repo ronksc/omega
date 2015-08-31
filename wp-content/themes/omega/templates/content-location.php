@@ -4,9 +4,9 @@
 			<div class="contentBannerContainer">
 				<? $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 				<img src="<?=$feat_image?>" alt="" class="img-responsive" />
+                <div class="banner_text grey_bg">headquartered in asia with a network ideally spread to service your supply chain</div>
 			</div>
 			<div class="contentContainer">
-				<div class="hidden-sm hidden-md hidden-lg visible-xs banner_text grey_bg">headquartered in asia with a network ideally spread to service your supply chain</div>
 				<h1>LOCATIONS</h1>
 				<p class="highlight">Headquartered in Hong Kong with a network of teams stationed across your supply chain, Omega is ideally placed to support your business.</p>
 				<div class="mapContainer">

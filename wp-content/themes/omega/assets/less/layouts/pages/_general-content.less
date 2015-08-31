@@ -7,6 +7,35 @@
 	box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.75);
 	background: url("../img/bg_content.png") repeat;
 	
+	.contentBannerContainer{
+		.banner_text{
+			background-color:#963934;
+			margin-bottom:20px;
+			padding:20px;
+			color:#fff;
+			text-transform:uppercase;
+			font-family: "Oswald";
+			font-weight:200;
+			letter-spacing:1px;
+			font-size:22px;
+			&.grey_bg{
+				background-color:#717174;
+			}
+			h2{
+				color:#fff!important;
+				font-size:23px;
+				text-transform:uppercase;
+				margin-top:0;
+			}
+			p{
+				font-size:22px;
+				color:#fff;
+				margin-bottom:0;
+				line-height:1.42857;
+			}
+		}
+	}
+	
 	.contentContainer{
 		padding:20px;
 		p {
@@ -17,31 +46,6 @@
 			margin-bottom: 20px;
 			a {
 				color: #000;
-			}
-		}
-		
-		.banner_text{
-			background-color:#9A4844;
-			margin-bottom:20px;
-			padding:20px;
-			color:#fff;
-			text-transform:uppercase;
-			font-family: "aileronlight";
-			font-size:20px;
-			&.grey_bg{
-				background-color:#62656B!important;
-			}
-			h2{
-				color:#fff!important;
-				font-size:23px;
-				text-transform:uppercase;
-				margin-top:0;
-			}
-			p{
-				font-size:20px;
-				color:#fff;
-				margin-bottom:0;
-				line-height:1.42857;
 			}
 		}
 				
@@ -96,6 +100,23 @@
 //===============================================================================
 @media (min-width: @screen-sm-min) {
 	.innerContentContainer{
+		.contentBannerContainer{
+			position:relative;
+			.banner_text{
+				background-color:rgba(150, 57, 52, 0.8);
+				margin-bottom:0;
+				padding:30px;
+				position:absolute;
+				max-width:300px;
+				bottom:0;
+				left:50px;
+				
+				&.grey_bg{
+					background-color:rgba(113, 113, 116, 0.8);
+				}
+			}
+		}
+		
 		.contentContainer{
 			padding:40px;
 		}
