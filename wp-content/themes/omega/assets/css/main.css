@@ -7347,6 +7347,17 @@ footer .copyright a {
 .innerContentContainer .contentContainer {
   padding: 20px;
 }
+.innerContentContainer .contentContainer .banner_text h2 {
+  margin-top: 0;
+  margin-bottom: 10p;
+}
+.innerContentContainer .contentContainer .banner_text p {
+  line-height: 150%;
+  font-family: "Oswald" !important;
+  font-weight: 300;
+  font-size: 18px;
+  text-transform: uppercase;
+}
 .innerContentContainer .contentContainer p {
   color: #000;
   font-family: "aileronlight";
@@ -7398,16 +7409,17 @@ footer .copyright a {
     position: relative;
   }
   .innerContentContainer .contentBannerContainer .banner_text {
-    background-color: rgba(150, 57, 52, 0.8);
-    margin-bottom: 0;
-    padding: 30px;
-    position: absolute;
-    max-width: 300px;
-    bottom: 0;
-    left: 50px;
-  }
-  .innerContentContainer .contentBannerContainer .banner_text.grey_bg {
-    background-color: rgba(113, 113, 116, 0.8);
+    /*background-color:rgba(150, 57, 52, 0.8);
+				margin-bottom:0;
+				padding:30px;
+				position:absolute;
+				max-width:300px;
+				bottom:0;
+				left:50px;*/
+    display: none;
+    /*&.grey_bg{
+					background-color:rgba(113, 113, 116, 0.8);
+				}*/
   }
   .innerContentContainer .contentContainer {
     padding: 40px;
@@ -7620,7 +7632,7 @@ footer .copyright a {
   text-transform: uppercase;
 }
 .post-listing .news_item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 3px solid #ddd;
   margin-top: 10px;
   font-family: Aileron;
   font-size: 14px;
@@ -7918,6 +7930,9 @@ footer .copyright a {
 #menu-primary-navigation .sub-menu > li a {
   letter-spacing: 1px;
   font-size: 11px;
+}
+#menu-primary-navigation .sub-menu li.active a {
+  font-weight: 700;
 }
 #menu-primary-navigation .sub-menu .sub-menu li a {
   letter-spacing: 1px;
