@@ -7358,14 +7358,16 @@ footer .copyright a {
   font-size: 18px;
   text-transform: uppercase;
 }
-.innerContentContainer .contentContainer p {
+.innerContentContainer .contentContainer p,
+.innerContentContainer .contentContainer li {
   color: #000;
   font-family: "aileronlight";
   font-size: 14px;
   line-height: 180%;
   margin-bottom: 20px;
 }
-.innerContentContainer .contentContainer p a {
+.innerContentContainer .contentContainer p a,
+.innerContentContainer .contentContainer li a {
   color: #000;
 }
 .innerContentContainer .contentContainer .btnFileReport {
@@ -7409,17 +7411,16 @@ footer .copyright a {
     position: relative;
   }
   .innerContentContainer .contentBannerContainer .banner_text {
-    /*background-color:rgba(150, 57, 52, 0.8);
-				margin-bottom:0;
-				padding:30px;
-				position:absolute;
-				max-width:300px;
-				bottom:0;
-				left:50px;*/
-    display: none;
-    /*&.grey_bg{
-					background-color:rgba(113, 113, 116, 0.8);
-				}*/
+    background-color: rgba(150, 57, 52, 0.8);
+    margin-bottom: 0;
+    padding: 30px;
+    position: absolute;
+    max-width: 300px;
+    bottom: 0;
+    left: 50px;
+  }
+  .innerContentContainer .contentBannerContainer .banner_text.grey_bg {
+    background-color: rgba(113, 113, 116, 0.8);
   }
   .innerContentContainer .contentContainer {
     padding: 40px;
@@ -8026,7 +8027,7 @@ footer .copyright a {
   }
   .nav-container .main-menu .navbar-nav > li .sub-menu {
     display: none;
-    margin-left: -22px;
+    margin-left: -12px;
     padding-left: 0;
     position: absolute;
     width: 102px;
@@ -8068,6 +8069,9 @@ footer .copyright a {
   }
   #menu-primary-navigation li a {
     padding: 0;
+  }
+  .nav-container .main-menu .navbar-nav > li .sub-menu {
+    margin-left: -24px;
   }
 }
 @media (min-width: 1200px) {
