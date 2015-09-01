@@ -43,6 +43,13 @@
 					<div class="post-info-content">
 						<p class="post-date"><?=get_the_date(); ?></p>
 						<h2><?php the_title(); ?></h2>
+                        <div class="addthis_toolbox addthis_default_style" addthis:url="<?=get_permalink()?>" addthis:title="<?php the_title(); ?>" style="display:inline-block; margin-bottom:10px;">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_linkedin"></a>
+							<a class="addthis_button_email"></a>
+                        </div>
+                        <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d131230118ed49"></script>
 						<?php the_excerpt(); ?>
 					</div>
 				</div>

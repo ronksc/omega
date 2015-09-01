@@ -7792,6 +7792,31 @@ footer .copyright a {
 .fa-angle-left:before {
   color: #953834;
 }
+.addthis_default_style .at300b,
+.addthis_default_style .at300bo,
+.addthis_default_style .at300m {
+  margin-right: 10px;
+}
+.at4-icon,
+.addthis_16x16_style .at4-icon,
+.addthis_16x16_white_style .at4-icon,
+.addthis_default_style .at4-icon,
+.at-16x16 {
+  width: 22px!important;
+  height: 22px!important;
+  -webkit-background-size: 22px auto !important;
+          background-size: 22px auto !important;
+  visibility: hidden;
+}
+.addthis_button_facebook {
+  background: url(../img/logo_fb.png) no-repeat !important;
+}
+.addthis_button_linkedin {
+  background: url(../img/logo_linkedin.png) no-repeat !important;
+}
+.addthis_button_email {
+  background: url(../img/logo_email.png) no-repeat !important;
+}
 @media (min-width: 768px) {
   .mainPost {
     display: table;
