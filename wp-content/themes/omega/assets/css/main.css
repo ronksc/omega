@@ -7248,7 +7248,7 @@ footer .copyright a {
   background: rgba(255, 255, 255, 0.8);
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv {
-  padding: 25px 0 25px 30px;
+  padding: 20px 0 20px 32px;
   margin-bottom: 4px;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnHeader {
@@ -7256,15 +7256,16 @@ footer .copyright a {
   font-family: "Oswald";
   font-size: 21px;
   font-weight: 400;
-  margin-bottom: 17px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent {
   color: #000;
   font-family: "aileronlight";
   font-size: 10px;
+  line-height: 17px;
   padding-left: 48px;
-  padding-right: 25px;
+  padding-right: 15px;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent.supplyChainMonitoring {
   background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
@@ -7278,7 +7279,7 @@ footer .copyright a {
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer {
   border-top: 1px solid #a6a6a6;
   padding-top: 14px;
-  margin-top: 30px;
+  margin-top: 25px;
   width: 72px;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer a {
@@ -7303,7 +7304,10 @@ footer .copyright a {
     float: none;
     padding: 0;
     vertical-align: top;
-    background: url(../img/home/bg_threeColumn.png) repeat-y 0 0;
+    background: url(../img/home/bg_threeColumn.png) repeat-y 4px 0;
+  }
+  .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem:first-child {
+    background-position: 0 0;
   }
   .homeBannerContainer .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem:last-child .homeThreeColumnItemInnerDiv {
     margin-right: 0;
@@ -7326,7 +7330,8 @@ footer .copyright a {
   text-transform: uppercase;
   font-family: "Oswald";
   font-weight: 200;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
+  line-height: 37px;
   font-size: 22px;
 }
 .innerContentContainer .contentBannerContainer .banner_text.grey_bg {
@@ -7334,12 +7339,13 @@ footer .copyright a {
 }
 .innerContentContainer .contentBannerContainer .banner_text h2 {
   color: #fff!important;
-  font-size: 23px;
+  font-size: 53px;
+  font-weight: 300!important;
   text-transform: uppercase;
   margin-top: 0;
 }
 .innerContentContainer .contentBannerContainer .banner_text p {
-  font-size: 22px;
+  font-size: 16px;
   color: #fff;
   margin-bottom: 0;
   line-height: 1.42857;
@@ -7370,6 +7376,10 @@ footer .copyright a {
 .innerContentContainer .contentContainer li a {
   color: #000;
 }
+.innerContentContainer .contentContainer p a:hover,
+.innerContentContainer .contentContainer li a:hover {
+  color: #983534;
+}
 .innerContentContainer .contentContainer .btnFileReport {
   background: rgba(0, 0, 0, 0) url("../img/btn_fileReport.png") no-repeat scroll right center;
   font-size: 18px;
@@ -7387,7 +7397,7 @@ footer .copyright a {
   text-transform: uppercase;
 }
 .innerContentContainer .contentContainer .ethicsLogoContainer {
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 .innerContentContainer .contentContainer .companyName {
   color: #706f73 !important;
@@ -7411,19 +7421,23 @@ footer .copyright a {
     position: relative;
   }
   .innerContentContainer .contentBannerContainer .banner_text {
-    background-color: rgba(150, 57, 52, 0.8);
+    background-color: rgba(121, 15, 15, 0.7);
     margin-bottom: 0;
-    padding: 30px;
+    padding: 28px 16px 28px 30px;
     position: absolute;
-    max-width: 300px;
+    max-width: 295px;
     bottom: 0;
-    left: 50px;
+    left: 40px;
   }
   .innerContentContainer .contentBannerContainer .banner_text.grey_bg {
-    background-color: rgba(113, 113, 116, 0.8);
+    background-color: rgba(30, 30, 30, 0.6);
   }
   .innerContentContainer .contentContainer {
     padding: 40px;
+  }
+  .training .innerContentContainer .contentBannerContainer .banner_text {
+    max-width: 300px;
+    letter-spacing: 0;
   }
 }
 @media (min-width: 768px) {
@@ -7947,18 +7961,19 @@ footer .copyright a {
   font-family: "Oswald";
   font-weight: 400;
   color: #706f73;
-  font-size: 15px;
+  font-size: 15.4px;
   padding: 7px 12px;
 }
 #menu-primary-navigation > li a:hover {
   font-weight: normal;
 }
 #menu-primary-navigation .sub-menu > li a {
-  letter-spacing: 1px;
-  font-size: 11px;
+  font-size: 13px;
 }
-#menu-primary-navigation .sub-menu li.active a {
-  font-weight: 700;
+#menu-primary-navigation .sub-menu li.active {
+  /*a{
+				font-weight: 700;
+			}*/
 }
 #menu-primary-navigation .sub-menu .sub-menu li a {
   letter-spacing: 1px;
@@ -8035,7 +8050,7 @@ footer .copyright a {
   }
   .nav-container .main-menu #slide {
     background: #e8e8e8 none repeat scroll 0 0;
-    height: 34px;
+    height: 30px;
     position: absolute;
     top: 0;
     width: 79px;
@@ -8060,8 +8075,8 @@ footer .copyright a {
     margin-left: -12px;
     padding-left: 0;
     position: absolute;
-    width: 102px;
-    top: 34px;
+    width: 101px;
+    top: 30px;
     z-index: 999;
   }
   .nav-container .main-menu .navbar-nav > li .sub-menu li {
@@ -8102,17 +8117,17 @@ footer .copyright a {
     width: 200px;
   }
   #menu-primary-navigation li {
-    padding: 7px 22px;
+    padding: 5px 22px;
   }
   #menu-primary-navigation li a {
     padding: 0;
   }
   .nav-container .main-menu .navbar-nav > li .sub-menu {
-    margin-left: -24px;
+    margin-left: -21px;
   }
   _:-ms-fullscreen,
   :root .nav-container .main-menu .navbar-nav > li .sub-menu {
-    margin-left: -22px;
+    margin-left: -21px;
   }
 }
 @media (min-width: 1200px) {

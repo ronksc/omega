@@ -16,19 +16,21 @@
 			text-transform:uppercase;
 			font-family: "Oswald";
 			font-weight:200;
-			letter-spacing:1px;
+			letter-spacing: 1.3px;
+		    line-height: 37px;
 			font-size:22px;
 			&.grey_bg{
 				background-color:#717174;
 			}
 			h2{
 				color:#fff!important;
-				font-size:23px;
+				font-size:53px;
+				font-weight:300!important;
 				text-transform:uppercase;
 				margin-top:0;
 			}
 			p{
-				font-size:22px;
+				font-size:16px;
 				color:#fff;
 				margin-bottom:0;
 				line-height:1.42857;
@@ -59,6 +61,9 @@
 			margin-bottom: 20px;
 			a {
 				color: #000;
+				&:hover{
+					color:#983534;
+				}
 			}
 		}
 				
@@ -80,7 +85,7 @@
 		}
 				
 		.ethicsLogoContainer {
-			padding-bottom: 40px;
+			padding-bottom: 10px;
 		}
 		
 		
@@ -116,22 +121,29 @@
 		.contentBannerContainer{
 			position:relative;
 			.banner_text{
-				background-color:rgba(150, 57, 52, 0.8);
+				background-color:rgba(121, 15, 15, 0.7);
 				margin-bottom:0;
-				padding:30px;
+				padding:28px 16px 28px 30px;
 				position:absolute;
-				max-width:300px;
+				max-width:295px;
 				bottom:0;
-				left:50px;
+				left:40px;
 				
 				&.grey_bg{
-					background-color:rgba(113, 113, 116, 0.8);
+					background-color:rgba(30, 30, 30, 0.6);
 				}
 			}
 		}
 		
 		.contentContainer{
 			padding:40px;
+		}
+	}
+	
+	.training{
+		.innerContentContainer .contentBannerContainer .banner_text{
+			max-width:300px;
+			letter-spacing: 0;
 		}
 	}
 }

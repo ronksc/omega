@@ -9,7 +9,7 @@
 		.homeThreeColumnItem{
 			background: rgba(255, 255, 255, 0.8);
 			.homeThreeColumnItemInnerDiv{
-				padding: 25px 0 25px 30px;
+				padding: 20px 0 20px 32px;
 				    margin-bottom: 4px;
 				
 				.threeColumnHeader{
@@ -17,7 +17,7 @@
 					font-family: "Oswald";
 					font-size: 21px;
 					font-weight: 400;
-					margin-bottom: 17px;
+					margin-bottom: 10px;
 					text-transform: uppercase;
 				}
 				
@@ -25,8 +25,9 @@
 					color: #000;
 					font-family: "aileronlight";
 					font-size: 10px;
+					line-height:17px;
 					padding-left: 48px;
-					padding-right: 25px;
+					padding-right: 15px;
 					&.supplyChainMonitoring {
 						background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
 					}
@@ -40,7 +41,7 @@
 					.learnMoreContainer {
 						border-top: 1px solid #a6a6a6;
 						padding-top: 14px;
-						margin-top:30px;
+						margin-top:25px;
 						width: 72px;
 						a{
 							color: #717073;
@@ -75,7 +76,11 @@
 					float:none;
 					padding:0;
 					vertical-align: top;
-					background:url(../img/home/bg_threeColumn.png) repeat-y 0 0;
+					background:url(../img/home/bg_threeColumn.png) repeat-y 4px 0;
+					
+					&:first-child{
+						background-position:0 0;
+					}
 					
 					&:last-child{
 						.homeThreeColumnItemInnerDiv{
