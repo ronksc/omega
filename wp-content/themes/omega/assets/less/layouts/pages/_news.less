@@ -5,9 +5,9 @@
 //===============================================================================
 
 .mainPost{
-	-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-	-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-	box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.60);
+	-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+	-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+	box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.30);
 	position:relative;
 	z-index:100;
 	.feature-img-container{
@@ -25,6 +25,7 @@
 		font-family: "Oswald";
 		font-weight:300;
 		.post-date{
+			font-size:17px;
 			text-transform:uppercase;
 			margin-top:20px;
 			margin-bottom:0;
@@ -33,13 +34,15 @@
 		h2{
 			margin-top:5px;
 			margin-bottom:30px;
-			font-size:26px;
+			font-size:27px;
 		}
 		.post-excerpt{
-			font-size:20px;
+			font-size:17px;
 			color:#53555A;
+			line-height:27px;
 		}
 		.readmore_link{
+			font-size:14px;
 			margin-bottom:20px;
 			display:inline-block;
 			color:#953834;
@@ -52,17 +55,19 @@
 	background:#fff;
 	font-family: "Oswald";
 	font-weight:300;
-	-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-	-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-	box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.60);
+	-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+	-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+	box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.30);
 	position:relative;
 	z-index:80;
 	.subPostItem{
 		padding-bottom:20px;
 		.img-caption{
-			font-size:10px;
-			color:#818181;
+			font-size:9px;
+			font-family:"aileronlight";
+			color:#7F7F7F;
 			padding:5px 0;
+			margin-bottom:5px;
 		}
 		.post-date{
 			text-transform:uppercase;
@@ -71,12 +76,15 @@
 			font-size:17px;
 		}
 		h2{
-			    font-size: 23px;
-    line-height: 140%;
+			font-size: 23px;
+    		line-height: 140%;
+			margin-bottom:22px;
+			margin-top:5px;
 		}
 		.post-excerpt{
 			font-size:17px;
 			color:#53555A;
+			line-height:27px;
 		}
 		.readmore_link{
 			color:#953834;
@@ -127,11 +135,11 @@
 	.table{
 		margin-bottom:0;
 		td{
-			padding:5px 30px 15px 30px;
+			padding:0 30px 15px 30px;
 			font-size:14px;
 			border-top: none;
 			//border-bottom:1px solid #ddd;
-			font-family: Aileron;
+			font-family: Aileronlight;
 			font-weight: 400;
 			background:url(../img/border_table.png) repeat-x bottom;
 			a{
@@ -149,6 +157,7 @@
 				//border-bottom: 1px solid #dddddd;
 				background:url(../img/border_table.png) repeat-x bottom;
 				text-transform: uppercase;
+				font-size:14px;
 			}
 		}
 	}
@@ -208,9 +217,14 @@
 		font-size:12px;
 		padding:20px 15px;
 		font-family: "Oswald";
-		-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-		-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.60);
-		box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.60);
+		font-weight:300;
+		-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+		-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+		box-shadow:         0px 3px 4px 0px rgba(50, 50, 50, 0.30);
+		
+		i{
+			margin-right:3px;
+		}
 
 		.prev-post{
 			padding-left: 0;
@@ -223,18 +237,19 @@
 			color:#953834;
 		}
 		.article-link{
-			max-width:70%;
+			max-width:50%;
 			display:inline-block;
-			color:#818181;	
-			font-family: "Aileron";
+			color:#666;	
+			font-family: "Aileronlight";
 			font-weight: 400;
 
 			span{
+				font-weight:300;
 				text-transform:uppercase;
 				display:block;
 				font-family: "Oswald";
-				    color: #953834;
-				    font-size: 12px;
+			    color: #989898!important;
+			    font-size: 12px;
 				i{
 					color:#953834;
 				}
@@ -244,6 +259,12 @@
 			text-align:right;
 			a{
 				float:right;
+				span{
+					i{
+						margin-right:0;
+						margin-left:3px;
+					}
+				}
 			}
 		}
 	}
@@ -257,8 +278,9 @@
 				margin-bottom:20px;
 				.feature-img-caption{
 					background:#E6E8E7;	
-					padding:5px 10px;
-					font-size:12px;
+					padding:5px 30px;
+					font-size:10px;
+					font-family: "Aileronlight";
 					color:#818181;	
 				}
 				.img-responsive{
@@ -277,7 +299,7 @@
 				}
 				h2{
 					margin-top:5px;
-					margin-bottom:30px;
+					margin-bottom:27px;
 					font-size:27px;
 				}
 				.post-excerpt{
@@ -288,14 +310,25 @@
 			}
 		}
 		.post-main-content{
-			padding-top:20px;
+			padding-top:34px;
 			padding-bottom:20px;
 			.post-main-content-body{
 				margin-bottom: 40px;
+				font-family:"Aileronlight";
+				font-size:14px;
+				line-height:27px;
+				padding-right:50px;
+				p{
+					margin-bottom:25px;
+				}
 			}
 			.related_topics_conatiner{
 				//padding:0 30px;	
 				font-size:12px;
+				
+				.allNews-link{
+					color:#953834;
+				}
 				
 				p{
 					text-transform:uppercase;
@@ -335,12 +368,15 @@
 
 .addthis_button_facebook{
 	background:url(../img/logo_fb.png) no-repeat!important;
+	background-size: contain!important;
 }
 .addthis_button_linkedin{
 	background:url(../img/logo_linkedin.png) no-repeat!important;
+	background-size: contain!important;
 }
 .addthis_button_email{
 	background:url(../img/logo_email.png) no-repeat!important;
+	background-size: contain!important;
 }
 
 //===============================================================================
@@ -375,9 +411,12 @@
 	
 	.subPost-container{
 		padding-top:50px;
+		padding-left:35px;
+		padding-right:35px;
 		background:#fff;
 		.subPostItem{
-			
+			padding-left:25px;
+			padding-right:25px;
 			.post-date{
 				
 			}
@@ -449,6 +488,17 @@
 //===============================================================================
 //===============================================================================
 @media (min-width: @screen-md-min) {	
+	.mainPost{
+		.feature-content-container{
+			position:relative;
+			.feature-content-inner{
+				position:absolute;
+				bottom:0;
+				padding-right:40px;
+			}
+		}
+	}
+	
 	.single-post-container{
 		.post-content{
 			.post-info-container{

@@ -27,7 +27,7 @@
 </footer>-->
 <div id="login">
 	<form id="Form1" action="" method="POST">
-		<table cellpadding="0" cellspacing="0" border="0" class="loginTable" width="435">
+		<table cellpadding="0" cellspacing="0" border="0" class="loginTable" width="100%">
 			<tr>
 				<td rowspan="4" class="tableTitle" width="40%">CLIENT LOGIN</td>
 				<td colspan=2><input type="text" value="USERNAME" id="loginName" name="t_user" /></td>
@@ -45,7 +45,7 @@
 		</table>
 	</form>
 	<form id="Form2" action="" method="POST">
-		<table cellpadding="0" cellspacing="0" border="0" class="loginTable" width="435">
+		<table cellpadding="0" cellspacing="0" border="0" class="loginTable" width="100%">
 			<tr>
 				<td rowspan="5" class="tableTitle" width="40%">FORGOT YOUR PASSWORD?</td>
 				<td><input type="text" value="USER ID" id="loginName2" name="t_userid" /></td>

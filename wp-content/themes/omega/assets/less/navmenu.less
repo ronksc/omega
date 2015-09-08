@@ -16,7 +16,7 @@
 	
 	.navbar-header{
 		//padding:0 15px;
-		margin:0;
+		margin:10px;
 	}
 }
 
@@ -29,6 +29,7 @@
 	position:relative;
 	z-index:999;
 	height:auto;
+	max-width: 190px;
 	img{
 		width:100%;
 		height:auto;
@@ -36,7 +37,7 @@
 }
 
 .navbar-toggle{
-	margin-top:25px;
+	margin-top:20px;
 }
 
 .nav-container{
@@ -48,9 +49,9 @@
 		z-index:999;
 		background:rgba(255,255,255,1);
 		//max-height:350px;
-		-webkit-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.6);
-		-moz-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.6);
-		box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.6);
+		-webkit-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.3);
+		-moz-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.3);
+		box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.3);
 	}
 }
 
@@ -58,39 +59,65 @@
 	position:relative;
 }
 
-#menu-primary-navigation{
-	li{
-		padding: 0;
-	}
-	&>li a{
-		  font-family: "Oswald";
-		  font-weight: 400;
-		  color:#706f73;
-		  font-size:15.4px;
-		  padding:7px 12px;
-		  &:hover{
-		  	font-weight:normal;
-			
-		  }
-	}
-	.sub-menu{
-		&>li a{
-			//letter-spacing: 1px;
-			font-size: 13px;
-
+.nav-container{
+	.main-menu{
+		.navbar-nav{
+			margin:0 -15px;
 		}
-		li.active{
-			/*a{
-				font-weight: 700;
-			}*/
-		}
-		.sub-menu li{
-			a{
-				letter-spacing: 1px;
-				font-size: 8.5px;
-				text-transform: none;
+	}
+}
 
-
+.nav-container{
+	.main-menu{
+		.navbar-nav{
+			li{
+				padding: 0;
+			}
+			&>li{
+				border-bottom:1px solid #999;
+				a{
+					font-family: "Oswald";
+					font-weight: 400;
+					color:#706f73;
+					font-size:15.4px;
+					padding:10px 25px;
+					text-transform:uppercase;
+					&:hover{
+						font-weight:normal;
+					}
+				}
+				&.active{
+					.sub-menu{
+						display:block;
+						background:#e7e7e7;
+					}
+				}
+			}
+	
+			.sub-menu{
+				display:none;
+				padding-left:20px;
+				&>li{
+					list-style:none;
+					a{
+						display:block;
+						padding:5px 25px;
+					}
+				}
+				li.active{
+					/*a{
+						font-weight: 700;
+					}*/
+				}
+				.sub-menu li{
+					a{
+						letter-spacing: 1px;
+						font-size: 8.5px;
+						text-transform: none;
+		
+		
+					}
+				}
 			}
 		}
 	}
@@ -114,7 +141,7 @@
 
 .footer{
 	color: #fff;
-    margin: 15px auto;
+    margin: 25px auto;
 	font-size:11px;
 	position:relative;
 	.linkedin-container{
@@ -152,6 +179,20 @@
 			padding-left:15px;
 			padding-right:15px;
 		}
+		
+		.navbar-header{
+			width:140px;
+			padding:0;
+			margin:0;
+			.navbar-brand{
+				padding:0;
+				width:auto;
+				height:auto;
+				img{
+					width:100%;
+				}
+			}
+		}
 	}
 	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
 		background:none;
@@ -167,18 +208,7 @@
 		}
 	}
 	
-	.navbar-header{
-		width:140px;
-		padding:0;
-		.navbar-brand{
-			padding:0;
-			width:auto;
-			height:auto;
-			img{
-				width:100%;
-			}
-		}
-	}
+	
 	
 	.nav-container{
 		.main-menu{
@@ -198,11 +228,16 @@
 				z-index:10;
 			}
 			.navbar-nav{
+				margin:0;
 				position:relative;
 				z-index:100;
 				& > li{
+					border-bottom:none!important;
 					text-transform:uppercase;
 					position:relative;
+					a{
+						padding:7px 10px;
+					}
 					&:hover{
 						& > a{
 							//font-weight:bold;
@@ -210,7 +245,12 @@
 							padding-bottom:10px!important;
 						}
 						.sub-menu{
-							display:block;
+							display:block!important;
+						}
+					}
+					&.active{
+						.sub-menu{
+							display:none;
 						}
 					}
 					.sub-menu{
@@ -221,16 +261,18 @@
 						width: 101px;
 						top:30px;
 						z-index:999;
-						li {
+						&>li{
 							background-color: #e8e8e8;
 							border-top: 1px solid #fff;
 							float: none;
-							font-size: 13px;
-							padding: 7px 5px!important;
 							text-align: center;
 							list-style:none;
-							a {
+							padding: 7px 5px!important;
+							a{
 								color: #706f73;
+								font-size: 13px;
+								display:block;
+								padding:0;
 							}
 							&:hover{
 								background-color:#bdbdbd;
@@ -276,13 +318,16 @@
 	.navbar-header{
 		width:200px;
 	}
-	
-	#menu-primary-navigation{
 		
-		li{
-			padding: 5px 22px;
-			a{
-				padding:0;
+	.nav-container{
+		.main-menu{
+			.navbar-nav{
+				li{
+					padding: 5px 22px;
+					a{
+						padding:0;
+					}
+				}	
 			}
 		}
 	}

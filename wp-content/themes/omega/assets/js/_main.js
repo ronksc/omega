@@ -253,6 +253,10 @@ var Roots = {
 			$('#login #Form2').show();
 			$('#login_err_message').html("");
 			$('#forget_err_message').html("");
+			$(".fancybox").fancybox({
+				fitToView : true,
+				autoSize  : true	
+			});
 		});
 	
 		$('#btn-cancel').click(function(){
@@ -263,6 +267,8 @@ var Roots = {
 		});
 	
 		$(".fancybox").fancybox({
+			fitToView : true,
+			autoSize  : true,
 			afterClose: function() {
 				$('#login #Form1').show();
 				$('#login #Form2').hide();  

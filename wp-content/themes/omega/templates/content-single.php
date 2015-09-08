@@ -2,10 +2,10 @@
 	<div class="row">
 		<?php while (have_posts()) : the_post(); ?>
 			<div class="page-control clearfix">
-				<div class="col-xs-12 col-sm-4">
+				<!--<div class="col-xs-12 col-sm-4">
 					<a href="/blog/" class="allNews-link"><i class="fa fa-angle-left"></i> ALL NEWS</a>
-				</div>
-				<div class="hidden-xs col-sm-8">
+				</div>-->
+				<div class="hidden-xs col-sm-12">
 					<div class="col-xs-6 prev-post">
 						<? $prev_post = get_adjacent_post(false, '', true);
 						  if(!empty($prev_post)) {?>
@@ -58,6 +58,7 @@
 						<?php the_content(); ?>
 					</div>
 					<div class="col-sm-2 related_topics_conatiner col-sm-pull-10">
+                    	<p><a href="/blog/" class="allNews-link">VIEW ALL NEWS</a></p>
 						<p>RELATED TOPICS</p>
 						<?
 							$post_categories = wp_get_post_categories( $post->ID );

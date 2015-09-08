@@ -106,7 +106,7 @@
 						<div class="col-xs-4 col-sm-4 noPadding">
 							<select class="post_sort_select">
 								<option value="">Date</option>
-								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&posts_amount='.$posts_per_page?>">All Year</option>
+								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&posts_amount='.$posts_per_page?>">All Years</option>
 								<option <? if($blog_year == 2015) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2015&posts_amount='.$posts_per_page?>">2015</option>
 								<option <? if($blog_year == 2014) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2014&posts_amount='.$posts_per_page?>">2014</option>
 								<option <? if($blog_year == 2013) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2013&posts_amount='.$posts_per_page?>">2013</option>
@@ -115,7 +115,7 @@
 						<div class="col-xs-8 col-sm-8 noPadding">
 							<select class="post_sort_select">
 								<option value="">Subject</option>
-								<option <? if($blog_cat == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category=&y='.$blog_year?>">All Subject</option>
+								<option <? if($blog_cat == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category=&y='.$blog_year?>">All Subjects</option>
 								<?
 									foreach ( $categories as $category ) {?>
 										<option <? if($category->cat_ID == $blog_cat) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$category->cat_ID.'&y='.$blog_year.'&posts_amount='.$posts_per_page?>"><?=$category->name?></option>

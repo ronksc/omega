@@ -137,17 +137,29 @@ h2 {
 #login {
     background: rgba(0, 0, 0, 0) url("../img/bg_login.png") repeat scroll 0 0;
     display: none;
-    height: 432px;
-    padding-top: 150px;
+    //height: 432px;
+    //padding-top: 150px;
+	padding:15% 5%;
     position: relative;
     text-align: center;
-    width: 862px;
+    //width: 862px;
 	#Form2{display: none}
 	.loginTable{
-		width:432px; 
+		//width:432px; 
 		margin:0 auto;
 		a{
 			color: #fff;
+			-ms-word-break: break-all;
+
+			 /* Be VERY careful with this, breaks normal words wh_erever */
+			 word-break: break-all;
+		
+			 /* Non standard for webkit */
+			 word-break: break-word;
+		
+			-webkit-hyphens: auto;
+			-moz-hyphens: auto;
+			hyphens: auto;
 		}
 		
 		tr td{
@@ -167,7 +179,8 @@ h2 {
 		input[type='text']{
 			background:url(../img/bg_input_login.png) no-repeat; 
 			border:none !important; 
-			width:235px; 
+			//width:235px; 
+			width:100%;
 			height:36px; 
 			padding:0 10px; 
 			font-family: 'Oswald'; 
@@ -180,7 +193,8 @@ h2 {
 		input[type='password']{
 			background:url(../img/bg_input_login.png) no-repeat; 
 			border:none !important; 
-			width:235px; 
+			//width:235px; 
+			width:100%;
 			height:36px; 
 			padding:0 10px; 
 			font-family: 'Oswald'; 
@@ -194,7 +208,8 @@ h2 {
 			background:#963934; 
 			color:#fff; 
 			text-align:center; 
-			width:255px; 
+			//width:255px; 
+			width:100%;
 			height:36px; 
 			border:none!important; 
 			font-family: 'Oswald'; 
@@ -203,22 +218,33 @@ h2 {
 		}
 		
 		#btn-get-possword{
-			width: 150px;
+			width: 100%;
 			display: block;
 			padding: 0;
-			margin: 0;
+			margin: 0 0 10px 0;
 			position: relative;
-			float:left;
+			//float:left;
+			-ms-word-break: break-all;
+
+			 /* Be VERY careful with this, breaks normal words wh_erever */
+			 word-break: break-all;
+		
+			 /* Non standard for webkit */
+			 word-break: break-word;
+			 
+			 -webkit-hyphens: auto;
+			-moz-hyphens: auto;
+			hyphens: auto;
 		}
 		
 		#btn-cancel{
-			width: 80px;
+			width: 100%;
 			display: block;
 			padding: 0;
 			margin: 0;
-			margin-left: 20px;
+			//margin-left: 20px;
 			position: relative;
-			float:right;
+			//float:right;
 			padding: 8px 0;
 		}
 		.forgetPassword{
@@ -237,6 +263,33 @@ h2 {
 @media (min-width: @screen-sm-min) {
 	.main{
 		//padding-top:181px;
+	}
+	
+	#login {
+		padding:15%;
+		.loginTable{
+			width:435px;
+			
+			#btn-get-possword{
+				width: 150px;
+				display: block;
+				padding: 0;
+				margin: 0;
+				position: relative;
+				float:left;
+			}
+			
+			#btn-cancel{
+				width: 80px;
+				display: block;
+				padding: 0;
+				margin: 0;
+				margin-left: 20px;
+				position: relative;
+				float:right;
+				padding: 8px 0;
+			}
+		}
 	}
 }
 
