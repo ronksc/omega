@@ -54,6 +54,12 @@
 					</div>
 				</div>
 				<div class="post-main-content clearfix">
+					<? echo '<pre>';
+					   $related_topics = get_field('related_topics');
+					   foreach ( $related_topics as $related_topic ) {
+							echo '<p>'.get_the_title($related_topic->ID).'</p>';
+					   }
+					   echo '</pre>';?>
 					<div class="col-sm-10 col-sm-push-2 post-main-content-body">
 						<?php the_content(); ?>
 					</div>
@@ -61,7 +67,18 @@
                     	<p><a href="/blog/" class="allNews-link">VIEW ALL NEWS</a></p>
 						<p>RELATED TOPICS</p>
 						<?
-							$post_categories = wp_get_post_categories( $post->ID );
+							$related_topics = get_field('related_topics');
+							if(count($related_topics) > 0){
+								echo '<ul class="related_topics">';
+							}
+						    foreach ( $related_topics as $related_topic ) {
+								echo '<li><a href="'.get_permalink($related_topic->ID).'">'.get_the_title($related_topic->ID).'</a></li>';
+						    }
+							
+							if(count($related_topics) > 0){
+								echo '</ul>';
+							}
+							/*$post_categories = wp_get_post_categories( $post->ID );
 							$size_post_categories = count($post_categories);
 							$cats = array();
 							
@@ -73,7 +90,7 @@
 									echo "<li><a href='/blog/?category=".$c."'>". $cat->name ."</a></li>";
 								}
 								echo '</ul>';
-							}
+							}*/
 							//print_r($cats);
 						?>
 					</div>
