@@ -54,12 +54,7 @@
 					</div>
 				</div>
 				<div class="post-main-content clearfix">
-					<? echo '<pre>';
-					   $related_topics = get_field('related_topics');
-					   foreach ( $related_topics as $related_topic ) {
-							echo '<p>'.get_the_title($related_topic->ID).'</p>';
-					   }
-					   echo '</pre>';?>
+					
 					<div class="col-sm-10 col-sm-push-2 post-main-content-body">
 						<?php the_content(); ?>
 					</div>
