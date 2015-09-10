@@ -15,7 +15,7 @@
 		.feature-img-caption{
 			background:#E6E8E7;	
 			padding:5px 10px;
-			font-size:12px;
+			font-size:9px;
 			color:#818181;	
 		}
 	}
@@ -40,6 +40,7 @@
 			font-size:17px;
 			color:#53555A;
 			line-height:27px;
+			letter-spacing: 1px;
 		}
 		.readmore_link{
 			font-size:14px;
@@ -85,6 +86,7 @@
 			font-size:17px;
 			color:#53555A;
 			line-height:27px;
+			letter-spacing: 1px;
 		}
 		.readmore_link{
 			color:#953834;
@@ -117,6 +119,15 @@
 			cursor:pointer;
 			padding-right:15px;
 			background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
+			text-transform: uppercase;
+		}
+		.post_sort_select option{
+			font-size: 17px;
+			font-weight: 100!important;
+			font-family: Oswald;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			appearance:none;
 		}
 		.post-search-container{
 			margin-top:10px;
@@ -215,7 +226,8 @@
 	background:rgba(255,255,255,0.8);
 	.page-control{
 		font-size:12px;
-		padding:20px 15px;
+		padding:0 15px 20px;
+		    margin-top: -20px;
 		font-family: "Oswald";
 		font-weight:300;
 		-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.30);
@@ -279,7 +291,7 @@
 				.feature-img-caption{
 					background:#E6E8E7;	
 					padding:5px 30px;
-					font-size:10px;
+					font-size:9px;
 					font-family: "Aileronlight";
 					color:#818181;	
 				}
@@ -306,6 +318,7 @@
 					font-size:18px;
 					    line-height: 170%;
 					color:#53555A;
+					letter-spacing: 1px;
 				}
 			}
 		}
@@ -340,7 +353,8 @@
 					padding-left:0;
 					li{
 						list-style:none;
-						padding-bottom:5px;
+						padding-bottom: 10px;
+    					line-height: 120%;
 						a{
 							color:#818181;
 						}
@@ -379,6 +393,9 @@
 	background-size: contain!important;
 }
 
+.search-form .search-field{
+	text-transform: uppercase;
+}
 //===============================================================================
 //===============================================================================
 // tablet
@@ -479,6 +496,10 @@
 				}
 			}
 		}
+	}
+	.single-post-container .page-control {
+		padding: 20px 15px;
+		margin-top: 0;
 	}
 }
 
