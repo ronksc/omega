@@ -8030,7 +8030,8 @@ footer .copyright a {
   padding: 0;
 }
 .navbar-default .navbar-header {
-  margin: 10px;
+  padding: 10px;
+  background: url(../img/bg_mobile_header.jpg) repeat-y left #f7f7f5;
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
@@ -8145,6 +8146,7 @@ footer .copyright a {
     padding-right: 15px;
   }
   .navbar-default .navbar-header {
+    background: none;
     width: 140px;
     padding: 0;
     margin: 0;
