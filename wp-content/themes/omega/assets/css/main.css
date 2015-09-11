@@ -8050,6 +8050,14 @@ footer .copyright a {
 .navbar-toggle {
   margin-top: 20px;
 }
+.navbar-default .navbar-toggle {
+  border-color: #888888;
+  background-color: transparent;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
 .nav-container {
   position: relative;
 }
@@ -8085,6 +8093,11 @@ footer .copyright a {
 .nav-container .main-menu .navbar-nav > li a:hover {
   font-weight: normal;
 }
+.nav-container .main-menu .navbar-nav > li.active {
+  /*&>a{
+						    font-weight: 700;
+					}*/
+}
 .nav-container .main-menu .navbar-nav > li.active .sub-menu {
   display: block;
   background: #e7e7e7;
@@ -8095,6 +8108,9 @@ footer .copyright a {
 }
 .nav-container .main-menu .navbar-nav .sub-menu > li {
   list-style: none;
+}
+.nav-container .main-menu .navbar-nav .sub-menu > li.active a {
+  font-weight: 700;
 }
 .nav-container .main-menu .navbar-nav .sub-menu > li a {
   display: block;
