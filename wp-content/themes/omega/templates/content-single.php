@@ -60,17 +60,14 @@
 					</div>
 					<div class="col-sm-2 related_topics_conatiner col-sm-pull-10">
                     	<p><a href="/blog/" class="allNews-link">VIEW ALL NEWS</a></p>
-						<p>RELATED TOPICS</p>
 						<?
 							$related_topics = get_field('related_topics');
-							if(count($related_topics) > 0){
+							if(sizeof($related_topics) > 0 && $related_topics != ''){
+								echo '<p>RELATED TOPICS</p>';
 								echo '<ul class="related_topics">';
-							}
-						    foreach ( $related_topics as $related_topic ) {
-								echo '<li><a href="'.get_permalink($related_topic->ID).'">'.get_the_title($related_topic->ID).'</a></li>';
-						    }
-							
-							if(count($related_topics) > 0){
+								foreach ( $related_topics as $related_topic ) {
+									echo '<li><a href="'.get_permalink($related_topic->ID).'">'.get_the_title($related_topic->ID).'</a></li>';
+								}
 								echo '</ul>';
 							}
 							/*$post_categories = wp_get_post_categories( $post->ID );
