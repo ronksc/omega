@@ -7653,18 +7653,18 @@ footer .copyright a {
 .post-listing .listing-control .post_sort_select {
   border: none;
   outline: none;
-  margin-top: 3px;
-  font-size: 17px;
+  font-size: 16px;
+  margin-top: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
   padding-right: 15px;
-  background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
   text-transform: uppercase;
+  background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
 }
 .post-listing .listing-control .post_sort_select option {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 100!important;
   font-family: Oswald;
   -webkit-appearance: none;
@@ -7674,6 +7674,9 @@ footer .copyright a {
 .post-listing .listing-control .post-search-container {
   margin-top: 10px;
   text-align: right;
+}
+.post-listing .listing-control .post-search-container .search-form .search-field {
+  font-size: 16px;
 }
 .post-listing .listing-control .post-search-container .search-form .input-group-btn .search-submit {
   text-indent: -9999px;
