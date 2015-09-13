@@ -7653,7 +7653,7 @@ footer .copyright a {
 .post-listing .listing-control .post_sort_select {
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -7664,7 +7664,7 @@ footer .copyright a {
   background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
 }
 .post-listing .listing-control .post_sort_select option {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 100!important;
   font-family: Oswald;
   -webkit-appearance: none;
@@ -7676,7 +7676,7 @@ footer .copyright a {
   text-align: right;
 }
 .post-listing .listing-control .post-search-container .search-form .search-field {
-  font-size: 16px;
+  font-size: 15px;
 }
 .post-listing .listing-control .post-search-container .search-form .input-group-btn .search-submit {
   text-indent: -9999px;
