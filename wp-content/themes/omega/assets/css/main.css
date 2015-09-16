@@ -7641,7 +7641,7 @@ footer .copyright a {
   position: relative;
   z-index: 60;
   padding: 30px 40px 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
 }
 .post-listing .listing-control {
   font-family: "Oswald";
@@ -7653,18 +7653,18 @@ footer .copyright a {
 .post-listing .listing-control .post_sort_select {
   border: none;
   outline: none;
-  margin-top: 3px;
-  font-size: 17px;
+  font-size: 15px;
+  margin-top: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
   padding-right: 15px;
-  background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
   text-transform: uppercase;
+  background: url(../img/selector_arrow.png) no-repeat right #cbcccc;
 }
 .post-listing .listing-control .post_sort_select option {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 100!important;
   font-family: Oswald;
   -webkit-appearance: none;
@@ -7674,6 +7674,9 @@ footer .copyright a {
 .post-listing .listing-control .post-search-container {
   margin-top: 10px;
   text-align: right;
+}
+.post-listing .listing-control .post-search-container .search-form .search-field {
+  font-size: 15px;
 }
 .post-listing .listing-control .post-search-container .search-form .input-group-btn .search-submit {
   text-indent: -9999px;
@@ -7756,7 +7759,7 @@ footer .copyright a {
   font-weight: bold;
 }
 .single-post-container {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
 }
 .single-post-container .page-control {
   font-size: 12px;
@@ -7794,6 +7797,7 @@ footer .copyright a {
   font-family: "Oswald";
   color: #989898!important;
   font-size: 12px;
+  margin-bottom: 5px;
 }
 .single-post-container .page-control .article-link span i {
   color: #953834;
@@ -8271,8 +8275,8 @@ footer .copyright a {
   }
 }
 @media (min-width: 992px) {
-  .navbar-header {
-    width: 200px;
+  .navbar-default .navbar-header {
+    width: 190px;
   }
   .nav-container .main-menu .navbar-nav li {
     padding: 5px 22px;
@@ -8289,7 +8293,7 @@ footer .copyright a {
   }
 }
 @media (min-width: 1200px) {
-  .navbar-header {
+  .navbar-default .navbar-header {
     width: auto;
   }
 }
