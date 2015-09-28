@@ -50,7 +50,12 @@
                         </div>
                         <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d131230118ed49"></script>
-						<?php the_excerpt(); ?>
+						<?
+							if( $post->post_excerpt ){
+								echo $post->post_excerpt;
+							}
+						?>
+						<?php //the_excerpt(); ?>
 					</div>
 				</div>
 				<div class="post-main-content clearfix">
