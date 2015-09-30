@@ -52,7 +52,9 @@
 						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d131230118ed49"></script>
 						<?
 							if( $post->post_excerpt ){
-								echo $post->post_excerpt;
+						?>
+								<div class="post-excerpt"><?=$post->post_excerpt;?></div>
+						<?
 							}
 						?>
 						<?php //the_excerpt(); ?>
