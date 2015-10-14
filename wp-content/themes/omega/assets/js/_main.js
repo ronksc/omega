@@ -146,6 +146,9 @@ var Roots = {
 			if($('#menu-primary-navigation>li.active').length > 0){
 				current_page_nav_left = parseInt($('#menu-primary-navigation>li.active').offset().left)-parseInt(nav_left);
 				current_page_nav_width = $('#menu-primary-navigation>li.active').outerWidth();
+			}else if($('body').hasClass('single-post')){
+				current_page_nav_left = parseInt($('#menu-primary-navigation>li.menu-news').offset().left)-parseInt(nav_left);
+				current_page_nav_width = $('#menu-primary-navigation>li.menu-news').outerWidth();
 			}else{
 				current_page_nav_left = parseInt($('#menu-primary-navigation>li').eq(0).offset().left)-parseInt(nav_left);
 				current_page_nav_width = $('#menu-primary-navigation>li').eq(0).outerWidth();	
