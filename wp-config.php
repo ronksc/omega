@@ -36,6 +36,14 @@
 
 switch ($_SERVER['SERVER_NAME']) {
 
+	case "www.omegacompliance.com":
+		define('DB_NAME', 'omega');
+		define('WP_SITEURL',  'http://www.omegacompliance.com' );
+    	define('WP_HOME', 'http://www.omegacompliance.com' );
+		define('DB_USER', 'root');
+		define('DB_PASSWORD', 'root');
+		define('DB_HOST', 'localhost');
+
 	case "local.omega.com":
 		define('DB_NAME', 'omega');
 		define('WP_SITEURL',  'http://local.omega.com' );
@@ -104,7 +112,7 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
-define('WP_ENV', 'development');
+define('WP_ENV', 'production');
 
 /* That's all, stop editing! Happy blogging. */
 
