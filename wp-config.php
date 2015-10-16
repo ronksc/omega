@@ -38,8 +38,8 @@ switch ($_SERVER['SERVER_NAME']) {
 
 	case "www.omegacompliance.com":
 		define('DB_NAME', 'omega');
-		define('WP_SITEURL',  'http://www.omegacompliance.com' );
-    	define('WP_HOME', 'http://www.omegacompliance.com' );
+		define('WP_SITEURL',  'https://www.omegacompliance.com' );
+    	define('WP_HOME', 'https://www.omegacompliance.com' );
 		define('DB_USER', 'root');
 		define('DB_PASSWORD', 'root');
 		define('DB_HOST', 'localhost');
