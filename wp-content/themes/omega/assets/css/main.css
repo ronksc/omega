@@ -7009,7 +7009,7 @@ h2 {
 #login {
   background: rgba(0, 0, 0, 0) url("../img/bg_login.png") repeat scroll 0 0;
   display: none;
-  padding: 15% 5%;
+  padding: 30px;
   position: relative;
   text-align: center;
 }
@@ -7110,7 +7110,7 @@ h2 {
 }
 @media (min-width: 768px) {
   #login {
-    padding: 15%;
+    padding: 90px;
   }
   #login .loginTable {
     width: 435px;
