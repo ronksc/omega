@@ -107,9 +107,18 @@
 							<select class="post_sort_select">
 								<option value="">Date</option>
 								<option <? if($blog_year == '') { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&posts_amount='.$posts_per_page?>">All Years</option>
-								<option <? if($blog_year == 2015) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2015&posts_amount='.$posts_per_page?>">2015</option>
-								<option <? if($blog_year == 2014) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2014&posts_amount='.$posts_per_page?>">2014</option>
-								<option <? if($blog_year == 2013) { echo 'selected="selected"'; } ?> value="<?=$full_uri.'?category='.$blog_cat.'&y=2013&posts_amount='.$posts_per_page?>">2013</option>
+                                <?php
+                                	global $wpdb;
+									$years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+									foreach($years as $year){
+										if($blog_year == $year){
+											$selected = 'selected="selected"';	
+										}else{
+											$selected = '';
+										}
+										echo '<option value="'.$full_uri.'?category='.$blog_cat.'&y=2015&posts_amount='.$posts_per_page.'" '.$selected.'>2015</option>';
+									}
+								?>
 							</select>
 						</div>
 						<div class="col-xs-8 col-sm-8 noPadding">
