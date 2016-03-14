@@ -342,7 +342,7 @@ var Roots = {
 		});
     }
   },
-  blog:{
+  page_template_template_news:{
 	init: function(){
 		function initSelect(){
 			$('.post_sort_select').each(function(){

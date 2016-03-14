@@ -110,13 +110,14 @@
                                 <?php
                                 	global $wpdb;
 									$years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+									print_r($years);
 									foreach($years as $year){
 										if($blog_year == $year){
 											$selected = 'selected="selected"';	
 										}else{
 											$selected = '';
 										}
-										echo '<option value="'.$full_uri.'?category='.$blog_cat.'&y=2015&posts_amount='.$posts_per_page.'" '.$selected.'>2015</option>';
+										echo '<option value="'.$full_uri.'?category='.$blog_cat.'&y='.$year.'&posts_amount='.$posts_per_page.'" '.$selected.'>'.$year.'</option>';
 									}
 								?>
 							</select>
