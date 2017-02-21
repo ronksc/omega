@@ -1,0 +1,168 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+.innerContentContainer{
+	box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.75);
+	background: url("../img/bg_content.png") repeat;
+	
+	.contentBannerContainer{
+		.banner_text{
+			background-color:#963934;
+			margin-bottom:20px;
+			padding:20px;
+			color:#fff;
+			text-transform:uppercase;
+			font-family: "Oswald";
+			font-weight:200;
+			letter-spacing: 1.3px;
+		    line-height: 37px;
+			font-size:22px;
+			&.grey_bg{
+				background-color:#717174;
+			}
+			h2{
+				color:#fff!important;
+				font-size:53px;
+				font-weight:300!important;
+				text-transform:uppercase;
+				margin-top:0;
+			}
+			p{
+				font-size:16px;
+				color:#fff;
+				margin-bottom:0;
+				line-height:1.42857;
+			}
+		}
+	}
+	
+	.contentContainer{
+		padding:20px;
+		.banner_text{
+			h2{
+				margin-top: 0;
+    			margin-bottom: 10p;
+			}
+			p{
+				line-height: 150%;
+				font-family: "Oswald" !important;
+				font-weight: 300;
+				font-size: 18px;
+				text-transform: uppercase;
+			}
+		}
+		p,li {
+			color: #000;
+			font-family: "aileronlight";
+			font-size: 14px;
+			line-height: 180%;
+			margin-bottom: 20px;
+			a {
+				color: #000;
+				&:hover{
+					color:#983534;
+				}
+			}
+		}
+				
+		.btnFileReport {
+			background: rgba(0, 0, 0, 0) url("../img/btn_fileReport.png") no-repeat scroll right center;
+			font-size: 18px;
+			line-height: 130%;
+			min-height: 20px;
+			padding-bottom: 1px;
+			padding-right: 20px;
+			span {
+				border-bottom: 1px solid #706f73;
+				color: #706f73;
+				font-family: "Oswald";
+				font-size: 18px;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+		}
+				
+		.ethicsLogoContainer {
+			padding-bottom: 10px;
+		}
+		
+		
+		.companyName {
+			color: #706f73 !important;
+			font-family: "Oswald";
+			font-size: 23px;
+			font-weight: 400;
+			letter-spacing: 1px;
+			padding-bottom: 20px;
+		}
+		
+		.companyAddress {
+			color: #706f73 !important;
+			font-family: "Oswald";
+			font-size: 19px;
+			font-weight: 300;
+			letter-spacing: 1px;
+			line-height: 140%;
+			padding-bottom: 15px;
+		}
+	}
+}
+
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	.innerContentContainer{
+		.contentBannerContainer{
+			position:relative;
+			.banner_text{
+				display:none;
+				background-color:rgba(121, 15, 15, 0.7);
+				margin-bottom:0;
+				padding:28px 16px 28px 30px;
+				position:absolute;
+				max-width:295px;
+				bottom:0;
+				left:40px;
+				
+				&.grey_bg{
+					background-color:rgba(30, 30, 30, 0.6);
+				}
+			}
+		}
+		
+		.contentContainer{
+			padding:40px;
+		}
+	}
+	
+	.training{
+		.innerContentContainer .contentBannerContainer .banner_text{
+			max-width:300px;
+			letter-spacing: 0;
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {	
+
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+
+}

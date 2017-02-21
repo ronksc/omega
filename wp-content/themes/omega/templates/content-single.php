@@ -66,7 +66,7 @@
 						<?php the_content(); ?>
 					</div>
 					<div class="col-sm-2 related_topics_conatiner col-sm-pull-10">
-                    	<p><a href="/blog/" class="allNews-link">VIEW ALL NEWS</a></p>
+                    	<p><a href="/insights/" class="allNews-link">VIEW ALL NEWS</a></p>
 						<?
 							$related_topics = get_field('related_topics');
 							if(sizeof($related_topics) > 0 && $related_topics != ''){

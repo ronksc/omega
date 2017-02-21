@@ -25,6 +25,154 @@
     </div>
   </div>
 </footer>-->
+<script Language="Javascript">
+    jQuery.extend(
+     {
+      /**
+       * @see  ?javascript???????json???
+       * @param ?????,??object,array,string,function,number,boolean,regexp
+       * @return ??json???
+       */
+      toJSON : function (object)
+      {
+       var type = typeof object;
+       if ('object' == type)
+       {
+        if (object === null) return 'null';		// added by sunny 2010-02-19, handle null property
+        if (Array == object.constructor)
+         type = 'array';
+        else if (RegExp == object.constructor)
+         type = 'regexp';
+        else
+         type = 'object';
+       }
+       switch(type)
+       {
+        case 'undefined':
+        case 'unknown':
+          return;
+          break;
+        case 'function':
+        case 'boolean':
+        case 'regexp':
+          return object.toString();
+          break;
+        case 'number':
+          return isFinite(object) ? object.toString() : 'null';
+          break;
+        case 'string':
+          return '"' + object.replace(/(\\|\")/g,"\\$1").replace(/\n|\r|\t/g,
+           function(){
+                     var a = arguments[0];
+            return  (a == '\n') ? '\\n':
+                           (a == '\r') ? '\\r':
+                           (a == '\t') ? '\\t': ""
+                 }) + '"';
+          break;
+        case 'object':
+          if (object === null) return 'null';
+            var results = [];
+            for (var property in object) {
+              var value = jQuery.toJSON(object[property]);
+              if (value !== undefined)
+                results.push(jQuery.toJSON(property) + ':' + value);
+            }
+            return '{' + results.join(',') + '}';
+          break;
+        case 'array':
+          var results = [];
+            for(var i = 0; i < object.length; i++)
+          {
+          var value = jQuery.toJSON(object[i]);
+               if (value !== undefined) results.push(value);
+          }
+          return '[' + results.join(',') + ']';
+          break;
+        }
+      }
+    });
+	
+	function isIE () {
+		var myNav = navigator.userAgent.toLowerCase();
+		return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+	}
+
+	function forgot_password() {
+			if (isIE () == 8) {
+				alert("You are using an outdated browser that our website is not supported. Please upgrade your browser.\nWe supports many browsers such as Microsoft Internet Explorer 9 to 11, Microsoft Edge, Google Chrome, Mozilla Firefox and other modern browsers.");
+				return false;
+			}
+	
+//      alert("forgot_password");
+			var ls_param =  $.toJSON({"as_user_login" : $("#loginName2").val(), "as_email" : $("#email").val() });
+//      alert("forgot_password ls_param: " + ls_param);
+			$.ajax({ 
+			  type: "POST",
+			  url: "https://connex.omegacompliance.com/userwebsvc.asmx/ForgetPwd",
+			  crossDomain: true,
+			  data: ls_param,
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  cache: false,
+			  success: function(as_result) {
+				  if (as_result === "OK") {
+					$("#forget_err_message").html("A new password will be sent to your email address in a few minutes");
+//              alert("forgot_password_ok");
+				  } else {
+					$("#forget_err_message").html(as_result);
+//              alert("forgot_password_fail");
+				  }
+				},
+			  error: function(XMLHttpRequest, textStatus, errorThrown) {
+				   $("#forget_err_message").html(XMLHttpRequest.responseText);
+//          alert("forgot_password_ajax_error:" + XMLHttpRequest.responseText);
+				}
+			});
+		}
+		  
+		function f_login() {
+			if (isIE () == 8) {
+				alert("You are using an outdated browser that our website is not supported. Please upgrade your browser.\nWe supports many browsers such as Microsoft Internet Explorer 9 to 11, Microsoft Edge, Google Chrome, Mozilla Firefox and other modern browsers.");
+				return false;
+			}
+		
+//      alert("login");
+			//$.support.cors = true;
+			var ls_param =  $.toJSON({"as_user_id" : $("#loginName").val(), "as_password" : $("#password").val() });
+//      alert("login ls_param: " + ls_param);
+			$.ajax({ 
+				type: "POST",
+				url: "https://connex.omegacompliance.com/ncnUserWebSvc.asmx/RemoteLogin",
+                //url: "https://connex.omegacompliance.com/ncnUserWebSvc2.asmx",
+				//url: "https://uattw.weconnor.com/newconnex/ncnUserWebSvc.asmx/RemoteLogin",
+				data: ls_param,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				xhrFields: {
+					withCredentials: true
+				},
+				crossDomain: true,
+				cache: false,
+				success: function(as_result) {
+						if (as_result === "OK") {
+							//success
+							window.location.assign("https://connex.omegacompliance.com/ncnmenu.aspx");
+							//window.location.assign("https://uattw.weconnor.com/newconnex/ncnmenu.aspx");
+						} else if (as_result === "OKEXP") {
+							window.location.assign("https://connex.omegacompliance.com/ncnmenu.aspx?pop=changepwd");
+							//window.location.assign("https://uattw.weconnor.com/newconnex/ncnmenu.aspx?pop=changepwd");
+						} else {
+							$("#login_err_message").html(as_result);
+//              alert("login_fail");
+						}
+					}, 
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+						$("#login_err_message").html(XMLHttpRequest.responseText);
+//alert("login_ajax_error:" + textStatus);
+					}
+			});
+		}
+</script>
 <div id="login">
 	<form id="Form1" action="" method="POST">
 		<table cellpadding="0" cellspacing="0" border="0" class="loginTable" width="100%">
@@ -36,10 +184,13 @@
 				<td colspan=2><input type="text" value="PASSWORD" id="password" name="t_pwd" /></td>
 			</tr>
 			<tr>
-				<td colspan=2><input type="submit" value="LOGIN" id="btn-login" onclick="javascript:f_login();return false;"/></td>
+				<td colspan=2><input type="submit" value="LOGIN" id="btn-login" onclick="f_login();return false;"/></td>
 			</tr>
 			<tr>
-				<td><font color="red"><span id="login_err_message"></span></font></td>
+				<td><font color="red"><span id="login_err_message">
+				 <!--[if lt IE 9]>
+					You are using an outdated browser that our website is not supported. Please upgrade your browser. We supports many browsers such as Microsoft Internet Explorer 9 to 11, Microsoft Edge, Google Chrome, Mozilla Firefox and other modern browsers.
+				 <![endif]--></span></font></td>
 				<td style="text-align:right"><a href="#" class="forgetPassword">FORGOT PASSWORD?</a></td>
 			</tr>
 		</table>
@@ -54,10 +205,13 @@
 				<td><input type="text" value="EMAIL" id="email" name="t_email" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" id="btn-get-possword" value="GET NEW PASSWORD" onclick="javascript:forgot_password();return false;"/><input type="cancel" id="btn-cancel" value="CANCEL"/></td>
+				<td><input type="submit" id="btn-get-possword" value="GET NEW PASSWORD" onclick="forgot_password();return false;"/><input type="cancel" id="btn-cancel" value="CANCEL"/></td>
 			</tr>
 			<tr>
-				<td><font color="red"><span id="forget_err_message"></span></font></td>
+				<td><font color="red"><span id="forget_err_message">
+				 <!--[if lt IE 9]>
+					You are using an outdated browser that our website is not supported. Please upgrade your browser. We supports many browsers such as Microsoft Internet Explorer 9 to 11, Microsoft Edge, Google Chrome, Mozilla Firefox and other modern browsers.
+				 <![endif]--></span></font></td>
 			</tr>
 			<tr>
 				<td><font color='white'>If you have forgotten your Login, please email Omega IT Support at <a href="mailto:technical@omegacompliance.com">technical@omegacompliance.com</a></font></td>

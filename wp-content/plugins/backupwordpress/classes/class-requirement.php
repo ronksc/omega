@@ -9,31 +9,34 @@ namespace HM\BackUpWordPress;
 abstract class Requirement {
 
 	/**
+	 * The name of the requirement.
+	 *
 	 * @var string
 	 */
 	protected $name = '';
 
 	/**
-	 * @return mixed
+	 * @return mixed Did the requirement pass or fail.
 	 */
-	abstract protected function test();
+	protected static function test() {}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function name() {
 		return $this->name;
 	}
 
 	/**
-	 * @return mixed|string
+	 * @return string
 	 */
 	public function result() {
 
 		$test = $this->test();
 
-		if ( is_string( $test ) && $test )
+		if ( is_string( $test ) && $test ) {
 			return $test;
+		}
 
 		if ( is_bool( $test ) || empty( $test ) ) {
 
@@ -52,7 +55,6 @@ abstract class Requirement {
 	public function raw_result() {
 		return $this->test();
 	}
-
 }
 
 /**
@@ -63,12 +65,12 @@ class Requirement_Zip_Archive extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'ZipArchive';
+	protected $name = 'ZipArchive';
 
 	/**
 	 * @return bool
 	 */
-	protected function test() {
+	public static function test() {
 
 		if ( class_exists( 'ZipArchive' ) ) {
 			return true;
@@ -77,37 +79,8 @@ class Requirement_Zip_Archive extends Requirement {
 		return false;
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Zip_Archive', 'PHP' );
-
-/**
- * Class Requirement_Directory_Iterator_Follow_Symlinks
- *
- * Tests whether the FOLLOW_SYMLINKS class constant is available on Directory Iterator
- */
-class Requirement_Directory_Iterator_Follow_Symlinks extends Requirement {
-
-	/**
-	 * @var string
-	 */
-	var $name = 'DirectoryIterator FOLLOW_SYMLINKS';
-
-	/**
-	 * @return bool
-	 */
-	protected function test() {
-
-		if ( defined( 'RecursiveDirectoryIterator::FOLLOW_SYMLINKS' ) ) {
-			return true;
-		}
-
-		return false;
-
-	}
-
-}
-Requirements::register( 'HM\BackUpWordPress\Requirement_Directory_Iterator_Follow_Symlinks', 'PHP' );
 
 /**
  * Class Requirement_Zip_Command
@@ -119,19 +92,18 @@ class Requirement_Zip_Command_Path extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'zip command';
+	protected $name = 'zip command';
 
 	/**
-	 * @return string
+	 * @return string|false
 	 */
-	protected function test() {
+	public static function test() {
 
-		$hm_backup = new Backup;
+		$backup = new Zip_File_Backup_Engine;
 
-		return $hm_backup->get_zip_command_path();
+		return $backup->get_zip_executable_path();
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Zip_Command_Path', 'Server' );
 
@@ -145,73 +117,20 @@ class Requirement_Mysqldump_Command_Path extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'mysqldump command';
+	protected $name = 'mysqldump command';
 
 	/**
-	 * @return string
+	 * @return string|false
 	 */
-	protected function test() {
+	public static function test() {
 
-		$hm_backup = new Backup;
+		$backup = new Mysqldump_Database_Backup_Engine;
 
-		return $hm_backup->get_mysqldump_command_path();
+		return $backup->get_mysqldump_executable_path();
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Mysqldump_Command_Path', 'Server' );
-
-/**
- * Class Requirement_PHP_User
- */
-class Requirement_PHP_User extends Requirement {
-
-	/**
-	 * @var string
-	 */
-	var $name = 'User';
-
-	/**
-	 * @return string
-	 */
-	protected function test() {
-
-		if ( ! Backup::is_shell_exec_available() ) {
-			return '';
-		}
-
-		return shell_exec( 'whoami' );
-
-	}
-
-}
-Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_User', 'PHP' );
-
-/**
- * Class Requirement_PHP_Group
- */
-class Requirement_PHP_Group extends Requirement {
-
-	/**
-	 * @var string
-	 */
-	var $name = 'Group[s]';
-
-	/**
-	 * @return string
-	 */
-	protected function test() {
-
-		if ( ! Backup::is_shell_exec_available() ) {
-			return '';
-		}
-
-		return shell_exec( 'groups' );
-
-	}
-
-}
-Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_Group', 'PHP' );
 
 /**
  * Class Requirement_PHP_Version
@@ -221,15 +140,14 @@ class Requirement_PHP_Version extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Version';
+	protected $name = 'Version';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return PHP_VERSION;
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_Version', 'PHP' );
 
@@ -241,12 +159,12 @@ class Requirement_Cron_Array extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Cron Array';
+	protected $name = 'Cron Array';
 
 	/**
 	 * @return bool|mixed
 	 */
-	protected function test() {
+	public static function test() {
 
 		$cron = get_option( 'cron' );
 
@@ -257,7 +175,6 @@ class Requirement_Cron_Array extends Requirement {
 		return $cron;
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Cron_Array', 'Site' );
 
@@ -269,12 +186,12 @@ class Requirement_Language extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Language';
+	protected $name = 'Language';
 
 	/**
 	 * @return bool|mixed
 	 */
-	protected function test() {
+	public static function test() {
 
 		// Since 4.0
 		$language = get_option( 'WPLANG' );
@@ -290,7 +207,6 @@ class Requirement_Language extends Requirement {
 		return 'en_US';
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Language', 'Site' );
 
@@ -302,37 +218,16 @@ class Requirement_Safe_Mode extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Safe Mode';
+	protected $name = 'Safe Mode';
 
 	/**
 	 * @return bool
 	 */
-	protected function test() {
-		return Backup::is_safe_mode_active();
+	public static function test() {
+		return Backup_Utilities::is_safe_mode_on();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Safe_Mode', 'PHP' );
-
-/**
- * Class Requirement_Shell_Exec
- */
-class Requirement_Shell_Exec extends Requirement {
-
-	/**
-	 * @var string
-	 */
-	var $name = 'Shell Exec';
-
-	/**
-	 * @return bool
-	 */
-	protected function test() {
-		return Backup::is_shell_exec_available();
-	}
-
-}
-Requirements::register( 'HM\BackUpWordPress\Requirement_Shell_Exec', 'PHP' );
 
 /**
  * Class Requirement_Memory_Limit
@@ -342,15 +237,14 @@ class Requirement_PHP_Memory_Limit extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Memory Limit';
+	protected $name = 'Memory Limit';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return @ini_get( 'memory_limit' );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_Memory_Limit', 'PHP' );
 
@@ -362,15 +256,14 @@ class Requirement_Backup_Path extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Backup Path';
+	protected $name = 'Backup Path';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
-		return Path::get_instance()->get_path();
+	public static function test() {
+		return Path::get_path();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Backup_Path', 'Site' );
 
@@ -382,15 +275,14 @@ class Requirement_Backup_Path_Permissions extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Backup Path Permissions';
+	protected $name = 'Backup Path Permissions';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
-		return substr( sprintf( '%o', fileperms( hmbkp_path() ) ), - 4 );
+	public static function test() {
+		return substr( sprintf( '%o', fileperms( Path::get_path() ) ), - 4 );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Backup_Path_Permissions', 'Site' );
 
@@ -402,15 +294,14 @@ class Requirement_WP_CONTENT_DIR extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'WP_CONTENT_DIR';
+	protected $name = 'WP_CONTENT_DIR';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return WP_CONTENT_DIR;
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_WP_CONTENT_DIR', 'Site' );
 
@@ -422,15 +313,14 @@ class Requirement_WP_CONTENT_DIR_Permissions extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'WP_CONTENT_DIR Permissions';
+	protected $name = 'WP_CONTENT_DIR Permissions';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return substr( sprintf( '%o', fileperms( WP_CONTENT_DIR ) ), - 4 );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_WP_CONTENT_DIR_Permissions', 'Site' );
 
@@ -442,15 +332,14 @@ class Requirement_ABSPATH extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'ABSPATH';
+	protected $name = 'ABSPATH';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return ABSPATH;
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_ABSPATH', 'Site' );
 
@@ -462,19 +351,14 @@ class Requirement_Backup_Root_Path extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Backup Root Path';
+	protected $name = 'Site Root Path';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
-
-		$hm_backup = new Backup();
-
-		return $hm_backup->get_root();
-
+	public static function test() {
+		return Path::get_root();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Backup_Root_Path', 'Site' );
 
@@ -486,27 +370,29 @@ class Requirement_Calculated_Size extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Calculated size of site';
+	protected $name = 'Calculated size of site';
 
 	/**
 	 * @return array
 	 */
-	protected function test() {
+	public static function test() {
 
 		$backup_sizes = array();
 
 		$schedules = Schedules::get_instance();
 
 		foreach ( $schedules->get_schedules() as $schedule ) {
-			if ( $schedule->is_site_size_cached() ) {
-				$backup_sizes[ $schedule->get_type() ] = $schedule->get_formatted_site_size();
+
+			$site_size = new Site_Size( $schedule->get_type(), $schedule->get_excludes() );
+
+			if ( $site_size->is_site_size_cached() ) {
+				$backup_sizes[ $schedule->get_type() ] = $site_size->get_formatted_site_size();
 			}
 		}
 
 		return $backup_sizes;
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Calculated_Size', 'Site' );
 
@@ -518,15 +404,14 @@ class Requirement_WP_Cron_Test extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'WP Cron Test Failed';
+	protected $name = 'WP Cron Test Failed';
 
 	/**
-	 * @return mixed
+	 * @return boolean
 	 */
-	protected function test() {
+	public static function test() {
 		return (bool) get_option( 'hmbkp_wp_cron_test_failed' );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_WP_Cron_Test', 'Site' );
 
@@ -538,15 +423,14 @@ class Requirement_PHP_API extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Interface';
+	protected $name = 'Interface';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return php_sapi_name();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_API', 'PHP' );
 
@@ -558,20 +442,20 @@ class Requirement_Server_Software extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Server';
+	protected $name = 'Server';
 
 	/**
 	 * @return bool
 	 */
-	protected function test() {
+	public static function test() {
 
-		if ( ! empty( $_SERVER['SERVER_SOFTWARE'] ) )
+		if ( ! empty( $_SERVER['SERVER_SOFTWARE'] ) ) {
 			return $_SERVER['SERVER_SOFTWARE'];
+		}
 
 		return false;
 
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Server_Software', 'Server' );
 
@@ -583,15 +467,14 @@ class Requirement_Server_OS extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'OS';
+	protected $name = 'OS';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return PHP_OS;
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Server_OS', 'Server' );
 
@@ -603,15 +486,14 @@ class Requirement_PHP_Disable_Functions extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'Disabled Functions';
+	protected $name = 'Disabled Functions';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return @ini_get( 'disable_functions' );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_Disable_Functions', 'PHP' );
 
@@ -623,15 +505,14 @@ class Requirement_PHP_Open_Basedir extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'open_basedir';
+	protected $name = 'open_basedir';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return @ini_get( 'open_basedir' );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_PHP_Open_Basedir', 'PHP' );
 
@@ -645,15 +526,14 @@ class Requirement_Define_HMBKP_PATH extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_PATH';
+	protected $name = 'HMBKP_PATH';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_PATH' ) ? HMBKP_PATH : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_PATH', 'constants' );
 
@@ -665,15 +545,14 @@ class Requirement_Define_HMBKP_ROOT extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_ROOT';
+	protected $name = 'HMBKP_ROOT';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_ROOT' ) ? HMBKP_ROOT : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_ROOT', 'constants' );
 
@@ -685,15 +564,14 @@ class Requirement_Define_HMBKP_MYSQLDUMP_PATH extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_MYSQLDUMP_PATH';
+	protected $name = 'HMBKP_MYSQLDUMP_PATH';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_MYSQLDUMP_PATH' ) ? HMBKP_MYSQLDUMP_PATH : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_MYSQLDUMP_PATH', 'constants' );
 
@@ -705,15 +583,14 @@ class Requirement_Define_HMBKP_ZIP_PATH extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_ZIP_PATH';
+	protected $name = 'HMBKP_ZIP_PATH';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_ZIP_PATH' ) ? HMBKP_ZIP_PATH : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_ZIP_PATH', 'constants' );
 
@@ -725,15 +602,14 @@ class Requirement_Define_HMBKP_CAPABILITY extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_CAPABILITY';
+	protected $name = 'HMBKP_CAPABILITY';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_CAPABILITY' ) ? HMBKP_CAPABILITY : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_CAPABILITY', 'constants' );
 
@@ -745,15 +621,14 @@ class Requirement_Define_HMBKP_EMAIL extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_EMAIL';
+	protected $name = 'HMBKP_EMAIL';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_EMAIL' ) ? HMBKP_EMAIL : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_EMAIL', 'constants' );
 
@@ -765,15 +640,14 @@ class Requirement_Define_HMBKP_ATTACHMENT_MAX_FILESIZE extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_ATTACHMENT_MAX_FILESIZE';
+	protected $name = 'HMBKP_ATTACHMENT_MAX_FILESIZE';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_ATTACHMENT_MAX_FILESIZE' ) ? HMBKP_ATTACHMENT_MAX_FILESIZE : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_ATTACHMENT_MAX_FILESIZE', 'constants' );
 
@@ -785,55 +659,65 @@ class Requirement_Define_HMBKP_EXCLUDE extends Requirement {
 	/**
 	 * @var string
 	 */
-	var $name = 'HMBKP_EXCLUDE';
+	protected $name = 'HMBKP_EXCLUDE';
 
 	/**
 	 * @return string
 	 */
-	protected function test() {
+	public static function test() {
 		return defined( 'HMBKP_EXCLUDE' ) ? HMBKP_EXCLUDE : '';
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Define_HMBKP_EXCLUDE', 'constants' );
 
 class Requirement_Active_Plugins extends Requirement {
 
-	var $name = 'Active Plugins';
+	protected $name = 'Active Plugins';
 
-	protected function test(){
+	/**
+	 * Output the list of active plugins.
+	 *
+	 * @return array The array of active plugins.
+	 */
+	public static function test() {
 		return get_option( 'active_plugins' );
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Active_Plugins', 'Site' );
 
 class Requirement_Home_Url extends Requirement {
 
-	var $name = 'Home URL';
+	protected $name = 'Home URL';
 
-	protected function test(){
+	/**
+	 * @return string
+	 */
+	public static function test() {
 		return home_url();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Home_Url', 'Site' );
 
 class Requirement_Site_Url extends Requirement {
 
-	var $name = 'Site URL';
+	protected $name = 'Site URL';
 
-	protected function test() {
+	/**
+	 * @return string
+	 */
+	public static function test() {
 		return site_url();
 	}
-
 }
 Requirements::register( 'HM\BackUpWordPress\Requirement_Site_Url', 'Site' );
 
 class Requirement_Plugin_Version extends Requirement {
-	var $name = 'Plugin Version';
+	protected $name = 'Plugin Version';
 
-	protected function test() {
+	/**
+	 * @return string
+	 */
+	public static function test() {
 		return Plugin::PLUGIN_VERSION;
 	}
 }
@@ -841,9 +725,12 @@ Requirements::register( 'HM\BackUpWordPress\Requirement_Plugin_Version', 'consta
 
 class Requirement_Max_Exec extends Requirement {
 
-	var $name = 'Max execution time';
+	protected $name = 'Max execution time';
 
-	protected function test(){
+	/**
+	 * @return string
+	 */
+	public static function test() {
 		return @ini_get( 'max_execution_time' );
 	}
 }
@@ -851,9 +738,12 @@ Requirements::register( 'HM\BackUpWordPress\Requirement_Max_Exec', 'PHP' );
 
 class Requirement_PDO extends Requirement {
 
-	var $name = 'PDO';
+	protected $name = 'PDO';
 
-	protected function test(){
+	/**
+	 * @return string|false
+	 */
+	public static function test() {
 
 		if ( class_exists( 'PDO' ) && \PDO::getAvailableDrivers() ) {
 			return implode( ', ', \PDO::getAvailableDrivers() );
@@ -863,4 +753,24 @@ class Requirement_PDO extends Requirement {
 
 	}
 }
+
 Requirements::register( 'HM\BackUpWordPress\Requirement_PDO', 'PHP' );
+
+/**
+ * Class Requirement_Proc_Open
+ */
+class Requirement_Proc_Open extends Requirement {
+
+	/**
+	 * @var string
+	 */
+	protected $name = 'proc_open';
+
+	/**
+	 * @return bool
+	 */
+	public static function test() {
+		return function_exists( 'proc_open' ) && function_exists( 'proc_close' );
+	}
+}
+Requirements::register( 'HM\BackUpWordPress\Requirement_Proc_Open', 'PHP' );

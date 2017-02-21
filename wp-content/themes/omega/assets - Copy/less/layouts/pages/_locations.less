@@ -1,0 +1,85 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+
+.mapContainer {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	
+	.mapContainer {
+		//background: rgba(0, 0, 0, 0) url("../img/location/bg_map.png") no-repeat scroll left center;
+		//height: 552px;
+		margin-top: 20px;
+		position: relative;
+		//width: 914px;
+		
+		.overlayItem{
+			background:url(../img/location/bg_overlay_btm.png) no-repeat left bottom; 
+			position:absolute; 
+			display:none;
+			z-index:1;
+			div{
+				margin-bottom:17px; 
+				background:url(../img/location/bg_overlay_top.png) no-repeat; 
+				padding:10px 12px; 
+				font-family: 'Oswald'; 
+				font-weight:400; 
+				color:#953834; 
+				font-size:12px; 
+				letter-spacing:1px;  
+				border-right:1px solid #ACADB0;
+			}
+		}
+		
+		span{
+			text-indent:-5000px; 
+			display:block; 
+			cursor:pointer; 
+			z-index:30000; 
+			position:absolute;
+		}
+
+		.ptHongKongLocationItem{width:144px; }
+		.ptBangladeshLocationItem{width: 154px;}
+		.ptShanghaiLocationItem{width: 226px;}
+		.ptQingdaoLocationItem{width: 187px;}
+		.ptShenzhenLocationItem{width: 148px;}
+		.ptDongguanLocationItem{width: 206px;}
+		.ptFuzhouLocationItem{width: 112px;}
+		.ptIndiaLocationItem{}
+		.ptIndonesiaLocationItem{width: 178px;}
+		.ptPhilippinesLocationItem{width: 190px;}
+		.ptSriLankaLocationItem{width: 113px;}
+		.ptTaiwanLocationItem{width: 167px;}
+		.ptThailandLocationItem{width: 149px;}
+		.ptTurkeyLocationItem{width: 130px;}
+		.ptVietnamLocationItem{width: 142px;}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {	
+
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+
+}

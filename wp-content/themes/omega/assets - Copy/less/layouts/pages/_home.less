@@ -1,0 +1,123 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+.homeBannerItemContainer{
+	position:relative;
+	.homeThreeColumnContainer{
+		.homeThreeColumnItem{
+			background: rgba(255, 255, 255, 0.8);
+			.homeThreeColumnItemInnerDiv{
+				padding: 20px 0 20px 32px;
+				    margin-bottom: 4px;
+				
+				.threeColumnHeader{
+					color: #953834;
+					font-family: "Oswald";
+					font-size: 21px;
+					font-weight: 400;
+					margin-bottom: 10px;
+					text-transform: uppercase;
+				}
+				
+				.threeColumnContent {
+					color: #000;
+					font-family: "aileronlight";
+					font-size: 10px;
+					line-height:17px;
+					padding-left: 48px;
+					padding-right: 15px;
+					&.supplyChainMonitoring {
+						background: url("../img/home/logo_supply_chain_monitoring.png") no-repeat scroll left top;
+					}
+					&.ethicalBehavior {
+						background: url("../img/home/logo_ethic.png") no-repeat scroll left top;
+					}
+					&.differntApproach {
+						background: url("../img/home/logo_approach.png") no-repeat scroll left top;
+					}
+					
+					.learnMoreContainer {
+						border-top: 1px solid #a6a6a6;
+						padding-top: 14px;
+						margin-top:25px;
+						width: 72px;
+						a{
+							color: #717073;
+							font-family: "Oswald";
+							font-weight: 400;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	.homeBannerContainer{
+		box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.75);
+		.homeBannerItemContainer{
+			.homeThreeColumnContainer{
+				position:absolute;
+				bottom:0;
+				display:table;
+				width:100%;
+				.homeThreeColumnItem{
+					display:table-cell;
+					height:100%;
+					float:none;
+					padding:0;
+					vertical-align: top;
+					background:url(../img/home/bg_threeColumn.png) repeat-y 4px 0;
+					
+					&:first-child{
+						background-position:0 0;
+					}
+					
+					&:last-child{
+						.homeThreeColumnItemInnerDiv{
+							margin-right:0;
+						}
+					}
+					
+					.homeThreeColumnItemInnerDiv{
+						//background: rgba(255, 255, 255, 0.8);
+						    margin-bottom: 0;
+						
+						margin-right: 4px;
+						
+						
+		
+						
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {	
+
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+
+}

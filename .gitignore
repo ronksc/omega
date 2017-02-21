@@ -1,43 +1,27 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# This is a template .gitignore file for git-managed WordPress projects.
+#
+# Fact: you don't want WordPress core files, or your server-specific
+# configuration files etc., in your project's repository. You just don't.
+#
+# Solution: stick this file up your repository root (which it assumes is
+# also the WordPress root directory) and add exceptions for any plugins,
+# themes, and other directories that should be under version control.
+#
+# See the comments below for more info on how to add exceptions for your
+# content. Or see git's documentation for more info on .gitignore files:
+# http://kernel.org/pub/software/scm/git/docs/gitignore.html
 
-# Folder config file
-Desktop.ini
+# Ignore everything in the root except the "wp-content" directory.
+#/*
+#!.gitignore
+#!wp-content/
+.htaccess
+wp-config.php
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+wp-content/*
+wp-content/themes/.DS_Store
+!wp-content/plugins/
+!wp-content/themes/
+!wp-content/uploads/
