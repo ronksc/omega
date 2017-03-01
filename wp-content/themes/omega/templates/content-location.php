@@ -9,7 +9,7 @@
 			</div>
 			<div class="contentContainer">
 				<h1>LOCATIONS</h1>
-				<p class="highlight">Headquartered in Hong Kong with a network of teams stationed across your supply chain, Omega is ideally placed to support your business.</p>
+                <div class="highlight"><p>Headquartered in Hong Kong with a network of teams stationed across your supply chain, Omega is ideally placed to support your business.</p></div>
 				<div class="mapContainer">
 					<img src="<?=get_stylesheet_directory_uri()?>/assets/img/location/bg_map.png" alt="" usemap="#Map" class="img-responsive"/>
 					<map name="Map" id="Map">

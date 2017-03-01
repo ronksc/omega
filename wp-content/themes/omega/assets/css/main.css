@@ -6966,7 +6966,7 @@ h2 {
   margin-bottom: 15px;
   text-transform: uppercase;
 }
-.highlight {
+.highlight p {
   color: #706f73 !important;
   font-family: "Oswald" !important;
   font-size: 23px !important;
@@ -7027,7 +7027,6 @@ h2 {
   /* Non standard for webkit */
   word-break: break-word;
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   -ms-hyphens: auto;
       hyphens: auto;
 }
@@ -7091,7 +7090,6 @@ h2 {
   /* Non standard for webkit */
   word-break: break-word;
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   -ms-hyphens: auto;
       hyphens: auto;
 }
@@ -8429,7 +8427,6 @@ footer .copyright a {
 }
 .owl-carousel .owl-grab {
   cursor: move;
-  cursor: -webkit-grab;
   cursor: -o-grab;
   cursor: -ms-grab;
   cursor: grab;
