@@ -114,6 +114,49 @@
 				padding-bottom: 30px;
 			}
 		}
+		
+		.leadership_item_container{
+			.leadership_item{
+				float:left;
+				color:#fff;
+				background:#656569;
+				padding:18px;
+				min-height:206px;
+				margin-right:20px;
+				margin-bottom:20px;
+				position:relative;
+				
+				&:hover{
+					background:#994945;
+				}
+				
+				.leader_name{
+					font-size:22px;
+					font-family: "Oswald";
+					text-transform:uppercase;
+					margin-bottom:12px;
+				}
+				
+				.leader_title{
+					color:#b3b3b3;
+					font-size:16px;
+					font-family: "Oswald";
+					text-transform:uppercase;
+					font-weight:300;
+					margin-bottom:0px;
+				}
+				
+				.btn_read_more{
+					color:#fff;
+					font-weight:300;
+					font-family: "aileronlight";
+					text-decoration:underline;
+					position:absolute;
+					bottom:18px;
+					left:18px;
+				}
+			}
+		}
 	}
 }
 
@@ -162,7 +205,16 @@
 //===============================================================================
 //===============================================================================
 @media (min-width: @screen-md-min) {	
-
+	.innerContentContainer{
+		.contentContainer{
+			.leadership_item_container{
+				.leadership_item{
+					width:206px;
+					min-height:206px;
+				}
+			}
+		}
+	}
 }
 
 //===============================================================================

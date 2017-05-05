@@ -7443,14 +7443,54 @@ footer .copyright a {
   letter-spacing: 1px;
   padding-bottom: 20px;
 }
-.innerContentContainer .contentContainer .companyAddress {
+.innerContentContainer .contentContainer .companyAddress p {
   color: #706f73 !important;
   font-family: "Oswald";
   font-size: 19px;
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 140%;
-  padding-bottom: 15px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.innerContentContainer .contentContainer .companyAddress.extra_padding {
+  padding-bottom: 30px;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item {
+  float: left;
+  color: #fff;
+  background: #656569;
+  padding: 18px;
+  min-height: 206px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item:hover {
+  background: #994945;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leader_name {
+  font-size: 22px;
+  font-family: "Oswald";
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leader_title {
+  color: #b3b3b3;
+  font-size: 16px;
+  font-family: "Oswald";
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .btn_read_more {
+  color: #fff;
+  font-weight: 300;
+  font-family: "aileronlight";
+  text-decoration: underline;
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
 }
 @media (min-width: 768px) {
   .innerContentContainer .contentBannerContainer {
@@ -7475,6 +7515,12 @@ footer .copyright a {
   .training .innerContentContainer .contentBannerContainer .banner_text {
     max-width: 300px;
     letter-spacing: 0;
+  }
+}
+@media (min-width: 992px) {
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item {
+    width: 206px;
+    min-height: 206px;
   }
 }
 @media (min-width: 768px) {
@@ -8277,7 +8323,7 @@ footer .copyright a {
     width: 190px;
   }
   .nav-container .main-menu .navbar-nav li {
-    padding: 5px 22px;
+    padding: 5px 16px;
   }
   .nav-container .main-menu .navbar-nav li a {
     padding: 0;
