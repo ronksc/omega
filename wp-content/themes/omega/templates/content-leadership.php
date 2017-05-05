@@ -11,46 +11,22 @@
             	<h1><?php the_title(); ?></h1>
                 
 				<div class="leadership_item_container clearfix">
+					<?php
+						$args = array( 'numberposts' => -1, 'post_type' => 'leadership', 'post_status' => 'publish', 'order' => 'ASC', 'orderby' => 'menu_order', 'suppress_filters' => 0);
+						$results = get_posts( $args );
+						foreach( $results as $result ) : 
+							
+							$job_title = get_field('job_title', $result->ID);
+							
+					?>
+						
 					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director,<br />Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
+						<div class="leader_name"><?=get_the_title($result->ID)?></div>
+						<div class="leader_title"><?=$job_title?></div>
+						<a href="<?=get_permalink($result->ID)?>" class="btn_read_more">Read More</a>
 					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">Mark<br />Evans</div>
-						<div class="leader_title">Director of<br />business services,<br />new york</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
-					<div class="leadership_item">
-						<div class="leader_name">JON<br />WHITE</div>
-						<div class="leader_title">Managing Director, Hong Kong</div>
-						<a href="#" class="btn_read_more">Read More</a>
-					</div>
+					
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
