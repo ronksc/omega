@@ -17,8 +17,12 @@
                                             <div class="homeThreeColumnItemInnerDiv">
                                                 <div class="threeColumnHeader"><?php the_sub_field('title'); ?></div>
                                                 <div class="threeColumnContent <?php the_sub_field('icon'); ?>">
-                                                    <?php the_sub_field('content'); ?>
-                                                    <div class="learnMoreContainer"><a href="<?=get_permalink(the_sub_field('learn_more_link'));?>">LEARN MORE &gt;</a></div>
+                                                    <?php the_sub_field('content'); 
+													 
+													 $learn_more_link = get_sub_field('learn_more_link');
+													 //print_r($learn_more_link);
+												?>
+                                                    <div class="learnMoreContainer"><a href="<?=get_permalink($learn_more_link[0]);?>">LEARN MORE &gt;</a></div>
                                                 </div>
                                             </div>
                                         </div>
