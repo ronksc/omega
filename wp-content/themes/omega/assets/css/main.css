@@ -8323,6 +8323,15 @@ footer .copyright a {
   .nav-container .main-menu .navbar-nav > li.active .sub-menu {
     display: none;
   }
+  .nav-container .main-menu .navbar-nav > li.menu-services .sub-menu {
+    width: 220px;
+    margin-left: 0;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+    left: 50%;
+  }
   .nav-container .main-menu .navbar-nav > li .sub-menu {
     display: none;
     margin-left: -12px;
