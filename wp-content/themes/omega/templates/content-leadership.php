@@ -25,7 +25,8 @@
 							<div class="leader_name"><?=$alternate_name?></div>
 							<div class="leader_title"><?=$job_title?></div>
 						</div>
-						<a href="<?=get_permalink($result->ID)?>" class="btn_read_more">Read More</a>
+						<a href="<?=get_permalink($result->ID)?>" class="btn_read_more"></a>
+						<span>Read More</span>
 					</div>
 					
 					<?php endforeach; ?>
