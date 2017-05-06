@@ -224,7 +224,7 @@
 			<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/FollowCompany" data-id="481192"></script>
         </div>
-		<div class="copyright">Copyright &copy; 2014. www.omegacompliance.com. All rights reserved.</div>
+		<div class="copyright">Copyright &copy; <?=date("Y");?>. www.omegacompliance.com. All rights reserved.</div>
 		<div class="disclaimer"><a href="<?=site_url()?>/disclaimer/">Disclaimer</a></div>
 	</div>
 <?php wp_footer(); ?> 
