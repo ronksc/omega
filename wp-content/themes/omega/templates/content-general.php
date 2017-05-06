@@ -50,12 +50,14 @@
                 
 				<?=apply_filters('the_content', get_post_field('post_content', $id)); ?>
                 
+				<div class="clearfix">
                 <?php
 				// check if the flexible content field has rows of data
-				if( have_rows('company_detail') ):
-					 // loop through the rows of data
-					while ( have_rows('company_detail') ) : the_row();
+				if( have_rows('hk_company_detail') ): ?>
 				
+					<div class="col-sm-6"> 	 
+					<?php while ( have_rows('hk_company_detail') ) : the_row(); 
+						
 						if( get_row_layout() == 'company_name' ): 
 							$name = get_sub_field('name'); ?>
 						
@@ -70,9 +72,38 @@
                             
                             <div class="companyAddress"><?=$contact_info?></div>
                         <?php
-						endif;				
-					endwhile;
-				endif; ?>
+						endif;
+					endwhile; ?>
+					</div>
+				<?php endif; ?>
+				
+				<?php
+				// check if the flexible content field has rows of data
+				if( have_rows('usa_company_detail') ): ?>
+				
+					<div class="col-sm-6"> 
+					<?php while ( have_rows('usa_company_detail') ) : the_row(); 
+						
+						if( get_row_layout() == 'company_name' ): 
+							$name = get_sub_field('name'); 
+							$sub_line = get_sub_field('sub_line');  ?>
+						
+                        	<div class="companyName with_subline"><?=$name?></div>
+                        	<div class="companyName_subline"><?=$sub_line?></div>
+                        <?php	
+						elseif( get_row_layout() == 'company_address' ): 
+							$address = get_sub_field('address');
+							$contact_info = get_sub_field('contact_info'); ?>
+                            
+                            <div class="companyAddress extra_padding"><?=$address?></div>
+                            
+                            <div class="companyAddress"><?=$contact_info?></div>
+                        <?php
+						endif;
+					endwhile; ?>
+					</div>
+				<?php endif; ?>
+				</div>
 			</div>
 		</div>
 	</div>

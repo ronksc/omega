@@ -7460,6 +7460,15 @@ footer .copyright a {
   letter-spacing: 1px;
   padding-bottom: 20px;
 }
+.innerContentContainer .contentContainer .companyName.with_subline {
+  padding-bottom: 0;
+}
+.innerContentContainer .contentContainer .companyName_subline {
+  font-family: "aileronlight";
+  font-size: 14px;
+  color: #706f73 !important;
+  font-style: italic;
+}
 .innerContentContainer .contentContainer .companyAddress p {
   color: #706f73 !important;
   font-family: "Oswald";
