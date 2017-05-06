@@ -7460,22 +7460,32 @@ footer .copyright a {
   float: left;
   color: #fff;
   background: #656569;
-  padding: 18px;
-  min-height: 206px;
-  margin-right: 20px;
+  width: 48%;
+  padding-bottom: 54%;
   margin-bottom: 20px;
   position: relative;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(2n) {
+  margin-right: 0;
+  float: right;
 }
 .innerContentContainer .contentContainer .leadership_item_container .leadership_item:hover {
   background: #994945;
 }
-.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leader_name {
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leadership_wrapper {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 100%;
+  padding: 0 18px;
+}
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leadership_wrapper .leader_name {
   font-size: 22px;
   font-family: "Oswald";
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leader_title {
+.innerContentContainer .contentContainer .leadership_item_container .leadership_item .leadership_wrapper .leader_title {
   color: #b3b3b3;
   font-size: 16px;
   font-family: "Oswald";
@@ -7512,6 +7522,19 @@ footer .copyright a {
   .innerContentContainer .contentContainer {
     padding: 40px;
   }
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item {
+    margin-right: 20px;
+    width: 31.2%;
+    padding-bottom: 33%;
+  }
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(2n) {
+    margin-right: 20px;
+    float: left;
+  }
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(3n) {
+    margin-right: 0;
+    float: left;
+  }
   .training .innerContentContainer .contentBannerContainer .banner_text {
     max-width: 300px;
     letter-spacing: 0;
@@ -7519,8 +7542,17 @@ footer .copyright a {
 }
 @media (min-width: 992px) {
   .innerContentContainer .contentContainer .leadership_item_container .leadership_item {
-    width: 206px;
-    min-height: 206px;
+    margin-right: 20px;
+    width: 23.3%;
+    padding-bottom: 24%;
+    float: left!important;
+  }
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(2n),
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(3n) {
+    margin-right: 20px;
+  }
+  .innerContentContainer .contentContainer .leadership_item_container .leadership_item:nth-child(4n) {
+    margin-right: 0;
   }
 }
 @media (min-width: 768px) {

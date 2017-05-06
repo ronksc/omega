@@ -15,14 +15,16 @@
 						$args = array( 'numberposts' => -1, 'post_type' => 'leadership', 'post_status' => 'publish', 'order' => 'ASC', 'orderby' => 'menu_order', 'suppress_filters' => 0);
 						$results = get_posts( $args );
 						foreach( $results as $result ) : 
-							
+							$alternate_name = get_field('alternate_name_for_landing_page', $result->ID);
 							$job_title = get_field('job_title', $result->ID);
 							
 					?>
 						
 					<div class="leadership_item">
-						<div class="leader_name"><?=get_the_title($result->ID)?></div>
-						<div class="leader_title"><?=$job_title?></div>
+						<div class="leadership_wrapper">
+							<div class="leader_name"><?=$alternate_name?></div>
+							<div class="leader_title"><?=$job_title?></div>
+						</div>
 						<a href="<?=get_permalink($result->ID)?>" class="btn_read_more">Read More</a>
 					</div>
 					
