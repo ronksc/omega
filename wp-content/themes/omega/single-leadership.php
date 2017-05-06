@@ -11,7 +11,7 @@
                 <img src="<?=get_field("mobile_banner", 525); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
                 <?=get_field("banner_text", 525) ?>
 			</div>
-			<div class="contentContainer">
+			<div class="contentContainer leadership_single">
 				<?php
 					$post_title = get_the_title();
 				?>
