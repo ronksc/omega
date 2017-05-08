@@ -60,6 +60,7 @@
 				font-size: 19px;
 				text-transform: uppercase;
 				margin-bottom:20px;
+				letter-spacing:1px;
 			}
 		}
 		
@@ -111,6 +112,8 @@
 			padding-bottom: 10px;
 		}	
 		
+		
+		
 		.companyName {
 			color: #55565a !important;
 			font-family: "Oswald";
@@ -129,13 +132,15 @@
 			font-size:14px;
 			color:#55565a !important;
 			font-style:italic;
+			line-height: 100%;
+			padding-bottom: 7px;
 		}
 		
 		.companyAddress {
 			p{
 				color: #706f73 !important;
 				font-family: "Oswald";
-				font-size: 19px;
+				font-size: 20px;
 				font-weight: 300;
 				letter-spacing: 1px;
 				line-height: 140%;
@@ -177,7 +182,7 @@
 					padding:0 18px;
 										
 					.leader_name{
-						font-size:22px;
+						font-size:23px;
 						font-family: "Oswald";
 						text-transform:uppercase;
 						margin-bottom:12px;
@@ -185,11 +190,12 @@
 					
 					.leader_title{
 						color:#b3b3b3;
-						font-size:16px;
+						font-size:18px;
 						font-family: "Oswald";
 						text-transform:uppercase;
 						font-weight:300;
 						margin-bottom:0px;
+						letter-spacing:1px;
 					}
 				}
 				
@@ -226,14 +232,14 @@
 		.contentBannerContainer{
 			position:relative;
 			.banner_text{
-				display:none;
+				//display:none;
 				background-color:rgba(121, 15, 15, 0.7);
 				margin-bottom:0;
 				padding:28px 16px 28px 30px;
 				position:absolute;
 				max-width:295px;
 				bottom:0;
-				left:40px;
+				left:50px;
 				
 				&.grey_bg{
 					background-color:rgba(30, 30, 30, 0.6);
@@ -281,6 +287,18 @@
 @media (min-width: @screen-md-min) {	
 	.innerContentContainer{
 		.contentContainer{
+			.contact_content{
+				.contact_item{
+					&:first-child{
+						padding-left:0;
+					}
+					
+					&:last-child{
+						padding-right:0;
+					}
+				}
+			}
+		
 			.leadership_item_container{
 				.leadership_item{
 					margin-right:20px;

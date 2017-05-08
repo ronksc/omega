@@ -39,16 +39,30 @@
 					}
 					
 					.learnMoreContainer {
-						border-top: 1px solid #a6a6a6;
+						//border-top: 1px solid #a6a6a6;
 						padding-top: 14px;
 						margin-top:25px;
-						width: 72px;
+						//width: 72px;
+						position:relative;
+						
 						a{
 							color: #963934;
-							font-size:12px;
+							font-size:14px;
 							text-transform:uppercase;
 							font-family: "Oswald";
 							font-weight: 400;
+							letter-spacing:1px;
+						}
+						
+						&:before{
+							position:absolute;
+							top:0;
+							left:0;
+							content:"";
+							width:72px;
+							height:1px;
+							background:#a6a6a6;
+							display:block;
 						}
 					}
 				}

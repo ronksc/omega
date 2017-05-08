@@ -7766,7 +7766,12 @@ var Roots = {
 			
 			
 			// center map
-			center_map( map );
+			//center_map( map );
+			if($(window).outerWidth() >= 992){
+					center_map( map );
+				}else{
+					map.setCenter(new google.maps.LatLng(13.7278422, 100.5233353));
+				}
 			
 			
 			// return
@@ -7892,12 +7897,12 @@ var Roots = {
 			});
 		
 			$(window).resize(function(){
-				/*if($(window).outerWidth() >= 992){
-					$('.map_container').height($(window).outerHeight());
+				if($(window).outerWidth() >= 992){
+					center_map( map );
 				}else{
-					$('.map_container').height(500);	
-				}*/
-				center_map( map );
+					map.setCenter(new google.maps.LatLng(13.7278422, 100.5233353));
+				}
+				
 			});
 		
 		});	

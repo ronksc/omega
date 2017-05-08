@@ -50,12 +50,12 @@
                 
 				<?=apply_filters('the_content', get_post_field('post_content', $id)); ?>
                 
-				<div class="clearfix">
+				<div class="clearfix contact_content">
                 <?php
 				// check if the flexible content field has rows of data
 				if( have_rows('hk_company_detail') ): ?>
 				
-					<div class="col-sm-6"> 	 
+					<div class="col-sm-6 contact_item"> 	 
 					<?php while ( have_rows('hk_company_detail') ) : the_row(); 
 						
 						if( get_row_layout() == 'company_name' ): 
@@ -81,7 +81,7 @@
 				// check if the flexible content field has rows of data
 				if( have_rows('usa_company_detail') ): ?>
 				
-					<div class="col-sm-6"> 
+					<div class="col-sm-6 contact_item"> 
 					<?php while ( have_rows('usa_company_detail') ) : the_row(); 
 						
 						if( get_row_layout() == 'company_name' ): 

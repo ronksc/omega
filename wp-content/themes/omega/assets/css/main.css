@@ -7313,17 +7313,27 @@ footer .copyright a {
   background: url("../img/home/logo_approach.png") no-repeat scroll left top;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer {
-  border-top: 1px solid #a6a6a6;
   padding-top: 14px;
   margin-top: 25px;
-  width: 72px;
+  position: relative;
 }
 .homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer a {
   color: #963934;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   font-family: "Oswald";
   font-weight: 400;
+  letter-spacing: 1px;
+}
+.homeBannerItemContainer .homeThreeColumnContainer .homeThreeColumnItem .homeThreeColumnItemInnerDiv .threeColumnContent .learnMoreContainer:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 72px;
+  height: 1px;
+  background: #a6a6a6;
+  display: block;
 }
 @media (min-width: 768px) {
   .homeBannerContainer {
@@ -7407,6 +7417,7 @@ footer .copyright a {
   font-size: 19px;
   text-transform: uppercase;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 .innerContentContainer .contentContainer .banner_text h2 {
   margin-top: 0;
@@ -7470,11 +7481,13 @@ footer .copyright a {
   font-size: 14px;
   color: #55565a !important;
   font-style: italic;
+  line-height: 100%;
+  padding-bottom: 7px;
 }
 .innerContentContainer .contentContainer .companyAddress p {
   color: #706f73 !important;
   font-family: "Oswald";
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 140%;
@@ -7508,18 +7521,19 @@ footer .copyright a {
   padding: 0 18px;
 }
 .innerContentContainer .contentContainer .leadership_item_container .leadership_item .leadership_wrapper .leader_name {
-  font-size: 22px;
+  font-size: 23px;
   font-family: "Oswald";
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 .innerContentContainer .contentContainer .leadership_item_container .leadership_item .leadership_wrapper .leader_title {
   color: #b3b3b3;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Oswald";
   text-transform: uppercase;
   font-weight: 300;
   margin-bottom: 0px;
+  letter-spacing: 1px;
 }
 .innerContentContainer .contentContainer .leadership_item_container .leadership_item span {
   color: #fff;
@@ -7542,14 +7556,13 @@ footer .copyright a {
     position: relative;
   }
   .innerContentContainer .contentBannerContainer .banner_text {
-    display: none;
     background-color: rgba(121, 15, 15, 0.7);
     margin-bottom: 0;
     padding: 28px 16px 28px 30px;
     position: absolute;
     max-width: 295px;
     bottom: 0;
-    left: 40px;
+    left: 50px;
   }
   .innerContentContainer .contentBannerContainer .banner_text.grey_bg {
     background-color: rgba(30, 30, 30, 0.6);
@@ -7576,6 +7589,12 @@ footer .copyright a {
   }
 }
 @media (min-width: 992px) {
+  .innerContentContainer .contentContainer .contact_content .contact_item:first-child {
+    padding-left: 0;
+  }
+  .innerContentContainer .contentContainer .contact_content .contact_item:last-child {
+    padding-right: 0;
+  }
   .innerContentContainer .contentContainer .leadership_item_container .leadership_item {
     margin-right: 20px;
     width: 23.3%;
