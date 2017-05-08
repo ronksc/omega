@@ -58,3 +58,12 @@ function pagination_bar() {
         ));
     }
 }
+
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyAm4lQG12U3-qPmmAg2Jct2kAFm-5kNbNk');
+}
+
+add_action('acf/init', 'my_acf_init');
+
+?>

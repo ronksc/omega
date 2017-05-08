@@ -1,3 +1,5 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm4lQG12U3-qPmmAg2Jct2kAFm-5kNbNk&language=en"></script>
+
 <div class="container">
 	<div class="row">
 		<div class="innerContentContainer">
@@ -10,7 +12,37 @@
 			<div class="contentContainer">
 				<h1>LOCATIONS</h1>
                 <div class="highlight"><p>Headquartered in Hong Kong with a network of teams stationed across your supply chain, Omega is ideally placed to support your business.</p></div>
-				<div class="mapContainer">
+                
+                                
+                
+                <div class="map_container">
+                	<?php 
+						$the_query_map = new WP_Query( array( 'post_type' => 'office', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'menu_order' ) );
+						
+						if($the_query_map->have_posts()) :
+							while($the_query_map->have_posts()):
+							$the_query_map->the_post();
+							$the_ID = get_the_ID();
+							$get_google_map = get_field('office_map', $value);
+							
+							$output_map[$the_ID]['map'] = '<div class="marker" data-lat="'.$get_google_map['lat'].'" data-lng="'.$get_google_map['lng'].'"></div>';
+							
+							endwhile;
+						endif;
+						wp_reset_postdata();
+					?>
+                    
+                    <div class="acf-map"><?php
+					foreach( $output_map as $key => $map_marker ):
+						echo $map_marker['map'];
+						endforeach;
+						?>
+					</div>
+                </div>
+                
+                
+                
+				<!--<div class="mapContainer">
 					<img src="<?=get_stylesheet_directory_uri()?>/assets/img/location/bg_map.png" alt="" usemap="#Map" class="img-responsive"/>
 					<map name="Map" id="Map">
 						<area alt="Hong Kong" title="Hong Kong" href="javascript:;" shape="rect" coords="747,286,798,296" />
@@ -165,7 +197,7 @@
 							</div>
 						</div>
 					</div>					
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
