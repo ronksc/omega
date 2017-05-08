@@ -24,8 +24,9 @@
 							$the_query_map->the_post();
 							$the_ID = get_the_ID();
 							$get_google_map = get_field('office_map', $value);
+							$office_address=apply_filters('the_content', get_post_field('post_content', $post->id));
 							
-							$output_map[$the_ID]['map'] = '<div class="marker" data-lat="'.$get_google_map['lat'].'" data-lng="'.$get_google_map['lng'].'"></div>';
+							$output_map[$the_ID]['map'] = '<div class="marker" data-lat="'.$get_google_map['lat'].'" data-lng="'.$get_google_map['lng'].'">'.$office_address.'</div>';
 							
 							endwhile;
 						endif;
