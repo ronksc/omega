@@ -7697,7 +7697,7 @@ var Roots = {
     }
   },
   // About us page, note the change from about-us to about_us.
-  locations: {
+  page_template_template_location: {
     init: function() {		
 		/*function initMap(){
 			$('#Map area').each(function(){
@@ -7768,10 +7768,10 @@ var Roots = {
 			// center map
 			//center_map( map );
 			if($(window).outerWidth() >= 992){
-					center_map( map );
-				}else{
-					map.setCenter(new google.maps.LatLng(13.7278422, 100.5233353));
-				}
+				center_map( map );
+			}else{
+				map.setCenter(new google.maps.LatLng(13.7278422, 100.5233353));
+			}
 			
 			
 			// return
@@ -7908,7 +7908,7 @@ var Roots = {
 		});	
     }
   },
-  blog:{
+  page_template_template_news:{
 	init: function(){
 		function initSelect(){
 			$('.post_sort_select').each(function(){
