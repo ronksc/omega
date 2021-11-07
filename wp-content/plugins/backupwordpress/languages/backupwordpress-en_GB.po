@@ -1,4 +1,4 @@
-# Copyright (C) 2015 Human Made Limited
+# Copyright (C) 2015 XIBO Ltd
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
@@ -334,8 +334,8 @@ msgstr ""
 #: admin/faq.php:50
 msgid ""
 "Report the results to our support team for further help. To do this, either "
-"enable suport from your Admin Dashboard (recommended), or email support@hmn."
-"md"
+"enable suport from your Admin Dashboard (recommended), or email support@xibodevelopment."
+"com"
 msgstr ""
 
 #: admin/faq.php:52
@@ -361,7 +361,7 @@ msgid ""
 "[of] or your entire uploades folder, running a backup an if that succeeds. "
 "If so, we know it's probably a server issue. If not, report the results to "
 "our support team for further help. To do this, either enable suport from "
-"your Admin Dashboard (recommended), or email support@hmn.md"
+"your Admin Dashboard (recommended), or email support@xibodevelopment.com"
 msgstr ""
 
 #: admin/menu.php:13 admin/menu.php:17
@@ -1189,7 +1189,7 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Human Made Limited"
+msgid "XIBO Ltd"
 msgstr ""
 
 #. Author URI of the plugin/theme

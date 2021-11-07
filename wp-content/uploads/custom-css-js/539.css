@@ -1,0 +1,25 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+/* Add your CSS code here.
+
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+.sg-popup-id-537{
+    cursor: pointer;
+    border: 1px solid #FFF;
+    padding: 5px 10px;
+    font-family: 'Oswald';
+    font-size: 12px;
+  display:inline-block;
+  position:absolute;
+  right: 27%;
+    font-weight: 300;
+}</style>
+<!-- end Simple Custom CSS and JS -->

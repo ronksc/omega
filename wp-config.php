@@ -49,7 +49,7 @@ switch ($_SERVER['SERVER_NAME']) {
 		define('WP_SITEURL',  'http://local.omega.com' );
     	define('WP_HOME', 'http://local.omega.com' );
 		define('DB_USER', 'root');
-		define('DB_PASSWORD', 'root');
+		define('DB_PASSWORD', '123456');
 		define('DB_HOST', 'localhost');
 
 	case "omega.fp-production.com":

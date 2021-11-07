@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="innerContentContainer">
 			<div class="contentBannerContainer">
-				<? $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-				<img src="<?=$feat_image?>" alt="" class="img-responsive hidden-xs" />
-                <img src="<?=get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
-                <?=get_field("banner_text", $post->ID) ?>
+				<?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+				<img src="<?php echo $feat_image?>" alt="" class="img-responsive hidden-xs" />
+                <img src="<?php echo get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
+                <?php echo get_field("banner_text", $post->ID) ?>
 			</div>
 			<div class="contentContainer">
             	
@@ -22,7 +22,7 @@
 							$logo_image = get_sub_field('logo_image');
 							$logo_link = get_sub_field('logo_link'); ?>
                                                         
-                            <a href="<?=$logo_link?>" target="_blank"><img src="<?=$logo_image?>" class="img-responsive" /></a>                            
+                            <a href="<?php echo $logo_link?>" target="_blank"><img src="<?php echo $logo_image?>" class="img-responsive" /></a>                            
                             
                         <?php
 						endif;				
@@ -32,7 +32,7 @@
 				
 				$alternate_page_title = get_field('alternate_page_title', $post->ID);
 	            if($alternate_page_title !== ''){ ?>
-		        	<h1><?=$alternate_page_title?></h1>    	
+		        	<h1><?php echo $alternate_page_title?></h1>    	
                 <?php
 				}else{
 				?>
@@ -48,7 +48,7 @@
                     </div>
                 <?php endif; ?>
                 
-				<?=apply_filters('the_content', get_post_field('post_content', $id)); ?>
+				<?php echo apply_filters('the_content', get_post_field('post_content', $id)); ?>
                 
 				<div class="clearfix contact_content">
                 <?php
@@ -61,16 +61,16 @@
 						if( get_row_layout() == 'company_name' ): 
 							$name = get_sub_field('name'); ?>
 						
-                        	<div class="companyName"><?=$name?></div>
+                        	<div class="companyName"><?php echo $name?></div>
                         	
                         <?php	
 						elseif( get_row_layout() == 'company_address' ): 
 							$address = get_sub_field('address');
 							$contact_info = get_sub_field('contact_info'); ?>
                             
-                            <div class="companyAddress extra_padding"><?=$address?></div>
+                            <div class="companyAddress extra_padding"><?php echo $address?></div>
                             
-                            <div class="companyAddress"><?=$contact_info?></div>
+                            <div class="companyAddress"><?php echo $contact_info?></div>
                         <?php
 						endif;
 					endwhile; ?>
@@ -88,16 +88,16 @@
 							$name = get_sub_field('name'); 
 							$sub_line = get_sub_field('sub_line');  ?>
 						
-                        	<div class="companyName with_subline"><?=$name?></div>
-                        	<div class="companyName_subline"><?=$sub_line?></div>
+                        	<div class="companyName with_subline"><?php echo $name?></div>
+                        	<div class="companyName_subline"><?php echo $sub_line?></div>
                         <?php	
 						elseif( get_row_layout() == 'company_address' ): 
 							$address = get_sub_field('address');
 							$contact_info = get_sub_field('contact_info'); ?>
                             
-                            <div class="companyAddress extra_padding"><?=$address?></div>
+                            <div class="companyAddress extra_padding"><?php echo $address?></div>
                             
-                            <div class="companyAddress"><?=$contact_info?></div>
+                            <div class="companyAddress"><?php echo $contact_info?></div>
                         <?php
 						endif;
 					endwhile; ?>

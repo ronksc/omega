@@ -71,7 +71,11 @@ final class ITSEC_Storage {
 
 		$data->changed = false;
 
-		return update_site_option( $data->option, $data->cache );
+		if ( is_multisite() ) {
+			return update_site_option( $data->option, $data->cache );
+		} else {
+			return update_option( $data->option, $data->cache );
+		}
 	}
 
 	public static function reload() {
@@ -91,5 +95,13 @@ final class ITSEC_Storage {
 		self::save();
 
 		$this->shutdown_done = true;
+	}
+
+	public static function reset() {
+		$data = self::get_instance();
+
+		delete_site_option( $data->option );
+		unset( $data->cache );
+		$data->changed = false;
 	}
 }

@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="innerContentContainer">
 			<div class="contentBannerContainer">
-				<? $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-				<img src="<?=$feat_image?>" alt="" class="img-responsive hidden-xs" />
-                <img src="<?=get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
+				<?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+				<img src="<?php echo $feat_image?>" alt="" class="img-responsive hidden-xs" />
+                <img src="<?php echo get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
                 <div class="banner_text grey_bg">headquartered in asia with a network ideally spread to service your supply chain</div>
 			</div>
 			<div class="contentContainer">
@@ -44,7 +44,7 @@
                 
                 
 				<!--<div class="mapContainer">
-					<img src="<?=get_stylesheet_directory_uri()?>/assets/img/location/bg_map.png" alt="" usemap="#Map" class="img-responsive"/>
+					<img src="<?php echo get_stylesheet_directory_uri()?>/assets/img/location/bg_map.png" alt="" usemap="#Map" class="img-responsive"/>
 					<map name="Map" id="Map">
 						<area alt="Hong Kong" title="Hong Kong" href="javascript:;" shape="rect" coords="747,286,798,296" />
 						<area alt="Bangladesh" title="Bangladesh" href="javascript:;" shape="rect" coords="685,271,718,281" />

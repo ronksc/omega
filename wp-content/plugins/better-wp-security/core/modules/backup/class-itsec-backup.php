@@ -32,78 +32,75 @@ class ITSEC_Backup {
 	 */
 	function run() {
 
-		global $itsec_globals;
-
 		$this->settings = ITSEC_Modules::get_settings( 'backup' );
 
 		add_action( 'itsec_execute_backup_cron', array( $this, 'do_backup' ) );
-		add_filter( 'itsec_logger_modules', array( $this, 'register_logger' ) );
 
-		if ( defined( 'ITSEC_BACKUP_CRON' ) && true === ITSEC_BACKUP_CRON ) {
-			if ( ! wp_next_scheduled( 'itsec_execute_backup_cron' ) ) {
-				wp_schedule_event( time(), 'daily', 'itsec_execute_backup_cron' );
-			}
-
-			// When ITSEC_BACKUP_CRON is enabled, skip the regular scheduling system.
-			return;
-		}
-
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			// Don't run on AJAX requests.
-			return;
-		}
+		add_filter( 'itsec_notifications', array( $this, 'register_notification' ) );
+		add_filter( 'itsec_backup_notification_strings', array( $this, 'notification_strings' ) );
 
 		if ( class_exists( 'pb_backupbuddy' ) ) {
 			// Don't run when BackupBuddy is active.
 			return;
 		}
 
-		if ( $this->settings['interval'] <= 0 ) {
-			// Don't run when the interval is zero or less.
+		ITSEC_Core::get_scheduler()->register_custom_schedule( 'backup', DAY_IN_SECONDS * $this->settings['interval'] );
+
+		if ( ! $this->settings['enabled'] || $this->settings['interval'] <= 0 ) {
+			// Don't run when scheduled backups aren't enabled or the interval is zero or less.
 			return;
 		}
 
+		add_action( 'itsec_scheduled_backup', array( $this, 'scheduled_callback' ) );
+	}
 
-		$next_run = $this->settings['last_run'] + $this->settings['interval'] * DAY_IN_SECONDS;
-
-		if ( $next_run <= $itsec_globals['current_time_gmt'] ) {
-			add_action( 'init', array( $this, 'do_backup' ), 10, 0 );
-		}
+	/**
+	 * Called when it is time for the backup to run.
+	 */
+	public function scheduled_callback() {
+		$this->do_backup();
 	}
 
 	/**
 	 * Public function to get lock and call backup.
 	 *
-	 * Attempts to get a lock to prevent concurrant backups and calls the backup function itself.
+	 * Attempts to get a lock to prevent concurrent backups and calls the backup function itself.
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param  boolean $one_time whether this is a one time backup
+	 * @param boolean $one_time whether this is a one time backup
 	 *
-	 * @return mixed false on error or nothing
+	 * @return array|WP_Error false on error or nothing
 	 */
 	public function do_backup( $one_time = false ) {
-		$itsec_files = ITSEC_Core::get_itsec_files();
 
-		if ( ! $itsec_files->get_file_lock( 'backup' ) ) {
+		if ( ! ITSEC_Lib::get_lock( 'backup', 180 ) ) {
 			return new WP_Error( 'itsec-backup-do-backup-already-running', __( 'Unable to create a backup at this time since a backup is currently being created. If you wish to create an additional backup, please wait a few minutes before trying again.', 'better-wp-security' ) );
 		}
 
-
 		ITSEC_Lib::set_minimum_memory_limit( '256M' );
-		$this->execute_backup( $one_time );
-		$itsec_files->release_file_lock( 'backup' );
+		$result = $this->execute_backup( $one_time );
+		ITSEC_Lib::release_lock( 'backup' );
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
 
 		switch ( $this->settings['method'] ) {
-
-			case 0:
-				return __( 'Backup complete. The backup was sent to the selected email recipients and was saved locally.', 'better-wp-security' );
-			case 1:
-				return __( 'Backup complete. The backup was sent to the selected email recipients.', 'better-wp-security' );
+			case 'both':
+				$message = __( 'Backup complete. The backup was sent to the selected email recipients and was saved locally.', 'better-wp-security' );
+				break;
+			case 'email':
+				$message = __( 'Backup complete. The backup was sent to the selected email recipients.', 'better-wp-security' );
+				break;
 			default:
-				return __( 'Backup complete. The backup was saved locally.', 'better-wp-security' );
-
+				$message = __( 'Backup complete. The backup was saved locally.', 'better-wp-security' );
+				break;
 		}
+
+		$result['message'] = $message;
+
+		return $result;
 	}
 
 	/**
@@ -115,21 +112,19 @@ class ITSEC_Backup {
 	 *
 	 * @param bool $one_time whether this is a one-time backup
 	 *
-	 * @return void
+	 * @return array|WP_Error
 	 */
 	private function execute_backup( $one_time = false ) {
-		global $wpdb, $itsec_logger;
-
-
+		global $wpdb;
 
 		require_once( ITSEC_Core::get_core_dir() . 'lib/class-itsec-lib-directory.php' );
 
-		$dir = $this->settings['location'];
+		$dir    = $this->settings['location'];
 		$result = ITSEC_Lib_Directory::create( $dir );
 
 		if ( is_wp_error( $result ) ) {
 			return $result;
-		} else if ( ! $result ) {
+		} elseif ( ! $result ) {
 			return new WP_Error( 'itsec-backup-failed-to-create-backup-dir', esc_html__( 'Unable to create the backup directory due to an unknown error.', 'better-wp-security' ) );
 		}
 
@@ -139,17 +134,11 @@ class ITSEC_Backup {
 			return new WP_Error( 'itsec-backup-failed-to-write-backup-file', esc_html__( 'Unable to write the backup file. This may be due to a permissions or disk space issue.', 'better-wp-security' ) );
 		}
 
-
 		if ( false === $one_time ) {
 			ITSEC_Modules::set_setting( 'backup', 'last_run', ITSEC_Core::get_current_time_gmt() );
 		}
 
-
-		if ( $this->settings['all_sites'] ) {
-			$tables = $wpdb->get_col( 'SHOW TABLES' );
-		} else {
-			$tables = $wpdb->get_col( 'SHOW TABLES LIKE "' . $wpdb->base_prefix . '%"' );
-		}
+		$tables = $wpdb->get_col( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->base_prefix . '%' ) );
 
 		$max_rows_per_query = 1000;
 
@@ -167,24 +156,24 @@ class ITSEC_Backup {
 
 			$num_fields = count( $wpdb->get_results( "DESCRIBE `$table`;" ) );
 
-			$offset = 0;
+			$offset        = 0;
 			$has_more_rows = true;
 
 			while ( $has_more_rows ) {
-				$rows = $wpdb->get_results( "SELECT * FROM `$table` LIMIT $offset, $max_rows_per_query;", ARRAY_N );
+				$rows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM `$table` LIMIT %d, %d", $offset, $max_rows_per_query ), ARRAY_N );
 
 				foreach ( $rows as $row ) {
 					$sql = "INSERT INTO `$table` VALUES (";
 
 					for ( $j = 0; $j < $num_fields; $j ++ ) {
-						if ( isset( $row[$j] ) ) {
-							$row[$j] = addslashes( $row[$j] );
+						if ( isset( $row[ $j ] ) ) {
+							$row[ $j ] = addslashes( $row[ $j ] );
 
 							if ( PHP_EOL !== "\n" ) {
-								$row[$j] = preg_replace( '#' . PHP_EOL . '#', "\n", $row[$j] );
+								$row[ $j ] = preg_replace( '#' . PHP_EOL . '#', "\n", $row[ $j ] );
 							}
 
-							$sql .= '"' . $row[$j] . '"';
+							$sql .= '"' . $row[ $j ] . '"';
 						} else {
 							$sql .= '""';
 						}
@@ -214,13 +203,15 @@ class ITSEC_Backup {
 		@fwrite( $fh, PHP_EOL . PHP_EOL );
 		@fclose( $fh );
 
+		$backup_file = $file;
+
 		if ( $this->settings['zip'] ) {
 			if ( ! class_exists( 'PclZip' ) ) {
 				require( ABSPATH . 'wp-admin/includes/class-pclzip.php' );
 			}
 
-			$zip_file = substr( $file, 0, -4 ) . '.zip';
-			$pclzip = new PclZip( $zip_file );
+			$zip_file = substr( $file, 0, - 4 ) . '.zip';
+			$pclzip   = new PclZip( $zip_file );
 
 			if ( 0 != $pclzip->create( $file, PCLZIP_OPT_REMOVE_PATH, $dir ) ) {
 				@unlink( $file );
@@ -228,14 +219,24 @@ class ITSEC_Backup {
 			}
 		}
 
-		if ( 2 !== $this->settings['method'] || true === $one_time ) {
+		if ( 'local' !== $this->settings['method'] || true === $one_time ) {
 			$mail_success = $this->send_mail( $file );
+		} else {
+			$mail_success = null;
 		}
 
-		if ( 1 === $this->settings['method'] ) {
+		$log_data = array(
+			'settings'     => $this->settings,
+			'mail_success' => $mail_success,
+			'file'         => $backup_file,
+			'output_file'  => $file,
+			'size'         => @filesize( $file ),
+		);
+
+		if ( 'email' === $this->settings['method'] ) {
 			@unlink( $file );
-		} else if ( $this->settings['retain'] > 0 ) {
-			$files = scandir( $dir, SCANDIR_SORT_DESCENDING );
+		} elseif ( $this->settings['retain'] > 0 ) {
+			$files = scandir( $dir, 1 );
 
 			if ( is_array( $files ) && count( $files ) > 0 ) {
 				$count = 0;
@@ -249,45 +250,41 @@ class ITSEC_Backup {
 						@unlink( trailingslashit( $dir ) . $file );
 					}
 
-					$count++;
+					$count ++;
 				}
 			}
 		}
 
-
-		$status  = __( 'Success', 'better-wp-security' );
-		$details = __( 'saved locally', 'better-wp-security' );
-
-		if ( 0 === $this->settings['method'] ) {
+		if ( 'both' === $this->settings['method'] ) {
 			if ( false === $mail_success ) {
-				$status  = __( 'Error', 'better-wp-security' );
-				$details = __( 'saved locally but email to backup recipients could not be sent.', 'better-wp-security' );
+				ITSEC_Log::add_warning( 'backup', 'email-failed-file-stored', $log_data );
 			} else {
-				$details = __( 'emailed to backup recipients and saved locally', 'better-wp-security' );
+				ITSEC_Log::add_notice( 'backup', 'email-succeeded-file-stored', $log_data );
 			}
-		} else if ( 1 === $this->settings['method'] ) {
+		} elseif ( 'email' === $this->settings['method'] ) {
 			if ( false === $mail_success ) {
-				$status  = __( 'Error', 'better-wp-security' );
-				$details = __( 'email to backup recipients could not be sent.', 'better-wp-security' );
+				ITSEC_Log::add_error( 'backup', 'email-failed', $log_data );
 			} else {
-				$details = __( 'emailed to backup recipients', 'better-wp-security' );
+				ITSEC_Log::add_notice( 'backup', 'email-succeeded', $log_data );
 			}
+		} else {
+			ITSEC_Log::add_notice( 'backup', 'file-stored', $log_data );
 		}
 
-		$data = compact( 'status', 'details' );
-		$itsec_logger->log_event( 'backup', 3, array( $data ) );
+		return $log_data;
 	}
 
 	private function send_mail( $file ) {
-		require_once( ITSEC_Core::get_core_dir() . 'lib/class-itsec-mail.php' );
 
-		$mail = new ITSEC_Mail();
-		$mail->add_header( esc_html__( 'Database Backup', 'better-wp-security' ), sprintf( wp_kses( __( 'Site Database Backup for <b>%s</b>', 'better-wp-security' ), array( 'b' => array() ) ), date_i18n( get_option( 'date_format' ) ) ) );
+		$nc   = ITSEC_Core::get_notification_center();
+		$mail = $nc->mail();
+
+		$mail->add_header( esc_html__( 'Database Backup', 'better-wp-security' ), sprintf( esc_html__( 'Site Database Backup for %s', 'better-wp-security' ), '<b>' . date_i18n( get_option( 'date_format' ) ) . '</b>' ) );
 		$mail->add_info_box( esc_html__( 'Attached is the database backup file for your site.', 'better-wp-security' ), 'attachment' );
 
 
 		$mail->add_section_heading( esc_html__( 'Website', 'better-wp-security' ) );
-		$mail->add_text( esc_html( network_home_url() ) );
+		$mail->add_text( $mail->get_display_url() );
 
 		$mail->add_section_heading( esc_html__( 'Date', 'better-wp-security' ) );
 		$mail->add_text( esc_html( date_i18n( get_option( 'date_format' ) ) ) );
@@ -295,38 +292,55 @@ class ITSEC_Backup {
 		$mail->add_footer();
 
 
-		$recipients = ITSEC_Modules::get_setting( 'global', 'backup_email' );
-		$mail->set_recipients( $recipients );
+		$mail->set_recipients( $nc->get_recipients( 'backup' ) );
 
-		$subject = sprintf( esc_html__( '[%s] Database Backup', 'better-wp-security' ), esc_url( network_home_url() ) );
+		$subject = $mail->prepend_site_url_to_subject( $nc->get_subject( 'backup' ) );
 		$subject = apply_filters( 'itsec_backup_email_subject', $subject );
 		$mail->set_subject( $subject, false );
 
 		$mail->add_attachment( $file );
 
-		return $mail->send();
+		return $nc->send( 'backup', $mail );
 	}
 
 	/**
-	 * Register backups for logger.
+	 * Register the Backup notification email.
 	 *
-	 * Adds the backup module to ITSEC_Logger.
+	 * @param array $notifications
 	 *
-	 * @since 4.0.0
-	 *
-	 * @param  array $logger_modules array of logger modules
-	 *
-	 * @return array                   array of logger modules
+	 * @return array
 	 */
-	public function register_logger( $logger_modules ) {
+	public function register_notification( $notifications ) {
 
-		$logger_modules['backup'] = array(
-			'type'     => 'backup',
-			'function' => __( 'Database Backup Executed', 'better-wp-security' ),
+		$method = ITSEC_Modules::get_setting( 'backup', 'method' );
+
+		if ( 'local' !== $method ) {
+			$notifications['backup'] = array(
+				'subject_editable' => true,
+				'recipient'        => ITSEC_Notification_Center::R_EMAIL_LIST,
+				'schedule'         => ITSEC_Notification_Center::S_NONE,
+				'module'           => 'backup',
+			);
+		}
+
+		return $notifications;
+	}
+
+	/**
+	 * Register the strings for the Backup email.
+	 *
+	 * @return array
+	 */
+	public function notification_strings() {
+		return array(
+			'label'       => __( 'Database Backup', 'better-wp-security' ),
+			'description' => sprintf(
+				__( 'The %1$sDatabase Backup%2$s module will send a copy of any backups to the email addresses listed below.', 'better-wp-security' ),
+				ITSEC_Core::get_link_for_settings_route( ITSEC_Core::get_settings_module_route( 'backup' ) ),
+				'</a>'
+			),
+			'subject'     => __( 'Database Backup', 'better-wp-security' ),
 		);
-
-		return $logger_modules;
-
 	}
 
 }

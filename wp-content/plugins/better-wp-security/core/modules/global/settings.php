@@ -1,61 +1,113 @@
 <?php
 
-final class ITSEC_Global_Settings_New extends ITSEC_Settings {
-	public function get_id() {
-		return 'global';
+use iThemesSecurity\Config_Settings;
+
+final class ITSEC_Global_Settings extends Config_Settings {
+	public function get_default( $setting, $default = null ) {
+		$default = parent::get_default( $setting, $default );
+
+		switch ( $setting ) {
+			case 'log_location':
+				return ITSEC_Core::get_storage_dir( 'logs' );
+			case 'enable_remote_help';
+				return ITSEC_Core::is_pro() ? true : $default;
+			case 'proxy':
+				$proxies = ITSEC_Lib_IP_Detector::get_proxy_types();
+
+				return isset( $proxies['security-check'] ) ? 'security-check' : $default;
+			default:
+				return $default;
+		}
 	}
 
-	public function get_defaults() {
-		global $itsec_globals;
+	public function get_settings_schema() {
+		$schema = parent::get_settings_schema();
 
-		$email = get_option( 'admin_email' );
+		$schema['properties']['proxy']['enum']      = array_keys( ITSEC_Lib_IP_Detector::get_proxy_types() );
+		$schema['properties']['proxy']['enumNames'] = array_values( ITSEC_Lib_IP_Detector::get_proxy_types() );
 
-		return array(
-			'notification_email'        => array( $email ),
-			'backup_email'              => array( $email ),
-			'lockout_message'           => __( 'error', 'better-wp-security' ),
-			'user_lockout_message'      => __( 'You have been locked out due to too many invalid login attempts.', 'better-wp-security' ),
-			'community_lockout_message' => __( 'Your IP address has been flagged as a threat by the iThemes Security network.', 'better-wp-security' ),
-			'blacklist'                 => true,
-			'blacklist_count'           => 3,
-			'blacklist_period'          => 7,
-			'email_notifications'       => true,
-			'lockout_period'            => 15,
-			'lockout_white_list'        => array(),
-			'log_rotation'              => 14,
-			'log_type'                  => 'database',
-			'log_location'              => ITSEC_Core::get_storage_dir( 'logs' ),
-			'log_info'                  => '',
-			'allow_tracking'            => false,
-			'write_files'               => true,
-			'nginx_file'                => ABSPATH . 'nginx.conf',
-			'infinitewp_compatibility'  => false,
-		'did_upgrade'               => false,
-			'lock_file'                 => false,
-			'digest_email'              => false,
-			'proxy_override'            => false,
-			'hide_admin_bar'            => false,
-			'show_error_codes'          => false,
-			'show_new_dashboard_notice' => true,
-			'show_security_check'       => true,
-		);
+		$schema['properties']['proxy_header']['enum']      = ITSEC_Lib_IP_Detector::get_proxy_headers();
+		$schema['properties']['proxy_header']['enumNames'] = array_map( static function ( $header ) {
+			if ( 0 === strpos( $header, 'HTTP_' ) ) {
+				$header = substr( $header, 5 );
+			}
+
+			$header = str_replace( '_', '-', $header );
+			$header = strtolower( $header );
+			$header = ucwords( $header, '-' );
+			$header = str_replace( [ 'Ip', 'Cf' ], [ 'IP', 'CF' ], $header );
+
+			return $header;
+		}, ITSEC_Lib_IP_Detector::get_proxy_headers() );
+
+		return $schema;
 	}
 
 	protected function handle_settings_changes( $old_settings ) {
-		if ( $this->settings['digest_email'] && ! $old_settings['digest_email'] ) {
-			$digest_queue = array(
-				'last_sent' => ITSEC_Core::get_current_time_gmt(),
-				'messages'  => array(),
-			);
-
-			update_site_option( 'itsec_message_queue', $digest_queue );
-		}
+		parent::handle_settings_changes( $old_settings );
 
 		if ( $this->settings['write_files'] && ! $old_settings['write_files'] ) {
 			ITSEC_Response::regenerate_server_config();
 			ITSEC_Response::regenerate_wp_config();
 		}
+
+		if ( $this->settings['use_cron'] !== $old_settings['use_cron'] ) {
+			$this->handle_cron_change( $this->settings['use_cron'] );
+		}
+
+		if ( $this->settings['enable_grade_report'] && ! $old_settings['enable_grade_report'] ) {
+			update_site_option( 'itsec-enable-grade-report', true );
+			ITSEC_Modules::load_module_file( 'activate.php', 'grade-report' );
+			ITSEC_Response::flag_new_notifications_available();
+			ITSEC_Response::refresh_page();
+		} elseif ( ! $this->settings['enable_grade_report'] && $old_settings['enable_grade_report'] ) {
+			update_site_option( 'itsec-enable-grade-report', false );
+			ITSEC_Modules::load_module_file( 'deactivate.php', 'grade-report' );
+			ITSEC_Response::refresh_page();
+		}
+	}
+
+	private function handle_cron_change( $new_use_cron ) {
+		$class = $new_use_cron ? 'ITSEC_Scheduler_Cron' : 'ITSEC_Scheduler_Page_Load';
+		$this->handle_scheduler_change( $class );
+	}
+
+	private function handle_scheduler_change( $new_class ) {
+		$choices = array(
+			'ITSEC_Scheduler_Cron'      => ITSEC_Core::get_core_dir() . 'lib/class-itsec-scheduler-cron.php',
+			'ITSEC_Scheduler_Page_Load' => ITSEC_Core::get_core_dir() . 'lib/class-itsec-scheduler-page-load.php',
+		);
+
+		require_once( $choices[ $new_class ] );
+
+		/** @var ITSEC_Scheduler $new */
+		$new     = new $new_class();
+		$current = ITSEC_Core::get_scheduler();
+
+		$new->uninstall();
+
+		foreach ( $current->get_custom_schedules() as $slug => $interval ) {
+			$new->register_custom_schedule( $slug, $interval );
+		}
+
+		$new->run();
+
+		foreach ( $current->get_recurring_events() as $event ) {
+			$new->schedule( $event['schedule'], $event['id'], $event['data'], array(
+				'fire_at' => $event['fire_at'],
+			) );
+		}
+
+		foreach ( $current->get_single_events() as $event ) {
+			$new->schedule_once( $event['fire_at'], $event['id'], $event['data'] );
+		}
+
+		$new->run();
+		ITSEC_Core::set_scheduler( $new );
+		$current->uninstall();
 	}
 }
 
-ITSEC_Modules::register_settings( new ITSEC_Global_Settings_New() );
+ITSEC_Modules::register_settings( new ITSEC_Global_Settings( ITSEC_Modules::get_config( 'global' ) ) );
+
+class_alias( ITSEC_Global_Settings::class, 'ITSEC_Global_Settings_New' );

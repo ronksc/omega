@@ -2,7 +2,7 @@
 	<div class="row">
         <div class="homeBannerContainer">
             <div class="homeBannerItemContainer clearfix" id="homeBannerItemContainer">
-                <div class="homeBannerItem" style="z-index:999;"><img src="<?=the_post_thumbnail_url( 'full' )?>" alt="" class="img-responsive" /></div>
+                <div class="homeBannerItem" style="z-index:999;"><img src="<?php echo the_post_thumbnail_url( 'full' )?>" alt="" class="img-responsive" /></div>
                 <a href="javascript:;" class="homeBannerBtnPrev"></a>
                 <a href="javascript:;" class="homeBannerBtnNext"></a>
                 <div class="homeThreeColumnContainer clearfix container">
@@ -22,11 +22,11 @@
 													 $learn_more_link = get_sub_field('learn_more_link');
 													 //print_r($learn_more_link);
 												?>
-                                                    <div class="learnMoreContainer"><a href="<?=get_permalink($learn_more_link[0]);?>">LEARN MORE &gt;</a></div>
+                                                    <div class="learnMoreContainer"><a href="<?php echo get_permalink($learn_more_link[0]);?>">LEARN MORE &gt;</a></div>
                                                 </div>
                                             </div>
                                         </div>
-								<?	endif;
+								<?php	endif;
 								endwhile;
 							endif;
 						?>

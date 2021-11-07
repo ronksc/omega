@@ -1,17 +1,32 @@
 <?php
 
-ITSEC_Modules::register_module( 'ban-users', dirname( __FILE__ ), 'default-active' );
+use iThemesSecurity\Actor\Lockout_Module;
+use iThemesSecurity\Ban_Users\Ban;
+use iThemesSecurity\Ban_Users\Database_Repository;
+use iThemesSecurity\Lib\Lockout\Context;
 
+/**
+ * Listens to the new banned IP hook and persists the IP to the module's settings.
+ *
+ * @param string  $ip      The IP address.
+ * @param Context $context The lockout context.
+ */
+function itsec_ban_users_handle_new_banned_ip( $ip, $context = null ) {
+	ITSEC_Modules::load_module_file( 'labels.php' );
+	$repository = ITSEC_Modules::get_container()->get( Database_Repository::class );
 
-function itsec_ban_users_handle_new_blacklisted_ip( $ip ) {
-	$host_list = ITSEC_Modules::get_setting( 'ban-users', 'host_list', array() );
-	
-	if ( ! is_array( $host_list ) ) {
-		$host_list = array();
+	if ( $context instanceof Context && $lockout = $context->get_lockout_module() ) {
+		$actor = new Lockout_Module( $lockout );
+	} else {
+		$actor = null;
 	}
-	
-	$host_list[] = $ip;
-	
-	ITSEC_Modules::set_setting( 'ban-users', 'host_list', $host_list );
+
+	$ban = new Ban( $ip, $actor );
+
+	try {
+		$repository->persist( $ban );
+	} catch ( \iThemesSecurity\Exception\WP_Error $e ) {
+	}
 }
-add_action( 'itsec-new-blacklisted-ip', 'itsec_ban_users_handle_new_blacklisted_ip' );
+
+add_action( 'itsec_new_banned_ip', 'itsec_ban_users_handle_new_banned_ip', 10, 2 );

@@ -7,43 +7,43 @@
 				</div>-->
 				<div class="hidden-xs col-sm-12">
 					<div class="col-xs-6 prev-post">
-						<? $prev_post = get_adjacent_post(false, '', true);
+						<?php $prev_post = get_adjacent_post(false, '', true);
 						  if(!empty($prev_post)) {?>
-							<a href="<?=get_permalink($prev_post->ID); ?>" class="article-link">
+							<a href="<?php echo get_permalink($prev_post->ID); ?>" class="article-link">
 							<span><i class="fa fa-angle-left"></i> PREVIOUS ARTICLE</span>
-							<?=$prev_post->post_title?>
+							<?php echo $prev_post->post_title?>
 						</a>
-						<? } ?>
+						<?php } ?>
 					</div>
 					<div class="col-xs-6 next-post">
-						<? $next_post = get_adjacent_post(false, '', false); 
+						<?php $next_post = get_adjacent_post(false, '', false); 
 						  if(!empty($next_post)) { ?>
-							<a href="<?=get_permalink($next_post->ID)?>" class="article-link">
+							<a href="<?php echo get_permalink($next_post->ID)?>" class="article-link">
 							<span>NEXT ARTICLE <i class="fa fa-angle-right"></i></span>
-							<?=$next_post->post_title?>
+							<?php echo $next_post->post_title?>
 						</a>
-						<? } ?>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
 			<div class="post-content">
 				<div class="post-info-container clearfix">
-					<? if(has_post_thumbnail( $post->ID)){ ?>
+					<?php if(has_post_thumbnail( $post->ID)){ ?>
 					<div class="post-img-container">
-						<img src="<?=wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
+						<img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($sticky_result->ID) );?>" class="img-responsive" />
 						<?
 						if(get_field("feature_image_caption")){
 						?>						
-						<div class="feature-img-caption"><?=get_field("feature_image_caption"); ?></div>
+						<div class="feature-img-caption"><?php echo get_field("feature_image_caption"); ?></div>
 						<?
 						}
 						?>
 					</div>
-					<? } ?>
+					<?php } ?>
 					<div class="post-info-content">
-						<p class="post-date"><?=get_the_date(); ?></p>
+						<p class="post-date"><?php echo get_the_date(); ?></p>
 						<h2><?php the_title(); ?></h2>
-                        <div class="addthis_toolbox addthis_default_style" addthis:url="<?=get_permalink()?>" addthis:title="<?php the_title(); ?>" style="display:inline-block; margin-bottom:10px;">
+                        <div class="addthis_toolbox addthis_default_style" addthis:url="<?php echo get_permalink()?>" addthis:title="<?php the_title(); ?>" style="display:inline-block; margin-bottom:10px;">
                             <a class="addthis_button_facebook"></a>
                             <a class="addthis_button_linkedin"></a>
 							<a class="addthis_button_email"></a>
@@ -53,7 +53,7 @@
 						<?
 							if( $post->post_excerpt ){
 						?>
-								<div class="post-excerpt"><?=$post->post_excerpt;?></div>
+								<div class="post-excerpt"><?php echo $post->post_excerpt;?></div>
 						<?
 							}
 						?>
@@ -97,22 +97,22 @@
 			</div>
 			<div class="page-control clearfix visible-xs hidden-sm hidden-md hidden-lg">
 				<div class="col-xs-6 prev-post">
-					<? $prev_post = get_adjacent_post(false, '', true);
+					<?php $prev_post = get_adjacent_post(false, '', true);
 					  if(!empty($prev_post)) {?>
-						<a href="<?=get_permalink($prev_post->ID); ?>" class="article-link">
+						<a href="<?php echo get_permalink($prev_post->ID); ?>" class="article-link">
 						<span><i class="fa fa-angle-left"></i> PREVIOUS ARTICLE</span>
-						<?=$prev_post->post_title?>
+						<?php echo $prev_post->post_title?>
 					</a>
-					<? } ?>
+					<?php } ?>
 				</div>
 				<div class="col-xs-6 next-post">
-					<? $next_post = get_adjacent_post(false, '', false); 
+					<?php $next_post = get_adjacent_post(false, '', false); 
 					  if(!empty($next_post)) { ?>
-						<a href="<?=get_permalink($next_post->ID)?>" class="article-link">
+						<a href="<?php echo get_permalink($next_post->ID)?>" class="article-link">
 						<span>NEXT ARTICLE <i class="fa fa-angle-right"></i></span>
-						<?=$next_post->post_title?>
+						<?php echo $next_post->post_title?>
 					</a>
-					<? } ?>
+					<?php } ?>
 				</div>
 			</div>
 		<?php endwhile; ?>

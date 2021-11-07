@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="innerContentContainer">
 			<div class="contentBannerContainer">
-				<? $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-				<img src="<?=$feat_image?>" alt="" class="img-responsive hidden-xs" />
-                <img src="<?=get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
-                <?=get_field("banner_text", $post->ID) ?>
+				<?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+				<img src="<?php echo $feat_image?>" alt="" class="img-responsive hidden-xs" />
+                <img src="<?php echo get_field("mobile_banner", $post->ID); ?>" alt="" class="img-responsive hidden-sm hidden-md hidden-lg" />
+                <?php echo get_field("banner_text", $post->ID) ?>
 			</div>
 			<div class="contentContainer">
             	<h1><?php the_title(); ?></h1>
@@ -22,10 +22,10 @@
 						
 					<div class="leadership_item">
 						<div class="leadership_wrapper">
-							<div class="leader_name"><?=$alternate_name?></div>
-							<div class="leader_title"><?=$job_title?></div>
+							<div class="leader_name"><?php echo $alternate_name?></div>
+							<div class="leader_title"><?php echo $job_title?></div>
 						</div>
-						<a href="<?=get_permalink($result->ID)?>" class="btn_read_more"></a>
+						<a href="<?php echo get_permalink($result->ID)?>" class="btn_read_more"></a>
 						<span>Read More</span>
 					</div>
 					
